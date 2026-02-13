@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cassie Posh Events, LLC | Luxury Wedding & Event Planning</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'posh-gold': '#D4AF37',
+                        'posh-gold-dark': '#B5952F',
+                        'posh-cream': '#F9F7F2',
+                        'posh-blush': '#FDF6F6',
+                        'posh-dark': '#1A1A1A',
+                        'posh-grey': '#666666',
+                    },
+                    fontFamily: {
+                        'playfair': ['"Playfair Display"', 'serif'],
+                        'poppins': ['"Poppins"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "url('https://images.unsplash.com/photo-1519225421980-715cb0202128?q=80&w=2070&auto=format&fit=crop')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles */
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .nav-scrolled {
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .nav-scrolled .nav-link {
+            color: #1A1A1A;
+        }
+        .nav-scrolled .logo-text {
+            color: #1A1A1A;
+        }
+        .nav-transparent {
+            background-color: transparent;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        .hover-underline-animation {
+            display: inline-block;
+            position: relative;
+        }
+        .hover-underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: #D4AF37;
+            transform-origin: bottom right;
+            transition: transform 0.35s ease-out;
+        }
+        .hover-underline-animation:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
+</head>
+<body class="font-poppins text-posh-dark antialiased overflow-x-hidden selection:bg-posh-gold selection:text-white">
+
+    <!-- 1. Navigation Bar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 nav-transparent">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="/" class="flex items-center">
+                <img src="images/Transparent Background-02.png" alt="Cassie Posh Events, LLC Logo" class="h-12 md:h-16 w-auto object-contain">
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex space-x-8 items-center">
+                <a href="#" class="nav-link text-white text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">Home</a>
+                <a href="#about" class="nav-link text-white text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">About</a>
+                <a href="#services" class="nav-link text-white text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">Services</a>
+                <a href="#design" class="nav-link text-white text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">Design & Décor</a>
+                <a href="#meetings" class="nav-link text-white text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">Meetings & Corporate</a>
+                <a href="#portfolio" class="nav-link text-white text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">Portfolio</a>
+                <a href="#contact" class="px-6 py-2 border border-posh-gold text-posh-gold hover:bg-posh-gold hover:text-white transition-all duration-300 uppercase text-xs tracking-widest">Contact Us</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-posh-gold text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-lg py-6 flex flex-col items-center space-y-6 lg:hidden">
+            <a href="#" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Home</a>
+            <a href="#about" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">About</a>
+            <a href="#services" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Services</a>
+            <a href="#design" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Design & Décor</a>
+            <a href="#meetings" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Meetings & Corporate</a>
+            <a href="#portfolio" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Portfolio</a>
+            <a href="#contact" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section -->
+    <header class="relative h-screen w-full 
+           bg-[url('images/dreamstime_xxl_17916013.jpg')] 
+           bg-cover bg-center bg-no-repeat 
+           bg-fixed">
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black/40"></div>
+        
+        <!-- Content -->
+        <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-4">
+            <p class="text-white/90 uppercase tracking-[0.2em] text-xs md:text-sm mb-4">
+                Full-Service Wedding Planning & Event Design in Philadelphia & the Tri-State Area
+            </p>
+
+            <h1 class="font-playfair text-4xl md:text-6xl lg:text-7xl text-white font-medium mb-6 leading-tight max-w-5xl">
+                Every celebration begins with your story <br><span class="italic"></span>
+            </h1>
+
+            <p class="text-white/80 max-w-3xl mx-auto mb-6 font-light leading-relaxed hidden md:block">
+                Cassie Posh Events is a full-service wedding planning and event design company based in Philadelphia, proudly serving clients throughout the Tri-State area. We specialize in sophisticated weddings, multicultural celebrations, Indian weddings, multi-day Philadelphian weddings, and luxurious social events.
+            </p>
+
+            <!-- <p class="text-white/80 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
+                
+            </p> -->
+            
+            <a href="#services" 
+               class="bg-posh-gold text-white px-8 py-4 uppercase text-xs tracking-widest hover:bg-white hover:text-posh-dark transition-all duration-300 min-w-[180px]">
+                Explore Our Wedding & Event Services
+            </a>
+        </div>
+        
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down opacity-70"></i>
+        </div>
+    </header>
+
+    <!-- 3. About Preview Section -->
+    <section id="about" class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <!-- Image -->
+                <div class="w-full md:w-1/2 relative">
+                    <div class="absolute -top-4 -left-4 w-full h-full border border-posh-gold/30 hidden md:block"></div>
+                    <img src="images/dreamstime_xxl_26323496.jpg" alt="Cassie Posh Planning" class="w-full h-[600px] object-cover relative z-10 shadow-xl grayscale-[10%] hover:grayscale-0 transition-all duration-700">
+                </div>
+                
+                <!-- Content -->
+                <div class="w-full md:w-1/2">
+                    <h2 class="font-playfair text-4xl md:text-5xl text-posh-dark mb-6 leading-tight">Making Each Event Into a <span class="italic text-posh-gold">Magical Memory</span></h2>
+                    <div class="w-16 h-0.5 bg-posh-gold mb-8"></div>
+                    
+                    <p class="text-posh-grey mb-6 leading-loose font-light">
+                        The purpose of Cassie Posh Events is to extend your story into an upscale generational tale of modern luxury and celebration. Not only will you have an extraordinary event — you will create a lasting memory to cherish for years to come.
+                    </p>
+                    <p class="text-posh-grey mb-6 leading-loose font-light">
+                        We fine-tune every detail, navigate complex decisions with clarity, and curate the perfect balance of elegance and liveliness. As your dedicated planning partner, we anticipate challenges before they arise and guide you through every step with confidence and care.
+                    </p>
+                    <p class="text-posh-grey mb-8 leading-loose font-light">
+                        From first inspiration to final reveal, we design events that become part of your legacy — a posh generational tale brought to life with elegance and heart.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Services Overview Section -->
+    <section id="services" class="py-24 bg-posh-cream">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-posh-gold uppercase tracking-[0.2em] text-xs font-semibold">Our Expertise</span>
+                <h2 class="font-playfair text-4xl text-posh-dark mt-3">Curated Planning Services</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Service 1 -->
+                <div class="bg-white p-10 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="text-posh-gold text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-regular fa-gem"></i>
+                    </div>
+                    <h3 class="font-playfair text-2xl mb-4 text-posh-dark">Full-Service Wedding Planning</h3>
+                    <p class="text-posh-grey font-light leading-relaxed mb-6 text-sm">
+                        Comprehensive guidance from "Yes" to "I Do." We handle every detail, vendor negotiation, and design element.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white p-10 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="text-posh-gold text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-regular fa-calendar-check"></i>
+                    </div>
+                    <h3 class="font-playfair text-2xl mb-4 text-posh-dark">Wedding Day Coordination</h3>
+                    <p class="text-posh-grey font-light leading-relaxed mb-6 text-sm">
+                        For the couple who has planned the details but needs a professional to execute the vision flawlessly on the big day.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white p-10 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="text-posh-gold text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-champagne-glasses"></i>
+                    </div>
+                    <h3 class="font-playfair text-2xl mb-4 text-posh-dark">Social Events</h3>
+                    <p class="text-posh-grey font-light leading-relaxed mb-6 text-sm">
+                        From milestone birthdays to luxury baby showers, we turn life's moments into sophisticated celebrations.
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-white p-10 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group lg:col-start-1 lg:col-end-2 lg:ml-auto">
+                    <!-- Adjusted grid placement for centering if desired, or just standard flow. Standard flow is safer for responsive. Keeping standard grid flow. -->
+                    <div class="text-posh-gold text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h3 class="font-playfair text-2xl mb-4 text-posh-dark">Corporate & Meeting Planning</h3>
+                    <p class="text-posh-grey font-light leading-relaxed mb-6 text-sm">
+                        Impactful corporate event planning, brand launches, and executive meetings executed with precision.
+                    </p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-white p-10 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="text-posh-gold text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-paintbrush"></i>
+                    </div>
+                    <h3 class="font-playfair text-2xl mb-4 text-posh-dark">Luxury Design & Drapery</h3>
+                    <p class="text-posh-grey font-light leading-relaxed mb-6 text-sm">
+                        Visualizing your aesthetic. We curate color palettes, florals, and drapery installations to create a cohesive story.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="#" class="inline-block bg-posh-gold text-white px-10 py-4 uppercase text-xs tracking-widest hover:bg-posh-dark transition-all duration-300 shadow-md">
+                    View All Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-0">
+        <div class="grid grid-cols-1 md:grid-cols-3">
+            <!-- Item 1 -->
+            <div class="group relative h-[400px] md:h-[500px] overflow-hidden cursor-pointer">
+                <img src="images/dreamstime_xxl_15497069.jpg" alt="Floral Arrangement" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 flex items-center justify-center">
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
+                        <span class="text-white border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-colors">View Gallery</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="group relative h-[400px] md:h-[500px] overflow-hidden cursor-pointer">
+                <img src="images/dreamstime_xxl_25900010.jpg" alt="Table Setting" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 flex items-center justify-center">
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
+                        <span class="text-white border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-colors">View Gallery</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="group relative h-[400px] md:h-[500px] overflow-hidden cursor-pointer">
+                <img src="images/dreamstime_xxl_48626295.jpg" alt="Wedding Cake" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 flex items-center justify-center">
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
+                        <span class="text-white border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-colors">View Gallery</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Testimonials Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            
+            <!-- Review 1 -->
+            <div class="mb-16">
+                <div class="text-posh-gold text-5xl mb-6 opacity-40 font-playfair">“</div>
+                <h3 class="font-playfair italic text-xl md:text-2xl text-posh-dark leading-relaxed mb-6">
+                    Cassie Posh Events brought our vision to life in ways we never imagined. Every detail was flawless.
+                </h3>
+                <div class="flex justify-center gap-1 text-posh-gold text-xs mb-4">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="w-12 h-[1px] bg-posh-gold mx-auto mb-2"></div>
+                <p class="uppercase tracking-widest text-xs font-semibold text-posh-dark">A Grateful Bride</p>
+            </div>
+
+            <!-- Review 2 -->
+            <div>
+                <h3 class="font-playfair italic text-xl md:text-2xl text-posh-dark leading-relaxed mb-6">
+                    Professional, creative, and incredibly organized. We enjoyed our wedding without a single worry.
+                </h3>
+                <div class="flex justify-center gap-1 text-posh-gold text-xs mb-4">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="w-12 h-[1px] bg-posh-gold mx-auto mb-2"></div>
+                <p class="uppercase tracking-widest text-xs font-semibold text-posh-dark">Newlywed Couple</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 6. Footer -->
+    <footer id="contact" 
+    class="relative w-full bg-[url('images/dreamstime_xxl_4495877.jpg')] bg-cover bg-center bg-no-repeat bg-fixed text-white">
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black/70"></div>
+
+    <!-- Content Wrapper -->
+    <div class="relative z-10 py-20 border-t border-white/10">
+
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-12">
+            
+            <!-- Brand & Address -->
+            <div class="text-center md:text-left max-w-sm">
+                <a href="/" class="flex items-center">
+                    <img src="images/Logo.png" alt="Cassie Posh Events, LLC Logo" class="h-12 md:h-16 w-auto object-contain">
+                </a>
+                <p class="text-white/70 text-xs uppercase tracking-widest mb-1">
+                    Philadelphia, PA
+                </p>
+                <p class="text-white/70 text-xs uppercase tracking-widest">
+                    Luxury Wedding & Event Planning
+                </p>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="text-center md:text-left">
+                <p class="font-playfair text-lg md:text-xl text-white mb-2">
+                    610-202-5492
+                </p>
+                <a href="mailto:info@cassieposhevents.com" 
+                   class="text-posh-gold hover:text-white transition-colors duration-300 text-sm font-light">
+                    info@cassieposhevents.com
+                </a>
+            </div>
+
+            <!-- Links -->
+            <div class="flex flex-col gap-3 text-center md:text-left">
+                <span class="text-white/40 text-xs uppercase tracking-widest mb-3">
+                    Quick Links
+                </span>
+                <a href="#about" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">
+                    About
+                </a>
+                <a href="#services" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">
+                    Services
+                </a>
+                <a href="#portfolio" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">
+                    Portfolio
+                </a>
+                <a href="#contact" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">
+                    Contact Us
+                </a>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="flex gap-4 justify-center md:justify-start">
+                <a href="#" 
+                   class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all duration-300">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" 
+                   class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all duration-300">
+                    <i class="fab fa-pinterest-p"></i>
+                </a>
+                <a href="#" 
+                   class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all duration-300">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="container mx-auto px-6 mt-20 pt-8 border-t border-white/10 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
+            <p class="text-white/40 text-xs font-light">
+                &copy;  Cassie Posh Events, LLC. All rights reserved.
+            </p>
+            <p class="text-white/40 text-xs font-light mt-2 md:mt-0">
+                Designed with Elegance
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+
+    <!-- JavaScript for Interactions -->
+    <script>
+        // Sticky Navigation Logic
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const logoText = document.querySelector('.logo-text');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                // Scrolled State (White Background)
+                navbar.classList.remove('nav-transparent');
+                navbar.classList.add('nav-scrolled');
+                
+                logoText.classList.remove('text-white');
+                logoText.classList.add('text-posh-dark');
+                
+                mobileMenuBtn.classList.remove('text-white'); 
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-posh-dark');
+                });
+            } else {
+                // Top State (Transparent)
+                navbar.classList.add('nav-transparent');
+                navbar.classList.remove('nav-scrolled');
+                
+                logoText.classList.add('text-white');
+                logoText.classList.remove('text-posh-dark');
+                
+                navLinks.forEach(link => {
+                    link.classList.add('text-white');
+                    link.classList.remove('text-posh-dark');
+                });
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            
+            // Toggle icon between bars and times (X)
+            const icon = menuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+    </script>
+</body>
+</html>
