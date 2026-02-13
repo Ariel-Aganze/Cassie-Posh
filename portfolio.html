@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,1095 +13,465 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'posh-gold': '#D4AF37',
+                        'posh-gold-dark': '#B5952F',
+                        'posh-gold-light': '#F4E5C1',
+                        'posh-cream': '#F9F7F2',
+                        'posh-dark': '#1A1A1A',
+                        'posh-grey': '#666666',
+                    },
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* Reset and Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .hover-underline-animation {
+            position: relative;
         }
-
-        :root {
-            --posh-gold: #D4AF37;
-            --posh-gold-dark: #B5952F;
-            --posh-gold-light: #F4E5C1;
-            --posh-cream: #F9F7F2;
-            --posh-dark: #1A1A1A;
-            --posh-grey: #666666;
+        .hover-underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: #D4AF37;
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
         }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--posh-dark);
-            background: var(--posh-cream);
+        .hover-underline-animation:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
         }
-
+        
         body.menu-open {
             overflow: hidden;
         }
-
-        /* Navigation - Fully Responsive */
-        .navbar {
-            position: fixed;
-            width: 100%;
-            z-index: 50;
-            transition: background-color 0.2s, padding 0.2s;
-            padding: 1.5rem 0;
-            background: transparent;
-        }
-
-        .navbar.scrolled {
-            background: white;
-            padding: 0.75rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .navbar.scrolled .nav-link {
-            color: var(--posh-dark);
-        }
-
-        .navbar.scrolled .nav-logo {
-            filter: none;
-        }
-
-        .navbar.scrolled .nav-link.active {
-            color: var(--posh-gold) !important;
-        }
-
-        .nav-logo {
-            height: 50px;
-            width: auto;
-            filter: brightness(0) invert(1);
-        }
-
-        @media (max-width: 768px) {
-            .nav-logo {
-                height: 40px;
-            }
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 1rem;
-            }
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Desktop Menu */
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        @media (max-width: 1024px) {
-            .nav-menu {
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .nav-menu {
-                display: none;
-            }
-        }
-
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: color 0.2s;
-            white-space: nowrap;
-        }
-
-        @media (max-width: 1024px) {
-            .nav-link {
-                font-size: 0.8rem;
-            }
-        }
-
-        .nav-link:hover {
-            color: var(--posh-gold);
-        }
-
-        .nav-link.active {
-            color: var(--posh-gold) !important;
-        }
-
-        .contact-link {
-            border: 1px solid var(--posh-gold);
-            color: var(--posh-gold) !important;
-            padding: 0.5rem 1.5rem;
-            transition: all 0.2s;
-        }
-
-        .contact-link:hover {
-            background: var(--posh-gold);
-            color: white !important;
-        }
-
-        /* Mobile Menu Button */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--posh-gold);
-            font-size: 1.8rem;
-            cursor: pointer;
-            z-index: 51;
-        }
-
-        @media (max-width: 900px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-        }
-
-        /* Mobile Menu Overlay */
-        .mobile-menu-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 90;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .mobile-menu-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 80%;
-            max-width: 400px;
-            height: 100vh;
-            background: white;
-            padding: 2rem;
-            box-shadow: -5px 0 30px rgba(0,0,0,0.1);
-            transition: right 0.3s ease;
-            z-index: 100;
-            overflow-y: auto;
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(212,175,55,0.2);
-        }
-
-        .mobile-menu-logo {
-            height: 40px;
-            width: auto;
-        }
-
-        .mobile-menu-close {
-            background: none;
-            border: none;
-            color: var(--posh-gold);
-            font-size: 1.5rem;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background 0.2s;
-        }
-
-        .mobile-menu-close:hover {
-            background: rgba(212,175,55,0.1);
-        }
-
-        .mobile-menu-items {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .mobile-menu-items a {
-            color: var(--posh-dark);
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 1rem;
-            letter-spacing: 0.1em;
-            padding: 0.75rem 0;
-            transition: color 0.2s;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .mobile-menu-items a:hover,
-        .mobile-menu-items a.active {
-            color: var(--posh-gold);
-        }
-
-        .mobile-menu-items .contact-link-mobile {
-            border: 1px solid var(--posh-gold);
-            color: var(--posh-gold);
-            padding: 1rem;
-            text-align: center;
-            margin-top: 1rem;
-            border-radius: 2px;
-            background: transparent;
-            transition: all 0.2s;
-        }
-
-        .mobile-menu-items .contact-link-mobile:hover {
-            background: var(--posh-gold);
-            color: white;
-        }
-
-        .mobile-menu-social {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(212,175,55,0.2);
-        }
-
-        .mobile-menu-social a {
-            color: var(--posh-grey);
-            font-size: 1.2rem;
-            transition: color 0.2s;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            border: 1px solid rgba(212,175,55,0.2);
-        }
-
-        .mobile-menu-social a:hover {
-            color: var(--posh-gold);
-            border-color: var(--posh-gold);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%), 
-                        url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .hero-content {
-            color: white;
-            padding: 0 1.5rem;
-            width: 100%;
-        }
-
-        .hero-subtitle {
-            color: var(--posh-gold);
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 8vw, 6rem);
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            font-weight: 500;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .hero-divider {
-            width: 80px;
-            height: 2px;
-            background: var(--posh-gold);
-            margin: 1.5rem auto;
-        }
-
-        .hero-description {
-            max-width: 42rem;
-            margin: 0 auto;
-            font-size: clamp(1rem, 3vw, 1.25rem);
-            font-weight: 300;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-            padding: 0 1rem;
-        }
-
-        /* Filter Section */
-        .filter-section {
-            padding: 3rem 0;
-            background: var(--posh-cream);
-        }
-
-        .filter-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            padding: 0 1rem;
-        }
-
-        .filter-btn {
-            background: white;
-            border: 1px solid #e0e0e0;
-            padding: 0.75rem 1.5rem;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--posh-grey);
-            cursor: pointer;
-            transition: all 0.15s;
-            border-radius: 2px;
-            white-space: nowrap;
-        }
-
-        @media (max-width: 768px) {
-            .filter-btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.75rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .filter-container {
-                gap: 0.5rem;
-            }
-            .filter-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.7rem;
-                white-space: normal;
-                width: calc(50% - 0.5rem);
-            }
-        }
-
-        .filter-btn:hover {
-            border-color: var(--posh-gold);
-            color: var(--posh-gold);
-        }
-
-        .filter-btn.active {
-            background: var(--posh-gold);
-            border-color: var(--posh-gold);
-            color: white;
-        }
-
-        /* Portfolio Grid */
-        .portfolio-section {
-            background: var(--posh-cream);
-            padding-bottom: 5rem;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-
-        @media (max-width: 1200px) {
-            .portfolio-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .portfolio-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-                padding: 0 1rem;
-            }
-        }
-
-        .portfolio-item {
+        
+        /* Modern card designs */
+        .portfolio-card {
             position: relative;
             overflow: hidden;
-            aspect-ratio: 1;
             cursor: pointer;
-            background: #f0f0f0;
+            border-radius: 30px 30px 30px 30px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
         }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+        
+        .portfolio-card:nth-child(2n) {
+            border-radius: 60px 30px 60px 30px;
         }
-
+        
+        .portfolio-card:nth-child(3n) {
+            border-radius: 30px 60px 30px 60px;
+        }
+        
+        .portfolio-card:nth-child(4n) {
+            border-radius: 50px 20px 50px 20px;
+        }
+        
+        .portfolio-card:nth-child(5n) {
+            border-radius: 20px 50px 20px 50px;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px -10px rgba(212,175,55,0.3);
+        }
+        
+        .portfolio-card img {
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .portfolio-card:hover img {
+            transform: scale(1.1);
+        }
+        
         .portfolio-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            background: linear-gradient(45deg, rgba(0,0,0,0.9) 0%, rgba(212,175,55,0.3) 100%);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             padding: 1.5rem;
             opacity: 0;
-            transition: opacity 0.2s;
+            transition: opacity 0.5s ease;
         }
-
-        @media (max-width: 768px) {
-            .portfolio-overlay {
-                padding: 1rem;
-            }
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
+        
+        .portfolio-card:hover .portfolio-overlay {
             opacity: 1;
         }
-
-        .portfolio-overlay h3 {
-            color: var(--posh-gold);
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1rem, 3vw, 1.25rem);
-            margin-bottom: 0.5rem;
-        }
-
-        .portfolio-overlay p {
-            color: white;
-            font-size: clamp(0.75rem, 2.5vw, 0.875rem);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .portfolio-overlay p i {
-            color: var(--posh-gold);
-        }
-
-        .portfolio-overlay .view-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: transparent;
-            border: 1px solid var(--posh-gold);
-            color: var(--posh-gold);
-            padding: 0.6rem 1.2rem;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            width: fit-content;
-            transition: all 0.15s;
-        }
-
-        @media (max-width: 768px) {
-            .portfolio-overlay .view-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.65rem;
-            }
-        }
-
-        .portfolio-overlay .view-btn:hover {
-            background: var(--posh-gold);
-            color: white;
-        }
-
-        /* Load More Button */
-        .load-more-container {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 0 1rem;
-        }
-
-        .load-more-btn {
-            padding: 1rem 3rem;
-            border: 1px solid var(--posh-gold);
-            background: transparent;
-            color: var(--posh-gold);
-            cursor: pointer;
-            text-transform: uppercase;
-            font-size: 0.875rem;
-            letter-spacing: 2px;
-            transition: all 0.15s;
-            font-weight: 500;
-            width: auto;
-            max-width: 100%;
-        }
-
-        @media (max-width: 480px) {
-            .load-more-btn {
-                padding: 0.875rem 2rem;
-                font-size: 0.8rem;
-                width: 100%;
-            }
-        }
-
-        .load-more-btn:hover {
-            background: var(--posh-gold);
-            color: white;
-        }
-
-        /* Stats Section */
-        .stats-section {
-            background: var(--posh-dark);
-            color: white;
-            padding: 5rem 0;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-
-        @media (max-width: 1024px) {
-            .stats-grid {
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255,255,255,0.05);
-        }
-
-        @media (max-width: 768px) {
-            .stat-card {
-                padding: 1.5rem;
-            }
-        }
-
-        .stat-number {
-            color: var(--posh-gold);
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            opacity: 0.6;
-            font-size: clamp(0.75rem, 2.5vw, 0.875rem);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Footer */
-        .footer {
+        
+        /* Filter button styles */
+        .filter-btn {
             position: relative;
-            width: 100%;
-            background-image: url('images/dreamstime_xxl_4495877.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            z-index: 1;
         }
-
-        @media (max-width: 768px) {
-            .footer {
-                background-attachment: scroll;
-            }
-        }
-
-        .footer-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        .footer-content {
-            position: relative;
-            z-index: 10;
-            padding: 5rem 0 2rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        @media (max-width: 1024px) {
-            .footer-grid {
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                text-align: center;
-            }
-        }
-
-        .footer-logo {
-            height: 60px;
-            width: auto;
-            margin-bottom: 1rem;
-        }
-
-        @media (max-width: 480px) {
-            .footer-logo {
-                margin-left: auto;
-                margin-right: auto;
-            }
-        }
-
-        .footer-text {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.875rem;
-            line-height: 1.6;
-        }
-
-        .footer-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            font-size: 0.875rem;
-            transition: color 0.15s;
-        }
-
-        .footer-links a:hover {
-            color: var(--posh-gold);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        @media (max-width: 480px) {
-            .social-links {
-                justify-content: center;
-            }
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            transition: all 0.15s;
-        }
-
-        .social-link:hover {
-            background: var(--posh-gold);
-            border-color: var(--posh-gold);
-            color: white;
-        }
-
-        .footer-bottom {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
-        }
-
-        .copyright {
-            color: rgba(255,255,255,0.4);
-            font-size: 0.75rem;
-        }
-
-        /* Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90vh;
-            position: relative;
-            border: 3px solid var(--posh-gold);
-        }
-
-        @media (max-width: 768px) {
-            .lightbox-content {
-                max-width: 95%;
-            }
-        }
-
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 80vh;
-            display: block;
-        }
-
-        .lightbox-info {
-            position: absolute;
-            bottom: -50px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .lightbox-info {
-                bottom: -40px;
-            }
-            .lightbox-info h3 {
-                font-size: 1rem;
-            }
-        }
-
-        .lightbox-info h3 {
-            color: var(--posh-gold);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            color: white;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            background: var(--posh-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.15s;
-        }
-
-        @media (max-width: 768px) {
-            .lightbox-close {
-                width: 35px;
-                height: 35px;
-                top: -10px;
-                right: -10px;
-            }
-        }
-
-        .lightbox-close:hover {
-            background: var(--posh-gold-dark);
-        }
-
-        .lightbox-nav {
+        
+        .filter-btn::before {
+            content: '';
             position: absolute;
             top: 50%;
-            transform: translateY(-50%);
-            color: white;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            background: var(--posh-gold);
+            left: 50%;
+            width: 0;
+            height: 0;
             border-radius: 50%;
+            background: rgba(212,175,55,0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            z-index: -1;
+        }
+        
+        .filter-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, #D4AF37, #B5952F);
+            color: white;
+            border-color: #D4AF37;
+        }
+        
+        /* Mobile menu - dropdown style */
+        .mobile-menu {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: white;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 1px solid rgba(212,175,55,0.1);
+        }
+        
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .mobile-menu-items {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.15s;
+            flex-direction: column;
+            padding: 1.5rem 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
         }
-
-        @media (max-width: 768px) {
-            .lightbox-nav {
-                width: 35px;
-                height: 35px;
-            }
+        
+        .mobile-menu-items a {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #1A1A1A;
+            text-decoration: none;
+            transition: color 0.2s;
+            padding: 0.75rem 0;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-
-        .lightbox-nav:hover {
-            background: var(--posh-gold-dark);
+        
+        .mobile-menu-items a:last-child {
+            border-bottom: none;
         }
-
-        .lightbox-nav.prev {
-            left: -20px;
+        
+        .mobile-menu-items a:hover,
+        .mobile-menu-items a.active {
+            color: #D4AF37;
         }
-
-        .lightbox-nav.next {
-            right: -20px;
+        
+        /* Contact link in mobile menu - simple text (no button) */
+        .mobile-menu-items .contact-link-mobile {
+            color: #D4AF37 !important;
+            font-weight: 500;
         }
-
-        @media (max-width: 768px) {
-            .lightbox-nav.prev {
-                left: -10px;
-            }
-            .lightbox-nav.next {
-                right: -10px;
-            }
+        
+        /* Desktop contact button - exactly like screenshot */
+        .desktop-contact-btn {
+            border: 1px solid #D4AF37;
+            color: #D4AF37 !important;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 1px;
         }
-
-        /* Utilities */
-        .hidden {
-            display: none;
+        
+        .desktop-contact-btn:hover {
+            background: #D4AF37;
+            color: white !important;
         }
-
-        .text-posh-gold {
-            color: var(--posh-gold);
+        
+        /* Active state - gold color only */
+        .nav-link.active {
+            color: #D4AF37 !important;
+            border-bottom: none !important;
+        }
+        
+        /* Hamburger to X animation */
+        .hamburger-active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger-active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger-active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        /* Stats cards */
+        .stat-card {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            transition: all 0.5s ease;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+        
+        .stat-card:hover {
+            border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+            background: rgba(212,175,55,0.1);
+            border-color: #D4AF37;
+            transform: scale(1.05);
+        }
+        
+        .stat-card:nth-child(2) {
+            border-radius: 70% 30% 50% 50% / 40% 60% 40% 60%;
+        }
+        
+        .stat-card:nth-child(3) {
+            border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%;
+        }
+        
+        .stat-card:nth-child(4) {
+            border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
+        }
+        
+        /* Load more button */
+        .load-more-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            z-index: 1;
+        }
+        
+        .load-more-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            z-index: -1;
+        }
+        
+        .load-more-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .load-more-btn:hover {
+            background: #D4AF37;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.3);
         }
     </style>
 </head>
-<body>
+<body class="font-poppins bg-posh-cream overflow-x-hidden">
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container nav-container">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6 lg:py-8 bg-transparent">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <!-- Logo -->
             <a href="home.html">
-                <img src="images/Transparent Background-02.png" alt="Cassie Posh Events" class="nav-logo" id="navLogo">
+                <img src="images/Transparent Background-02.png" alt="Cassie Posh Events" class="h-10 md:h-12 lg:h-14 w-auto brightness-0 invert transition-all" id="navLogo">
             </a>
             
-            <!-- Desktop Menu -->
-            <div class="nav-menu">
-                <a href="home.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="design&decor.html" class="nav-link">Design & Décor</a>
-                <!-- <a href="home.html#meetings" class="nav-link">Meetings & Corporate</a> -->
-                <a href="portfolio.html" class="nav-link active">Portfolio</a>
-                <a href="contact.html" class="nav-link contact-link">Contact Us</a>
+            <!-- Desktop Menu - with contact button styled like screenshot -->
+            <div class="desktop-nav hidden lg:flex items-center gap-6 xl:gap-8">
+                <a href="home.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Home</a>
+                <a href="about.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">About</a>
+                <a href="services.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Services</a>
+                <a href="design&decor.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Design & Décor</a>
+                <a href="portfolio.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors active">Portfolio</a>
+                <!-- Contact button with border exactly like screenshot -->
+                <a href="contact.html" class="desktop-contact-btn text-white text-xs xl:text-sm uppercase tracking-widest">Contact Us</a>
             </div>
 
-            <!-- Mobile Menu Button -->
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
+            <!-- Mobile Menu Button - Hamburger (transforms to X when open) -->
+            <button id="mobileMenuBtn" class="lg:hidden relative z-[1001] w-12 h-12 flex flex-col items-center justify-center gap-1.5">
+                <span class="block w-6 h-0.5 bg-posh-gold transition-all duration-300"></span>
+                <span class="block w-6 h-0.5 bg-posh-gold transition-all duration-300"></span>
+                <span class="block w-6 h-0.5 bg-posh-gold transition-all duration-300"></span>
             </button>
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay Background -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-
-    <!-- Mobile Menu -->
+    <!-- Mobile Menu - Dropdown Style (simple text links, no button) -->
     <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <img src="images/Logo.png" alt="Cassie Posh Events" class="mobile-menu-logo">
-            <button class="mobile-menu-close" id="mobileMenuClose">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        
         <div class="mobile-menu-items">
-            <a href="home.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="design&decor.html">Design & Décor</a>
-            <!-- <a href="home.html#meetings">Meetings & Corporate</a> -->
-            <a href="portfolio.html" class="active">Portfolio</a>
-            <a href="contact.html" class="contact-link-mobile">Contact Us</a>
-        </div>
-        
-        <div class="mobile-menu-social">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-pinterest-p"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="home.html">HOME</a>
+            <a href="about.html">ABOUT</a>
+            <a href="services.html">SERVICES</a>
+            <a href="design&decor.html">DESIGN & DÉCOR</a>
+            <a href="portfolio.html" class="active">PORTFOLIO</a>
+            <!-- Simple text link in mobile menu (no border) -->
+            <a href="contact.html" class="contact-link-mobile">CONTACT US</a>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <span class="hero-subtitle">Our Gallery</span>
-            <h1 class="hero-title">A Collection of Love Stories</h1>
-            <div class="hero-divider"></div>
-            <p class="hero-description">
-                Each celebration is uniquely crafted, telling a story that will be cherished for generations.
-            </p>
+    <!-- Hero Section - FULL HEIGHT -->
+    <section class="relative h-screen w-full bg-fixed bg-cover bg-center flex items-center justify-center text-center" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40"></div>
+        
+        <!-- Content -->
+        <div class="relative z-10 px-4 max-w-4xl mx-auto">
+            <h1 class="font-playfair text-4xl md:text-6xl lg:text-7xl text-white font-medium mb-4 leading-tight">begins with your<br>story</h1>
+            <div class="w-16 h-0.5 bg-posh-gold mx-auto mb-6"></div>
+            <a href="#portfolio" class="inline-block text-white text-xs md:text-sm uppercase tracking-[0.2em] hover:text-posh-gold transition-colors border-b border-transparent hover:border-posh-gold pb-1">
+                EXPLORE OUR WEDDING & EVENT SERVICES
+            </a>
         </div>
     </section>
 
     <!-- Filter Section -->
-    <section class="filter-section">
-        <div class="container">
-            <div class="filter-container">
-                <button class="filter-btn active" data-filter="all">All Weddings</button>
-                <button class="filter-btn" data-filter="classic">Classic Elegance</button>
-                <button class="filter-btn" data-filter="modern">Modern Luxury</button>
-                <button class="filter-btn" data-filter="cultural">Cultural</button>
-                <button class="filter-btn" data-filter="intimate">Intimate</button>
+    <section class="py-12 md:py-16 bg-posh-cream">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-wrap justify-center gap-2 md:gap-3">
+                <button class="filter-btn active px-5 md:px-6 py-2 md:py-3 text-xs md:text-sm uppercase tracking-wider bg-white border border-gray-200 text-posh-grey hover:border-posh-gold hover:text-posh-gold transition-all rounded-full" data-filter="all">All Weddings</button>
+                <button class="filter-btn px-5 md:px-6 py-2 md:py-3 text-xs md:text-sm uppercase tracking-wider bg-white border border-gray-200 text-posh-grey hover:border-posh-gold hover:text-posh-gold transition-all rounded-full" data-filter="classic">Classic Elegance</button>
+                <button class="filter-btn px-5 md:px-6 py-2 md:py-3 text-xs md:text-sm uppercase tracking-wider bg-white border border-gray-200 text-posh-grey hover:border-posh-gold hover:text-posh-gold transition-all rounded-full" data-filter="modern">Modern Luxury</button>
+                <button class="filter-btn px-5 md:px-6 py-2 md:py-3 text-xs md:text-sm uppercase tracking-wider bg-white border border-gray-200 text-posh-grey hover:border-posh-gold hover:text-posh-gold transition-all rounded-full" data-filter="cultural">Cultural</button>
+                <button class="filter-btn px-5 md:px-6 py-2 md:py-3 text-xs md:text-sm uppercase tracking-wider bg-white border border-gray-200 text-posh-grey hover:border-posh-gold hover:text-posh-gold transition-all rounded-full" data-filter="intimate">Intimate</button>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section class="portfolio-section">
-        <div class="container">
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio" class="pb-16 md:pb-20 lg:pb-24 bg-posh-cream">
+        <div class="container mx-auto px-4 md:px-6">
             <!-- Portfolio Grid -->
-            <div class="portfolio-grid" id="portfolioGrid"></div>
+            <div id="portfolioGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5 lg:gap-6"></div>
             
             <!-- Load More Button -->
-            <div class="load-more-container">
-                <button class="load-more-btn" id="loadMoreBtn">Load More Stories</button>
+            <div class="text-center mt-10 md:mt-12 lg:mt-16">
+                <button id="loadMoreBtn" class="load-more-btn px-8 md:px-10 lg:px-12 py-3 md:py-4 border border-posh-gold bg-transparent text-posh-gold uppercase text-xs md:text-sm tracking-widest hover:bg-posh-gold hover:text-white transition-all font-medium rounded-full">
+                    Load More Stories
+                </button>
             </div>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">500+</div>
-                    <div class="stat-label">Weddings Planned</div>
+    <section class="py-16 md:py-20 bg-posh-dark">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+                <div class="stat-card text-center p-6 md:p-8 hover:bg-posh-gold/10 transition-all duration-500">
+                    <div class="text-posh-gold text-3xl md:text-4xl lg:text-5xl font-playfair mb-2 md:mb-3">500+</div>
+                    <div class="text-white/60 text-xs md:text-sm uppercase tracking-wider">Weddings Planned</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-label">Years Experience</div>
+                <div class="stat-card text-center p-6 md:p-8 hover:bg-posh-gold/10 transition-all duration-500">
+                    <div class="text-posh-gold text-3xl md:text-4xl lg:text-5xl font-playfair mb-2 md:mb-3">15+</div>
+                    <div class="text-white/60 text-xs md:text-sm uppercase tracking-wider">Years Experience</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">200+</div>
-                    <div class="stat-label">Venues</div>
+                <div class="stat-card text-center p-6 md:p-8 hover:bg-posh-gold/10 transition-all duration-500">
+                    <div class="text-posh-gold text-3xl md:text-4xl lg:text-5xl font-playfair mb-2 md:mb-3">200+</div>
+                    <div class="text-white/60 text-xs md:text-sm uppercase tracking-wider">Venues</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Destination Weddings</div>
+                <div class="stat-card text-center p-6 md:p-8 hover:bg-posh-gold/10 transition-all duration-500">
+                    <div class="text-posh-gold text-3xl md:text-4xl lg:text-5xl font-playfair mb-2 md:mb-3">50+</div>
+                    <div class="text-white/60 text-xs md:text-sm uppercase tracking-wider">Destination Weddings</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-overlay"></div>
+    <footer class="relative w-full bg-fixed bg-cover bg-center text-white" style="background-image: url('images/dreamstime_xxl_4495877.jpg')">
+        <div class="absolute inset-0 bg-black/80"></div>
         
-        <div class="footer-content">
-            <div class="container">
-                <div class="footer-grid">
+        <div class="relative z-10 py-16 md:py-20">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12 mb-10 md:mb-12">
                     <!-- Brand -->
-                    <div>
-                        <img src="images/Logo.png" alt="Cassie Posh Events" class="footer-logo">
-                        <p class="footer-text">Philadelphia, PA</p>
-                        <p class="footer-text">Luxury Wedding & Event Planning</p>
+                    <div class="text-center sm:text-left">
+                        <img src="images/Logo.png" alt="Cassie Posh Events" class="h-12 md:h-14 lg:h-16 w-auto mx-auto sm:mx-0 mb-4">
+                        <p class="text-white/60 text-xs md:text-sm">Philadelphia, PA</p>
+                        <p class="text-white/60 text-xs md:text-sm">Luxury Wedding & Event Planning</p>
                     </div>
                     
                     <!-- Contact -->
-                    <div>
-                        <h4 class="footer-title">Contact</h4>
-                        <p class="footer-text" style="margin-bottom: 0.5rem;">610-202-5492</p>
-                        <a href="mailto:info@cassieposhevents.com" style="color: var(--posh-gold); text-decoration: none;">info@cassieposhevents.com</a>
+                    <div class="text-center sm:text-left">
+                        <h4 class="font-playfair text-lg md:text-xl mb-4 md:mb-6">Contact</h4>
+                        <p class="text-white/80 text-xs md:text-sm mb-2">610-202-5492</p>
+                        <a href="mailto:info@cassieposhevents.com" class="text-posh-gold hover:text-white transition-colors text-xs md:text-sm">info@cassieposhevents.com</a>
                     </div>
                     
                     <!-- Quick Links -->
-                    <div>
-                        <h4 class="footer-title">Quick Links</h4>
-                        <ul class="footer-links">
-                            <li><a href="home.html#about">About</a></li>
-                            <li><a href="home.html#services">Services</a></li>
-                            <li><a href="portfolio.html">Portfolio</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                    <div class="text-center sm:text-left">
+                        <h4 class="font-playfair text-lg md:text-xl mb-4 md:mb-6">Quick Links</h4>
+                        <ul class="space-y-2 md:space-y-3">
+                            <li><a href="home.html#about" class="text-white/60 hover:text-posh-gold transition-colors text-xs md:text-sm">About</a></li>
+                            <li><a href="home.html#services" class="text-white/60 hover:text-posh-gold transition-colors text-xs md:text-sm">Services</a></li>
+                            <li><a href="portfolio.html" class="text-white/60 hover:text-posh-gold transition-colors text-xs md:text-sm">Portfolio</a></li>
+                            <li><a href="contact.html" class="text-white/60 hover:text-posh-gold transition-colors text-xs md:text-sm">Contact</a></li>
                         </ul>
                     </div>
                     
                     <!-- Social -->
-                    <div>
-                        <h4 class="footer-title">Follow Us</h4>
-                        <div class="social-links">
-                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <div class="text-center sm:text-left">
+                        <h4 class="font-playfair text-lg md:text-xl mb-4 md:mb-6">Follow Us</h4>
+                        <div class="flex gap-3 md:gap-4 justify-center sm:justify-start">
+                            <a href="#" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all text-sm md:text-base"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all text-sm md:text-base"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="#" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all text-sm md:text-base"><i class="fab fa-facebook-f"></i></a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="footer-bottom">
-                    <p class="copyright">&copy; 2024 Cassie Posh Events, LLC. All rights reserved.</p>
+                <!-- Bottom Bar -->
+                <div class="pt-6 md:pt-8 mt-6 md:mt-8 border-t border-white/10 text-center">
+                    <p class="text-white/40 text-xs">&copy; 2024 Cassie Posh Events, LLC. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-close"><i class="fas fa-times"></i></div>
-        <div class="lightbox-nav prev"><i class="fas fa-chevron-left"></i></div>
-        <div class="lightbox-nav next"><i class="fas fa-chevron-right"></i></div>
-        <div class="lightbox-content">
-            <img id="lightboxImg" src="" alt="">
-            <div class="lightbox-info">
-                <h3 id="lightboxTitle"></h3>
-                <p id="lightboxLocation"><i class="fas fa-map-marker-alt text-posh-gold"></i> <span></span></p>
+    <div id="lightbox" class="fixed inset-0 bg-black/95 z-[1000] hidden justify-center items-center backdrop-blur-md">
+        <div class="lightbox-close absolute top-5 right-5 md:top-8 md:right-8 text-white text-2xl cursor-pointer w-10 h-10 md:w-12 md:h-12 border-2 border-posh-gold rounded-full flex items-center justify-center hover:bg-posh-gold transition-all z-10"><i class="fas fa-times"></i></div>
+        <div class="lightbox-nav prev absolute left-5 md:left-8 text-white text-2xl cursor-pointer w-10 h-10 md:w-12 md:h-12 border-2 border-posh-gold rounded-full flex items-center justify-center hover:bg-posh-gold transition-all"><i class="fas fa-chevron-left"></i></div>
+        <div class="lightbox-nav next absolute right-5 md:right-8 text-white text-2xl cursor-pointer w-10 h-10 md:w-12 md:h-12 border-2 border-posh-gold rounded-full flex items-center justify-center hover:bg-posh-gold transition-all"><i class="fas fa-chevron-right"></i></div>
+        <div class="lightbox-content max-w-[90%] max-h-[90vh] relative border-4 border-posh-gold" style="border-radius: 30px 30px 30px 30px;">
+            <img id="lightboxImg" src="" alt="" class="max-w-full max-h-[80vh] block" style="border-radius: 26px;">
+            <div class="lightbox-info absolute -bottom-16 left-0 right-0 text-center text-white">
+                <h3 id="lightboxTitle" class="text-posh-gold font-playfair text-lg md:text-xl"></h3>
+                <p id="lightboxLocation" class="text-xs md:text-sm"><i class="fas fa-map-marker-alt text-posh-gold mr-2"></i> <span></span></p>
             </div>
         </div>
     </div>
@@ -1141,10 +511,9 @@
 
         // DOM Elements
         const navbar = document.getElementById('navbar');
+        const navLogo = document.getElementById('navLogo');
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
         const body = document.body;
         const portfolioGrid = document.getElementById('portfolioGrid');
         const loadMoreBtn = document.getElementById('loadMoreBtn');
@@ -1154,35 +523,76 @@
         const lightboxTitle = document.getElementById('lightboxTitle');
         const lightboxLocation = document.getElementById('lightboxLocation');
 
+        // Hamburger menu spans
+        const hamburgerSpans = mobileMenuBtn?.querySelectorAll('span');
+
         // Navigation Scroll Effect
         window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 100);
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-white', 'py-3', 'lg:py-4', 'shadow-md');
+                navbar.classList.remove('bg-transparent', 'py-6', 'lg:py-8');
+                navLogo.classList.remove('brightness-0', 'invert');
+                
+                document.querySelectorAll('.nav-link, .desktop-contact-btn').forEach(link => {
+                    if (link.classList.contains('desktop-contact-btn')) {
+                        link.classList.remove('text-white');
+                        link.classList.add('text-posh-dark', 'border-posh-gold');
+                    } else {
+                        link.classList.remove('text-white');
+                        link.classList.add('text-posh-dark');
+                    }
+                });
+                
+                // Update hamburger color when scrolled
+                if (hamburgerSpans) {
+                    hamburgerSpans.forEach(span => span.classList.remove('bg-posh-gold'));
+                    hamburgerSpans.forEach(span => span.classList.add('bg-posh-dark'));
+                }
+            } else {
+                navbar.classList.remove('bg-white', 'py-3', 'lg:py-4', 'shadow-md');
+                navbar.classList.add('bg-transparent', 'py-6', 'lg:py-8');
+                navLogo.classList.add('brightness-0', 'invert');
+                
+                document.querySelectorAll('.nav-link, .desktop-contact-btn').forEach(link => {
+                    if (link.classList.contains('desktop-contact-btn')) {
+                        link.classList.add('text-white', 'border-posh-gold');
+                        link.classList.remove('text-posh-dark');
+                    } else {
+                        link.classList.add('text-white');
+                        link.classList.remove('text-posh-dark');
+                    }
+                });
+                
+                // Reset hamburger color
+                if (hamburgerSpans) {
+                    hamburgerSpans.forEach(span => span.classList.add('bg-posh-gold'));
+                    hamburgerSpans.forEach(span => span.classList.remove('bg-posh-dark'));
+                }
+            }
         });
 
         // Mobile Menu Functions
         function openMobileMenu() {
             mobileMenu.classList.add('active');
-            mobileMenuOverlay.classList.add('active');
+            mobileMenuBtn.classList.add('hamburger-active');
             body.classList.add('menu-open');
         }
 
         function closeMobileMenu() {
             mobileMenu.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
+            mobileMenuBtn.classList.remove('hamburger-active');
             body.classList.remove('menu-open');
         }
 
         // Mobile Menu Event Listeners
         if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', openMobileMenu);
-        }
-
-        if (mobileMenuClose) {
-            mobileMenuClose.addEventListener('click', closeMobileMenu);
-        }
-
-        if (mobileMenuOverlay) {
-            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+            mobileMenuBtn.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('active')) {
+                    closeMobileMenu();
+                } else {
+                    openMobileMenu();
+                }
+            });
         }
 
         // Close mobile menu when clicking a link
@@ -1213,21 +623,20 @@
             const itemsToShow = filtered.slice(0, currentItems);
             
             let html = '';
-            for (let i = 0; i < itemsToShow.length; i++) {
-                const item = itemsToShow[i];
+            itemsToShow.forEach(item => {
                 html += `
-                    <div class="portfolio-item" data-category="${item.category}" data-id="${item.id}">
-                        <img src="${item.image}" alt="${item.couple} Wedding" loading="lazy">
+                    <div class="portfolio-card" data-category="${item.category}" data-id="${item.id}">
+                        <img src="${item.image}" alt="${item.couple} Wedding" class="w-full h-full object-cover" loading="lazy">
                         <div class="portfolio-overlay">
-                            <h3>${item.couple}</h3>
-                            <p><i class="fas fa-map-marker-alt"></i> ${item.location}</p>
-                            <a href="video.html?video=${item.video}" class="view-btn" onclick="event.stopPropagation()">
-                                View Gallery <i class="fas fa-arrow-right"></i>
+                            <h3 class="text-posh-gold font-playfair text-base md:text-lg lg:text-xl mb-1 md:mb-2">${item.couple}</h3>
+                            <p class="text-white text-xs md:text-sm mb-2 md:mb-3 flex items-center gap-2"><i class="fas fa-map-marker-alt text-posh-gold text-xs"></i> ${item.location}</p>
+                            <a href="video.html?video=${item.video}" class="view-btn inline-flex items-center gap-2 border border-posh-gold text-posh-gold px-3 md:px-4 py-1 md:py-2 text-xs uppercase tracking-wider w-fit hover:bg-posh-gold hover:text-white transition-all rounded-full" onclick="event.stopPropagation()">
+                                View Gallery <i class="fas fa-arrow-right text-xs"></i>
                             </a>
                         </div>
                     </div>
                 `;
-            }
+            });
             
             portfolioGrid.innerHTML = html;
             
@@ -1235,7 +644,7 @@
             loadMoreBtn.style.display = filtered.length <= currentItems ? 'none' : 'inline-block';
             
             // Add click events for lightbox
-            document.querySelectorAll('.portfolio-item').forEach((item, index) => {
+            document.querySelectorAll('.portfolio-card').forEach((item, index) => {
                 item.addEventListener('click', () => openLightbox(index));
             });
         }
@@ -1243,8 +652,13 @@
         // Filter
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-posh-gold', 'text-white', 'border-posh-gold');
+                    b.classList.add('bg-white', 'border-gray-200', 'text-posh-grey');
+                });
+                btn.classList.add('active', 'bg-posh-gold', 'text-white', 'border-posh-gold');
+                btn.classList.remove('bg-white', 'border-gray-200', 'text-posh-grey');
+                
                 currentFilter = btn.dataset.filter;
                 currentItems = 12;
                 renderPortfolio();
@@ -1268,14 +682,16 @@
             
             lightboxImg.src = item.image;
             lightboxTitle.textContent = item.couple;
-            lightboxLocation.innerHTML = `<i class="fas fa-map-marker-alt" style="color: var(--posh-gold); margin-right: 0.5rem;"></i> ${item.location}`;
-            lightbox.classList.add('active');
+            lightboxLocation.innerHTML = `<i class="fas fa-map-marker-alt text-posh-gold mr-2"></i> ${item.location}`;
+            lightbox.classList.add('flex');
+            lightbox.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
 
         // Close lightbox
         document.querySelector('.lightbox-close').addEventListener('click', () => {
-            lightbox.classList.remove('active');
+            lightbox.classList.remove('flex');
+            lightbox.classList.add('hidden');
             document.body.style.overflow = '';
         });
 
@@ -1291,7 +707,7 @@
             
             lightboxImg.src = item.image;
             lightboxTitle.textContent = item.couple;
-            lightboxLocation.innerHTML = `<i class="fas fa-map-marker-alt" style="color: var(--posh-gold); margin-right: 0.5rem;"></i> ${item.location}`;
+            lightboxLocation.innerHTML = `<i class="fas fa-map-marker-alt text-posh-gold mr-2"></i> ${item.location}`;
         });
 
         document.querySelector('.lightbox-nav.next').addEventListener('click', (e) => {
@@ -1305,29 +721,27 @@
             
             lightboxImg.src = item.image;
             lightboxTitle.textContent = item.couple;
-            lightboxLocation.innerHTML = `<i class="fas fa-map-marker-alt" style="color: var(--posh-gold); margin-right: 0.5rem;"></i> ${item.location}`;
+            lightboxLocation.innerHTML = `<i class="fas fa-map-marker-alt text-posh-gold mr-2"></i> ${item.location}`;
         });
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (lightbox.classList.contains('active')) {
+            if (lightbox.classList.contains('flex')) {
                 if (e.key === 'Escape') {
-                    lightbox.classList.remove('active');
+                    lightbox.classList.remove('flex');
+                    lightbox.classList.add('hidden');
                     document.body.style.overflow = '';
                 }
-                if (e.key === 'ArrowLeft') {
-                    document.querySelector('.lightbox-nav.prev').click();
-                }
-                if (e.key === 'ArrowRight') {
-                    document.querySelector('.lightbox-nav.next').click();
-                }
+                if (e.key === 'ArrowLeft') document.querySelector('.lightbox-nav.prev').click();
+                if (e.key === 'ArrowRight') document.querySelector('.lightbox-nav.next').click();
             }
         });
 
         // Click outside to close
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) {
-                lightbox.classList.remove('active');
+                lightbox.classList.remove('flex');
+                lightbox.classList.add('hidden');
                 document.body.style.overflow = '';
             }
         });

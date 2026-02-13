@@ -13,1096 +13,274 @@
     <!-- Font Awesome 5 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'posh-gold': '#D4AF37',
+                        'posh-gold-dark': '#B5952F',
+                        'posh-gold-light': '#F4E5C1',
+                        'posh-cream': '#F9F7F2',
+                        'posh-dark': '#1A1A1A',
+                        'posh-grey': '#666666',
+                    },
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'fadeIn': 'fadeIn 1s ease-in-out',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* Reset and Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Only minimal custom CSS for animations */
+        .hover-underline-animation {
+            position: relative;
         }
-
-        :root {
-            --posh-gold: #D4AF37;
-            --posh-gold-dark: #B5952F;
-            --posh-gold-light: #F4E5C1;
-            --posh-cream: #F9F7F2;
-            --posh-blush: #FDF6F6;
-            --posh-dark: #1A1A1A;
-            --posh-grey: #666666;
-            --posh-charcoal: #2C2C2C;
-            --posh-white: #FFFFFF;
+        .hover-underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: #D4AF37;
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
         }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--posh-dark);
-            background: var(--posh-cream);
-            overflow-x: hidden;
+        .hover-underline-animation:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
         }
-
+        
         body.menu-open {
             overflow: hidden;
         }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            width: 100%;
-            z-index: 50;
-            transition: all 0.3s ease;
-            padding: 2rem 0;
-            background: transparent;
+        
+        /* Hamburger to X animation */
+        .hamburger-active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
         }
-
-        .navbar.scrolled {
-            background: var(--posh-white);
-            padding: 1rem 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        .navbar.scrolled .nav-link {
-            color: var(--posh-dark);
-        }
-
-        .navbar.scrolled .nav-logo {
-            filter: none;
-        }
-
-        .navbar.scrolled .nav-link.active {
-            color: var(--posh-gold) !important;
-        }
-
-        .nav-logo {
-            height: 70px;
-            width: auto;
-            filter: brightness(0) invert(1);
-            transition: height 0.3s ease;
-        }
-
-        .navbar.scrolled .nav-logo {
-            height: 50px;
-        }
-
-        @media (max-width: 768px) {
-            .nav-logo {
-                height: 50px;
-            }
-            .navbar.scrolled .nav-logo {
-                height: 40px;
-            }
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 1rem;
-            }
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Desktop Menu */
-        .nav-menu {
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        @media (max-width: 1024px) {
-            .nav-menu {
-                gap: 1.8rem;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .nav-menu {
-                display: none;
-            }
-        }
-
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: color 0.3s;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-
-        .nav-link:hover {
-            color: var(--posh-gold);
-        }
-
-        .nav-link.active {
-            color: var(--posh-gold) !important;
-        }
-
-        .contact-link {
-            border: 2px solid var(--posh-gold);
-            color: var(--posh-gold) !important;
-            padding: 0.6rem 2rem;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-
-        .contact-link:hover {
-            background: var(--posh-gold);
-            color: white !important;
-        }
-
-        /* Mobile Menu Button */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--posh-gold);
-            font-size: 2rem;
-            cursor: pointer;
-            z-index: 51;
-        }
-
-        @media (max-width: 900px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-        }
-
-        /* Mobile Menu Overlay */
-        .mobile-menu-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 90;
+        .hamburger-active span:nth-child(2) {
             opacity: 0;
-            transition: opacity 0.3s ease;
         }
-
-        .mobile-menu-overlay.active {
-            display: block;
-            opacity: 1;
+        .hamburger-active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
         }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 85%;
-            max-width: 400px;
+        
+        /* Full height hero */
+        .hero-full {
             height: 100vh;
-            background: white;
-            padding: 2.5rem 2rem;
-            box-shadow: -5px 0 30px rgba(0,0,0,0.15);
-            transition: right 0.3s ease;
-            z-index: 100;
-            overflow-y: auto;
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid rgba(212,175,55,0.1);
-        }
-
-        .mobile-menu-logo {
-            height: 45px;
-            width: auto;
-        }
-
-        .mobile-menu-close {
-            background: none;
-            border: none;
-            color: var(--posh-gold);
-            font-size: 1.8rem;
-            cursor: pointer;
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background 0.3s;
-        }
-
-        .mobile-menu-close:hover {
-            background: rgba(212,175,55,0.1);
-        }
-
-        .mobile-menu-items {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        .mobile-menu-items a {
-            color: var(--posh-dark);
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 1.1rem;
-            letter-spacing: 0.1em;
-            padding: 0.8rem 0;
-            transition: color 0.3s;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            font-weight: 500;
-        }
-
-        .mobile-menu-items a:hover,
-        .mobile-menu-items a.active {
-            color: var(--posh-gold);
-        }
-
-        .mobile-menu-items .contact-link-mobile {
-            border: 2px solid var(--posh-gold);
-            color: var(--posh-gold);
-            padding: 1.2rem;
-            text-align: center;
-            margin-top: 1.5rem;
-            border-radius: 4px;
-            background: transparent;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-
-        .mobile-menu-items .contact-link-mobile:hover {
-            background: var(--posh-gold);
-            color: white;
-        }
-
-        .mobile-menu-social {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 2.5rem;
-            padding-top: 2rem;
-            border-top: 2px solid rgba(212,175,55,0.1);
-        }
-
-        .mobile-menu-social a {
-            color: var(--posh-grey);
-            font-size: 1.4rem;
-            transition: all 0.3s;
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            border: 1px solid rgba(212,175,55,0.2);
-        }
-
-        .mobile-menu-social a:hover {
-            color: var(--posh-gold);
-            border-color: var(--posh-gold);
-            transform: translateY(-3px);
-        }
-
-        /* Hero Section */
-        .contact-hero {
-            background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%), 
-                        url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            padding: 2rem;
-        }
-
-        .hero-subtitle {
-            color: var(--posh-gold);
-            text-transform: uppercase;
-            letter-spacing: 0.4em;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            display: block;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            color: white;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-
-        .hero-divider {
-            width: 100px;
-            height: 3px;
-            background: var(--posh-gold);
-            margin: 2rem auto;
-        }
-
-        .hero-description {
-            color: rgba(255, 255, 255, 0.95);
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            font-weight: 300;
-            line-height: 1.8;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.2);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Connect Section - Light Background */
-        .connect-section {
-            background: linear-gradient(135deg, var(--posh-cream) 0%, var(--posh-white) 100%);
-            padding: 5rem 0;
-            position: relative;
-            border-bottom: 1px solid rgba(212,175,55,0.1);
-        }
-
-        .connect-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        @media (max-width: 768px) {
-            .connect-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-        }
-
-        .connect-left {
-            padding-right: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .connect-left {
-                padding-right: 0;
-                text-align: center;
-            }
-        }
-
-        .connect-tagline {
-            color: var(--posh-gold);
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .connect-headline {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            color: var(--posh-dark);
-            margin-bottom: 1.5rem;
-            line-height: 1.3;
-        }
-
-        .connect-description {
-            color: var(--posh-grey);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-        }
-
-        .connect-details {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .connect-detail-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .connect-detail-item {
-                justify-content: center;
-            }
-        }
-
-        .connect-detail-icon {
-            width: 45px;
-            height: 45px;
-            background: rgba(212,175,55,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--posh-gold);
-            font-size: 1.1rem;
-        }
-
-        .connect-detail-text h4 {
-            font-size: 0.9rem;
-            color: var(--posh-gold);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.25rem;
-            font-weight: 600;
-        }
-
-        .connect-detail-text p,
-        .connect-detail-text a {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: var(--posh-dark);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .connect-detail-text a:hover {
-            color: var(--posh-gold);
-        }
-
-        .connect-social {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .connect-social {
-                justify-content: center;
-            }
-        }
-
-        .connect-social-link {
-            width: 45px;
-            height: 45px;
-            border: 2px solid rgba(212,175,55,0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--posh-gold);
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 1.2rem;
-        }
-
-        .connect-social-link:hover {
-            background: var(--posh-gold);
-            border-color: var(--posh-gold);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .connect-right {
-            background: var(--posh-white);
-            padding: 3rem;
-            border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
-            border: 1px solid rgba(212,175,55,0.1);
-            position: relative;
-        }
-
-        .connect-right::before {
-            content: '"';
-            position: absolute;
-            top: 1rem;
-            left: 1.5rem;
-            font-size: 5rem;
-            color: rgba(212,175,55,0.1);
-            font-family: 'Playfair Display', serif;
-        }
-
-        .connect-quote {
-            font-size: 1.4rem;
-            font-style: italic;
-            color: var(--posh-dark);
-            font-family: 'Playfair Display', serif;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .connect-quote-author {
-            color: var(--posh-gold);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 600;
-            text-align: right;
-        }
-
-        /* Form Section */
-        .form-section {
-            background: var(--posh-cream);
-            padding: 5rem 0;
-            position: relative;
-            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23D4AF37" fill-opacity="0.03"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
-        }
-
-        .form-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .form-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .form-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            color: var(--posh-dark);
-            margin-bottom: 1rem;
-        }
-
-        .form-header p {
-            color: var(--posh-grey);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .gold-divider {
-            width: 80px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--posh-gold), transparent);
-            margin: 2rem auto;
-        }
-
-        /* Form Styles */
-        .form-group {
-            margin-bottom: 2rem;
-            position: relative;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.75rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--posh-dark);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            background: transparent;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            color: var(--posh-dark);
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 8px;
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--posh-gold);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
-            background: white;
-        }
-        
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: #999;
-            font-weight: 300;
-            font-style: italic;
-        }
-        
-        .form-group select {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1.5rem center;
-            background-size: 16px;
-        }
-        
-        .required-field {
-            color: var(--posh-gold);
-            font-size: 0.8rem;
-            margin-left: 0.25rem;
-        }
-        
-        small {
-            display: block;
-            margin-top: 0.5rem;
-            font-size: 0.8rem;
-            color: var(--posh-gold);
-            font-style: italic;
-            letter-spacing: 0.3px;
-        }
-        
-        .submit-btn {
-            background: var(--posh-gold);
-            color: white;
-            padding: 1.2rem 3rem;
-            border: none;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            width: 100%;
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--posh-gold);
-            border-radius: 50px;
-        }
-        
-        .submit-btn:hover {
-            background: transparent;
-            color: var(--posh-gold);
-        }
-        
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        
-        .submit-btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        /* Grid Layout for Form */
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-        }
-
-        /* Radio Group */
-        .radio-group {
-            display: flex;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-            padding: 0.5rem 0;
-        }
-
-        .radio-group label {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 0.95rem;
-            font-weight: 400;
-            text-transform: none;
-            letter-spacing: normal;
-            color: var(--posh-grey);
-            cursor: pointer;
-        }
-
-        .radio-group input[type="radio"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--posh-gold);
-        }
-
-        @media (max-width: 768px) {
-            .radio-group {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-
-        /* Footer */
-        .footer {
-            position: relative;
-            width: 100%;
-            background-image: url('images/dreamstime_xxl_4495877.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .footer {
-                background-attachment: scroll;
-            }
-        }
-
-        .footer-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-        }
-
-        .footer-content {
-            position: relative;
-            z-index: 10;
-            padding: 5rem 0 2rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        @media (max-width: 1024px) {
-            .footer-grid {
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                text-align: center;
-            }
-        }
-
-        .footer-logo {
-            height: 70px;
-            width: auto;
-            margin-bottom: 1.5rem;
-        }
-
-        @media (max-width: 480px) {
-            .footer-logo {
-                margin-left: auto;
-                margin-right: auto;
-            }
-        }
-
-        .footer-text {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .footer-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            color: white;
-            font-weight: 500;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--posh-gold);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        @media (max-width: 480px) {
-            .social-links {
-                justify-content: center;
-            }
-        }
-
-        .social-link {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 1.2rem;
-        }
-
-        .social-link:hover {
-            background: var(--posh-gold);
-            border-color: var(--posh-gold);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
-        }
-
-        .copyright {
-            color: rgba(255,255,255,0.4);
-            font-size: 0.85rem;
-        }
-
-        /* Validation Styles */
-        .form-control.error {
-            border-color: var(--posh-gold);
-            background-color: #FFF9F0;
-        }
-
-        .radio-group.error {
-            border: 2px solid var(--posh-gold);
-            padding: 0.5rem;
-            border-radius: 8px;
-            background-color: #FFF9F0;
-        }
-
-        /* Utilities */
-        .hidden {
-            display: none;
-        }
-
-        .text-posh-gold {
-            color: var(--posh-gold);
+            min-height: 600px;
         }
     </style>
 </head>
-<body>
+<body class="font-poppins bg-posh-cream overflow-x-hidden">
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container nav-container">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6 lg:py-8 bg-transparent">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <!-- Logo -->
             <a href="home.html">
-                <img src="images/Transparent Background-02.png" alt="Cassie Posh Events" class="nav-logo" id="navLogo">
+                <img src="images/Transparent Background-02.png" alt="Cassie Posh Events" class="h-12 md:h-14 lg:h-16 w-auto brightness-0 invert transition-all" id="navLogo">
             </a>
             
             <!-- Desktop Menu -->
-            <div class="nav-menu">
-                <a href="home.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="design&decor.html" class="nav-link">Design & Décor</a>
-                <!-- <a href="home.html#meetings" class="nav-link">Meetings & Corporate</a> -->
-                <a href="portfolio.html" class="nav-link">Portfolio</a>
-                <a href="contact.html" class="nav-link contact-link active">Contact Us</a>
+            <div class="hidden lg:flex items-center gap-6 xl:gap-8">
+                <a href="home.html" class="text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Home</a>
+                <a href="about.html" class="text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">About</a>
+                <a href="services.html" class="text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Services</a>
+                <a href="design&decor.html" class="text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Design & Décor</a>
+                <a href="portfolio.html" class="text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Portfolio</a>
+                <!-- Desktop contact button with border -->
+                <a href="contact.html" class="border-2 border-posh-gold text-posh-gold px-6 py-2 text-xs xl:text-sm uppercase tracking-widest hover:bg-posh-gold hover:text-white transition-all duration-300">Contact Us</a>
             </div>
 
-            <!-- Mobile Menu Button -->
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
+            <!-- Mobile Menu Button - Hamburger -->
+            <button id="mobileMenuBtn" class="lg:hidden relative z-[1001] w-8 h-8 flex flex-col items-center justify-center gap-1.5">
+                <span class="block w-6 h-0.5 bg-posh-gold transition-all duration-300"></span>
+                <span class="block w-6 h-0.5 bg-posh-gold transition-all duration-300"></span>
+                <span class="block w-6 h-0.5 bg-posh-gold transition-all duration-300"></span>
             </button>
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <img src="images/Logo.png" alt="Cassie Posh Events" class="mobile-menu-logo">
-            <button class="mobile-menu-close" id="mobileMenuClose">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        
-        <div class="mobile-menu-items">
-            <a href="home.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="design&decor.html">Design & Décor</a>
-            <!-- <a href="home.html#meetings">Meetings & Corporate</a> -->
-            <a href="portfolio.html">Portfolio</a>
-            <a href="contact.html" class="active">Contact Us</a>
-        </div>
-        
-        <div class="mobile-menu-social">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <!-- Mobile Menu - Dropdown Style -->
+    <div id="mobileMenu" class="fixed top-20 left-0 w-full bg-white z-40 opacity-0 invisible transition-all duration-300 shadow-lg border-t border-posh-gold/10">
+        <div class="flex flex-col px-6 py-4 max-w-7xl mx-auto">
+            <a href="home.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">Home</a>
+            <a href="about.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">About</a>
+            <a href="services.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">Services</a>
+            <a href="design&decor.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">Design & Décor</a>
+            <a href="portfolio.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">Portfolio</a>
+            <a href="contact.html" class="text-posh-gold text-sm uppercase tracking-widest py-3">Contact Us</a>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="contact-hero">
-        <div class="hero-content">
-            <span class="hero-subtitle">Begin Your Journey</span>
-            <h1 class="hero-title">Ready to Begin Your Posh Tale?</h1>
-            <div class="hero-divider"></div>
-            <p class="hero-description">
+    <!-- Hero Section - Full Height -->
+    <section class="relative hero-full w-full bg-fixed bg-cover bg-center flex items-center justify-center text-center" style="background-image: url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60"></div>
+        
+        <!-- Content -->
+        <div class="relative z-10 px-4 max-w-4xl mx-auto animate-fadeIn">
+            <span class="text-posh-gold uppercase tracking-[0.3em] text-xs md:text-sm font-semibold mb-4 block animate-float">Begin Your Journey</span>
+            <h1 class="font-playfair text-4xl md:text-6xl lg:text-7xl text-white font-medium mb-6 leading-tight">Ready to Begin<br>Your Posh Tale?</h1>
+            <div class="w-20 h-0.5 bg-posh-gold mx-auto mb-8"></div>
+            <p class="text-white/90 max-w-2xl mx-auto text-base md:text-lg lg:text-xl font-light leading-relaxed">
                 Let's create something unforgettable together. Whether intimate or grand, we are here to bring your vision to life with elegance, creativity, and care.
             </p>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down text-2xl opacity-70"></i>
         </div>
     </section>
 
     <!-- Connect Section - Light Background -->
-    <section class="connect-section">
-        <div class="container">
-            <div class="connect-grid">
-                <div class="connect-left">
-                    <span class="connect-tagline">CONNECT WITH US</span>
-                    <h2 class="connect-headline">Let's Start a Conversation</h2>
-                    <p class="connect-description">
+    <section class="py-20 bg-gradient-to-br from-posh-cream to-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="text-center md:text-left animate-fadeIn">
+                    <span class="text-posh-gold uppercase tracking-[0.2em] text-xs font-semibold mb-3 block">Connect With Us</span>
+                    <h2 class="font-playfair text-3xl md:text-4xl lg:text-5xl text-posh-dark mb-6 leading-tight">Let's Start a Conversation</h2>
+                    <p class="text-posh-grey text-base md:text-lg leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
                         Your dream event deserves a dedicated partner. Share your vision with us, and let's bring it to life together.
                     </p>
                     
-                    <div class="connect-details">
-                        <div class="connect-detail-item">
-                            <div class="connect-detail-icon">
+                    <!-- Contact Details -->
+                    <div class="space-y-6">
+                        <!-- Phone -->
+                        <div class="flex items-center justify-center md:justify-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-posh-gold/10 flex items-center justify-center text-posh-gold">
                                 <i class="fas fa-phone-alt"></i>
                             </div>
-                            <div class="connect-detail-text">
-                                <h4>PHONE</h4>
-                                <p><a href="tel:6102025492">610-202-5492</a></p>
+                            <div class="text-left">
+                                <h4 class="text-posh-gold text-xs uppercase tracking-wider mb-1">Phone</h4>
+                                <a href="tel:6102025492" class="text-posh-dark text-lg font-medium hover:text-posh-gold transition-colors">610-202-5492</a>
                             </div>
                         </div>
                         
-                        <div class="connect-detail-item">
-                            <div class="connect-detail-icon">
+                        <!-- Email -->
+                        <div class="flex items-center justify-center md:justify-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-posh-gold/10 flex items-center justify-center text-posh-gold">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <div class="connect-detail-text">
-                                <h4>EMAIL</h4>
-                                <p><a href="mailto:info@cassieposhevents.com">info@cassieposhevents.com</a></p>
+                            <div class="text-left">
+                                <h4 class="text-posh-gold text-xs uppercase tracking-wider mb-1">Email</h4>
+                                <a href="mailto:info@cassieposhevents.com" class="text-posh-dark text-lg font-medium hover:text-posh-gold transition-colors">info@cassieposhevents.com</a>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="connect-social">
-                        <a href="#" class="connect-social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="connect-social-link"><i class="fab fa-facebook-f"></i></a>
+                    <!-- Social Links -->
+                    <div class="flex gap-4 mt-8 justify-center md:justify-start">
+                        <a href="#" class="w-12 h-12 rounded-full border border-posh-gold/30 flex items-center justify-center text-posh-gold hover:bg-posh-gold hover:text-white transition-all duration-300">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full border border-posh-gold/30 flex items-center justify-center text-posh-gold hover:bg-posh-gold hover:text-white transition-all duration-300">
+                            <i class="fab fa-facebook-f text-lg"></i>
+                        </a>
                     </div>
                 </div>
                 
-                <div class="connect-right">
-                    <div class="connect-quote">
-                        "Creating timeless memories with elegance and heart."
-                    </div>
-                    <div class="connect-quote-author">
-                        — CASSIE POSH EVENTS
+                <!-- Right Quote Card - Clean Design -->
+                <div class="relative bg-white p-10 shadow-xl rounded-lg border border-posh-gold/10">
+                    <div class="absolute top-4 left-6 text-6xl text-posh-gold/20 font-playfair">"</div>
+                    <div class="relative z-10">
+                        <p class="font-playfair text-2xl md:text-3xl italic text-posh-dark mb-6 leading-relaxed">
+                            "Creating timeless memories with elegance and heart."
+                        </p>
+                        <p class="text-posh-gold text-sm uppercase tracking-[0.2em] font-semibold text-right">
+                            — Cassie Posh Events
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section class="form-section">
-        <div class="form-container">
-            <div class="form-header">
-                <h2>Send Your Inquiry</h2>
-                <p>Please complete the form below with as much detail as possible, and our team will reach out within 24-48 hours.</p>
-                <div class="gold-divider"></div>
+    <!-- Form Section - Professional & Clean -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 md:px-6 max-w-4xl">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <span class="text-posh-gold uppercase tracking-[0.2em] text-xs font-semibold mb-3 block">Send Your Inquiry</span>
+                <h2 class="font-playfair text-3xl md:text-4xl text-posh-dark mb-4">Let's Create Magic</h2>
+                <div class="w-16 h-0.5 bg-posh-gold mx-auto mb-6"></div>
+                <p class="text-posh-grey text-base max-w-2xl mx-auto">Please complete the form below and our team will reach out within 24-48 hours.</p>
             </div>
 
-            <!-- Form with working endpoint -->
-            <form action="https://formspree.io/f/xqedpjkw" method="POST" id="contactForm">
+            <!-- Professional Form -->
+            <form action="https://formspree.io/f/xqedpjkw" method="POST" id="contactForm" class="space-y-6">
                 <!-- Name Row -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>First Name <span class="required-field">*</span></label>
-                        <input type="text" name="first_name" class="form-control" required placeholder="Your first name">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-posh-dark text-sm font-medium mb-2">First Name <span class="text-posh-gold">*</span></label>
+                        <input type="text" name="first_name" required placeholder="Your first name" 
+                               class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md">
                     </div>
-
-                    <div class="form-group">
-                        <label>Last Name <span class="required-field">*</span></label>
-                        <input type="text" name="last_name" class="form-control" required placeholder="Your last name">
+                    <div>
+                        <label class="block text-posh-dark text-sm font-medium mb-2">Last Name <span class="text-posh-gold">*</span></label>
+                        <input type="text" name="last_name" required placeholder="Your last name" 
+                               class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md">
                     </div>
                 </div>
 
                 <!-- Role -->
-                <div class="form-group">
-                    <label>Your Role <span class="required-field">*</span></label>
-                    <input type="text" name="role" class="form-control" required placeholder="e.g., Bride, Groom, Mother of the Bride">
+                <div>
+                    <label class="block text-posh-dark text-sm font-medium mb-2">Your Role <span class="text-posh-gold">*</span></label>
+                    <input type="text" name="role" required placeholder="e.g., Bride, Groom, Mother of the Bride" 
+                           class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md">
                 </div>
 
                 <!-- Partner's Name -->
-                <div class="form-group">
-                    <label>Who Are You Marrying?</label>
-                    <input type="text" name="partner_name" class="form-control" placeholder="First name + Last name">
+                <div>
+                    <label class="block text-posh-dark text-sm font-medium mb-2">Who Are You Marrying?</label>
+                    <input type="text" name="partner_name" placeholder="First name + Last name" 
+                           class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md">
                 </div>
 
-                <!-- Contact Info -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Email Address <span class="required-field">*</span></label>
-                        <input type="email" name="email" class="form-control" required placeholder="your.email@example.com">
+                <!-- Contact Info Row -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-posh-dark text-sm font-medium mb-2">Email <span class="text-posh-gold">*</span></label>
+                        <input type="email" name="email" required placeholder="your.email@example.com" 
+                               class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md">
                     </div>
-
-                    <div class="form-group">
-                        <label>Phone Number <span class="required-field">*</span></label>
-                        <input type="tel" name="phone" class="form-control" required placeholder="+1 (123) 456-7890">
+                    <div>
+                        <label class="block text-posh-dark text-sm font-medium mb-2">Phone <span class="text-posh-gold">*</span></label>
+                        <input type="tel" name="phone" required placeholder="+1 (123) 456-7890" 
+                               class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md">
                     </div>
                 </div>
 
                 <!-- Service Selection -->
-                <div class="form-group">
-                    <label>Select A Service We Can Provide For You <span class="required-field">*</span></label>
-                    <select name="service" class="form-control" required>
+                <div>
+                    <label class="block text-posh-dark text-sm font-medium mb-2">Service Interest <span class="text-posh-gold">*</span></label>
+                    <select name="service" required 
+                            class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md appearance-none">
                         <option value="" disabled selected>-- Select Service --</option>
                         <option>Wedding Planning</option>
                         <option>Event Planning</option>
@@ -1110,32 +288,35 @@
                         <option>Full Wedding Package</option>
                         <option>Other</option>
                     </select>
-                    <small>For Floral or Decor ONLY inquiries, please visit www.eleganteventsflorist.com</small>
+                    <p class="text-xs text-posh-gold mt-2 italic">For Floral or Decor ONLY inquiries, please visit www.eleganteventsflorist.com</p>
                 </div>
 
-                <!-- Event Details -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Event Date</label>
-                        <input type="date" name="event_date" class="form-control">
+                <!-- Event Details Row -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-posh-dark text-sm font-medium mb-2">Event Date</label>
+                        <input type="date" name="event_date" 
+                               class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md">
                     </div>
-
-                    <div class="form-group">
-                        <label>Guest Count <span class="required-field">*</span></label>
-                        <input type="number" name="guest_count" class="form-control" required min="1" placeholder="Number of guests">
+                    <div>
+                        <label class="block text-posh-dark text-sm font-medium mb-2">Guest Count <span class="text-posh-gold">*</span></label>
+                        <input type="number" name="guest_count" required min="1" placeholder="Number of guests" 
+                               class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md">
                     </div>
                 </div>
 
                 <!-- Venue -->
-                <div class="form-group">
-                    <label>Where Will Your Celebration Take Place?</label>
-                    <input type="text" name="venue" class="form-control" placeholder="Venue Name or Location">
+                <div>
+                    <label class="block text-posh-dark text-sm font-medium mb-2">Venue or Location</label>
+                    <input type="text" name="venue" placeholder="Where will your celebration take place?" 
+                           class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md">
                 </div>
 
                 <!-- Referral -->
-                <div class="form-group">
-                    <label>How Did You Hear About Us? <span class="required-field">*</span></label>
-                    <select name="referral" class="form-control" required>
+                <div>
+                    <label class="block text-posh-dark text-sm font-medium mb-2">How Did You Hear About Us? <span class="text-posh-gold">*</span></label>
+                    <select name="referral" required 
+                            class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md appearance-none">
                         <option value="" disabled selected>-- Select --</option>
                         <option>Instagram</option>
                         <option>Facebook</option>
@@ -1147,83 +328,84 @@
                 </div>
 
                 <!-- Message -->
-                <div class="form-group">
-                    <label>Tell Us About Your Celebration! <span class="required-field">*</span></label>
-                    <textarea name="message" class="form-control" required placeholder="Please provide details..." rows="6"></textarea>
+                <div>
+                    <label class="block text-posh-dark text-sm font-medium mb-2">Tell Us About Your Celebration! <span class="text-posh-gold">*</span></label>
+                    <textarea name="message" required placeholder="Please provide details..." rows="5"
+                              class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md resize-none"></textarea>
                 </div>
 
                 <!-- SMS Consent -->
-                <div class="form-group">
-                    <label>Do you wish to receive communications via text message? <span class="required-field">*</span></label>
-                    <div class="radio-group" id="radioGroup">
-                        <label>
-                            <input type="radio" name="sms_consent" value="Yes" required> 
-                            <span>I agree to receive text messages</span>
+                <div>
+                    <label class="block text-posh-dark text-sm font-medium mb-3">Communication Preference <span class="text-posh-gold">*</span></label>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="radio" name="sms_consent" value="Yes" required class="w-4 h-4 accent-posh-gold">
+                            <span class="text-posh-grey hover:text-posh-gold transition-colors">I agree to receive text messages</span>
                         </label>
-                        <label>
-                            <input type="radio" name="sms_consent" value="No"> 
-                            <span>I do not agree to receive text messages</span>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="radio" name="sms_consent" value="No" class="w-4 h-4 accent-posh-gold">
+                            <span class="text-posh-grey hover:text-posh-gold transition-colors">I prefer email only</span>
                         </label>
                     </div>
                 </div>
 
                 <!-- Submit Button -->
-                <div style="padding-top: 2rem;">
-                    <button type="submit" class="submit-btn" id="submitBtn">
-                        SEND INQUIRY
+                <div class="pt-6">
+                    <button type="submit" id="submitBtn" 
+                            class="w-full md:w-auto px-10 py-4 bg-posh-gold text-white text-sm uppercase tracking-[0.2em] font-medium hover:bg-posh-gold-dark transition-all duration-300 rounded-md mx-auto block">
+                        Send Inquiry
                     </button>
-                    <p style="text-align: center; color: var(--posh-grey); font-size: 0.8rem; margin-top: 1rem; font-weight: 300;">
-                        * Required fields. We respect your privacy and will never share your information.
-                    </p>
+                    <p class="text-center text-posh-grey text-xs mt-4">* Required fields. We respect your privacy and will never share your information.</p>
                 </div>
             </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-overlay"></div>
+    <footer class="relative w-full bg-fixed bg-cover bg-center text-white" style="background-image: url('images/dreamstime_xxl_4495877.jpg');">
+        <div class="absolute inset-0 bg-black/85"></div>
         
-        <div class="footer-content">
-            <div class="container">
-                <div class="footer-grid">
+        <div class="relative z-10 py-16 md:py-20">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12 mb-10 md:mb-12">
                     <!-- Brand -->
-                    <div>
-                        <img src="images/Logo.png" alt="Cassie Posh Events" class="footer-logo">
-                        <p class="footer-text">Philadelphia, PA</p>
-                        <p class="footer-text">Luxury Wedding & Event Planning</p>
+                    <div class="text-center sm:text-left">
+                        <img src="images/Logo.png" alt="Cassie Posh Events" class="h-12 md:h-14 lg:h-16 w-auto mx-auto sm:mx-0 mb-4">
+                        <p class="text-white/60 text-xs md:text-sm">Philadelphia, PA</p>
+                        <p class="text-white/60 text-xs md:text-sm">Luxury Wedding & Event Planning</p>
                     </div>
                     
                     <!-- Contact -->
-                    <div>
-                        <h4 class="footer-title">Contact</h4>
-                        <p class="footer-text" style="margin-bottom: 0.5rem;">610-202-5492</p>
-                        <a href="mailto:info@cassieposhevents.com" style="color: var(--posh-gold); text-decoration: none;">info@cassieposhevents.com</a>
+                    <div class="text-center sm:text-left">
+                        <h4 class="font-playfair text-lg md:text-xl mb-4 md:mb-6">Contact</h4>
+                        <p class="text-white/80 text-xs md:text-sm mb-2">610-202-5492</p>
+                        <a href="mailto:info@cassieposhevents.com" class="text-posh-gold hover:text-white transition-colors text-xs md:text-sm">info@cassieposhevents.com</a>
                     </div>
                     
                     <!-- Quick Links -->
-                    <div>
-                        <h4 class="footer-title">Quick Links</h4>
-                        <ul class="footer-links">
-                            <li><a href="home.html#about">About</a></li>
-                            <li><a href="home.html#services">Services</a></li>
-                            <li><a href="portfolio.html">Portfolio</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                    <div class="text-center sm:text-left">
+                        <h4 class="font-playfair text-lg md:text-xl mb-4 md:mb-6">Quick Links</h4>
+                        <ul class="space-y-2 md:space-y-3">
+                            <li><a href="home.html#about" class="text-white/60 hover:text-posh-gold transition-colors text-xs md:text-sm">About</a></li>
+                            <li><a href="home.html#services" class="text-white/60 hover:text-posh-gold transition-colors text-xs md:text-sm">Services</a></li>
+                            <li><a href="portfolio.html" class="text-white/60 hover:text-posh-gold transition-colors text-xs md:text-sm">Portfolio</a></li>
+                            <li><a href="contact.html" class="text-white/60 hover:text-posh-gold transition-colors text-xs md:text-sm">Contact</a></li>
                         </ul>
                     </div>
                     
                     <!-- Social -->
-                    <div>
-                        <h4 class="footer-title">Follow Us</h4>
-                        <div class="social-links">
-                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <div class="text-center sm:text-left">
+                        <h4 class="font-playfair text-lg md:text-xl mb-4 md:mb-6">Follow Us</h4>
+                        <div class="flex gap-3 md:gap-4 justify-center sm:justify-start">
+                            <a href="#" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="footer-bottom">
-                    <p class="copyright">&copy; 2024 Cassie Posh Events, LLC. All rights reserved.</p>
+                <!-- Bottom Bar -->
+                <div class="pt-6 md:pt-8 mt-6 md:mt-8 border-t border-white/10 text-center">
+                    <p class="text-white/40 text-xs">&copy; 2024 Cassie Posh Events, LLC. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -1232,62 +414,100 @@
     <script>
         // DOM Elements
         const navbar = document.getElementById('navbar');
+        const navLogo = document.getElementById('navLogo');
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
         const body = document.body;
+
+        // Hamburger spans
+        const hamburgerSpans = mobileMenuBtn?.querySelectorAll('span');
 
         // Navigation Scroll Effect
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
+                navbar.classList.add('bg-white', 'py-3', 'lg:py-4', 'shadow-lg');
+                navbar.classList.remove('bg-transparent', 'py-6', 'lg:py-8');
+                navLogo.classList.remove('brightness-0', 'invert');
+                
+                document.querySelectorAll('.nav-link, .desktop-contact-btn').forEach(link => {
+                    if (link.classList.contains('desktop-contact-btn')) {
+                        link.classList.remove('text-white', 'border-posh-gold');
+                        link.classList.add('text-posh-dark', 'border-posh-gold');
+                    } else {
+                        link.classList.remove('text-white');
+                        link.classList.add('text-posh-dark');
+                    }
+                });
+                
+                // Update hamburger color when scrolled
+                if (hamburgerSpans) {
+                    hamburgerSpans.forEach(span => span.classList.remove('bg-posh-gold'));
+                    hamburgerSpans.forEach(span => span.classList.add('bg-posh-dark'));
+                }
             } else {
-                navbar.classList.remove('scrolled');
+                navbar.classList.remove('bg-white', 'py-3', 'lg:py-4', 'shadow-lg');
+                navbar.classList.add('bg-transparent', 'py-6', 'lg:py-8');
+                navLogo.classList.add('brightness-0', 'invert');
+                
+                document.querySelectorAll('.nav-link, .desktop-contact-btn').forEach(link => {
+                    if (link.classList.contains('desktop-contact-btn')) {
+                        link.classList.add('text-white', 'border-posh-gold');
+                        link.classList.remove('text-posh-dark');
+                    } else {
+                        link.classList.add('text-white');
+                        link.classList.remove('text-posh-dark');
+                    }
+                });
+                
+                // Reset hamburger color
+                if (hamburgerSpans) {
+                    hamburgerSpans.forEach(span => span.classList.add('bg-posh-gold'));
+                    hamburgerSpans.forEach(span => span.classList.remove('bg-posh-dark'));
+                }
             }
         });
 
         // Mobile Menu Functions
         function openMobileMenu() {
-            mobileMenu.classList.add('active');
-            mobileMenuOverlay.classList.add('active');
+            mobileMenu.classList.add('opacity-100', 'visible');
+            mobileMenu.classList.remove('opacity-0', 'invisible');
+            mobileMenuBtn.classList.add('hamburger-active');
             body.classList.add('menu-open');
         }
 
         function closeMobileMenu() {
-            mobileMenu.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
+            mobileMenu.classList.remove('opacity-100', 'visible');
+            mobileMenu.classList.add('opacity-0', 'invisible');
+            mobileMenuBtn.classList.remove('hamburger-active');
             body.classList.remove('menu-open');
         }
 
         // Mobile Menu Event Listeners
         if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', openMobileMenu);
-        }
-
-        if (mobileMenuClose) {
-            mobileMenuClose.addEventListener('click', closeMobileMenu);
-        }
-
-        if (mobileMenuOverlay) {
-            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+            mobileMenuBtn.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('opacity-100')) {
+                    closeMobileMenu();
+                } else {
+                    openMobileMenu();
+                }
+            });
         }
 
         // Close mobile menu when clicking a link
-        document.querySelectorAll('.mobile-menu-items a').forEach(link => {
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
             link.addEventListener('click', closeMobileMenu);
         });
 
         // Close with escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('opacity-100')) {
                 closeMobileMenu();
             }
         });
 
         // Handle window resize
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 900 && mobileMenu.classList.contains('active')) {
+            if (window.innerWidth > 900 && mobileMenu.classList.contains('opacity-100')) {
                 closeMobileMenu();
             }
         });
@@ -1298,36 +518,31 @@
             let valid = true;
             let firstInvalid = null;
 
-            // Check regular fields
             requiredFields.forEach(field => {
                 if (field.type !== 'radio' && !field.value.trim()) {
                     valid = false;
-                    field.classList.add('error');
+                    field.classList.add('border-posh-gold', 'bg-posh-gold/5');
                     
                     if (!firstInvalid) {
                         firstInvalid = field;
                     }
                 } else {
-                    field.classList.remove('error');
+                    field.classList.remove('border-posh-gold', 'bg-posh-gold/5');
                 }
             });
 
-            // Check radio buttons specifically
+            // Check radio buttons
             const radioGroup = document.querySelectorAll('input[name="sms_consent"]');
             let radioChecked = false;
             radioGroup.forEach(radio => {
                 if (radio.checked) radioChecked = true;
             });
 
-            const radioGroupContainer = document.getElementById('radioGroup');
             if (!radioChecked) {
                 valid = false;
-                radioGroupContainer.classList.add('error');
-                if (!firstInvalid) {
-                    firstInvalid = radioGroup[0];
-                }
-            } else {
-                radioGroupContainer.classList.remove('error');
+                radioGroup.forEach(radio => {
+                    radio.closest('.space-y-3')?.classList.add('text-posh-gold');
+                });
             }
 
             if (!valid) {
@@ -1339,25 +554,10 @@
                     firstInvalid.focus();
                 }
             } else {
-                // Add success animation
                 const btn = document.getElementById('submitBtn');
-                btn.style.transform = 'scale(0.95)';
+                btn.style.transform = 'scale(0.98)';
                 setTimeout(() => btn.style.transform = 'scale(1)', 200);
             }
-        });
-
-        // Remove error styling on input
-        document.querySelectorAll('.form-control').forEach(field => {
-            field.addEventListener('input', function() {
-                this.classList.remove('error');
-            });
-        });
-
-        // Radio group styling reset
-        document.querySelectorAll('input[name="sms_consent"]').forEach(radio => {
-            radio.addEventListener('change', function() {
-                document.getElementById('radioGroup').classList.remove('error');
-            });
         });
     </script>
 </body>
