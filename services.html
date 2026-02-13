@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Cassie Posh Events, LLC</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'posh-gold': '#D4AF37',
+                        'posh-gold-dark': '#B5952F',
+                        'posh-cream': '#F9F7F2',
+                        'posh-blush': '#FDF6F6',
+                        'posh-dark': '#1A1A1A',
+                        'posh-grey': '#666666',
+                    },
+                    fontFamily: {
+                        'playfair': ['"Playfair Display"', 'serif'],
+                        'poppins': ['"Poppins"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'services-hero': "url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop')",
+                        'footer-pattern': "url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles & Utilities */
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .nav-scrolled {
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        
+        .nav-scrolled .nav-link {
+            color: #1A1A1A;
+        }
+        
+        .nav-scrolled .logo-text {
+            color: #1A1A1A;
+        }
+        
+        .nav-transparent {
+            background-color: transparent;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        
+        .hover-underline-animation {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .hover-underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: #D4AF37;
+            transform-origin: bottom right;
+            transition: transform 0.35s ease-out;
+        }
+        
+        .hover-underline-animation:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
+</head>
+<body class="font-poppins text-posh-dark antialiased overflow-x-hidden selection:bg-posh-gold selection:text-white">
+
+    <!-- 1. Navigation Bar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 nav-transparent">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="home.html" class="flex items-center">
+                <img src="images/Transparent Background-02.png" alt="Cassie Posh Events, LLC Logo" class="h-12 md:h-16 w-auto object-contain">
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex space-x-8 items-center">
+                <a href="index.html" class="nav-link text-white text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">Home</a>
+                <a href="about.html" class="nav-link text-white text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">About</a>
+                <a href="#" class="nav-link text-posh-gold text-sm uppercase tracking-widest transition-colors duration-300 hover-underline-animation">Services</a>
+                <a href="#design" class="nav-link text-white text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">Design & Décor</a>
+                <a href="#meetings" class="nav-link text-white text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">Meetings & Corporate</a>
+                <a href="index.html#portfolio" class="nav-link text-white text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">Portfolio</a>
+                <a href="#contact" class="px-6 py-2 border border-posh-gold text-posh-gold hover:bg-posh-gold hover:text-white transition-all duration-300 uppercase text-xs tracking-widest">Contact Us</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-posh-gold text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-lg py-6 flex flex-col items-center space-y-6 lg:hidden">
+            <a href="index.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Home</a>
+            <a href="about.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">About</a>
+            <a href="#" class="text-posh-dark text-sm uppercase tracking-widest text-posh-gold font-medium">Services</a>
+            <a href="#design" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Design & Décor</a>
+            <a href="#meetings" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Meetings & Corporate</a>
+            <a href="index.html#portfolio" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Portfolio</a>
+            <a href="#contact" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section -->
+    <header class="relative h-screen w-full 
+           bg-[url('images/dreamstime_xxl_106760588.jpg')] 
+           bg-cover bg-center bg-no-repeat 
+           bg-fixed">
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black/40"></div>
+        
+        <!-- Content -->
+        <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-4">
+            <p class="text-white/90 uppercase tracking-[0.2em] text-xs md:text-sm mb-4 animate-[fadeInDown_1s_ease-out]">
+                Our Services
+            </p>
+
+            <h1 class="font-playfair text-4xl md:text-6xl lg:text-7xl text-white font-medium mb-6 leading-tight text-shadow animate-[fadeInUp_1s_ease-out]">
+                Luxury Planning. <br><span class="italic">Elevated</span> Design.
+            </h1>
+
+            <p class="font-playfair italic text-xl md:text-2xl text-white/90 mb-8 font-light animate-[fadeInUp_1.2s_ease-out]">
+                Crafting Seamless Celebrations from Concept to Completion.
+            </p>
+
+            <p class="text-white/80 max-w-3xl mx-auto mb-10 font-light leading-relaxed animate-[fadeInUp_1.4s_ease-out]">
+                From full-scale wedding production to refined social events and immersive design experiences, we deliver thoughtful execution with artistic intention.
+            </p>
+            
+            <a href="#planning" 
+               class="bg-posh-gold text-white px-8 py-4 uppercase text-xs tracking-widest hover:bg-white hover:text-posh-dark transition-all duration-300 min-w-[180px] animate-[fadeInUp_1.6s_ease-out]">
+                Explore Our Offerings
+            </a>
+        </div>
+        
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down opacity-70"></i>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 bg-white shadow-xl ">
+
+        <!-- 3. Full Service Wedding Planning -->
+        <section id="planning" class="py-24 md:py-32 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+                    
+                    <!-- Intro -->
+                    <div>
+                        <span class="text-posh-gold uppercase tracking-[0.2em] text-xs font-semibold mb-3 block">Comprehensive</span>
+                        <h2 class="font-playfair text-4xl md:text-5xl text-posh-dark mb-6 leading-tight">Full-Service <br>Wedding Planning</h2>
+                        <div class="w-16 h-px bg-posh-gold mb-8"></div>
+                        
+                        <p class="font-playfair italic text-xl text-posh-dark mb-6">
+                            For couples who desire a guided, stress-free journey from “Yes” to “I Do.”
+                        </p>
+                        <p class="text-posh-grey font-light leading-loose text-sm md:text-base">
+                            We manage every detail so you can savor the experience. From selecting the perfect venue to curating a world-class vendor team, our process is designed to bring your vision to life with precision and grace.
+                        </p>
+                    </div>
+
+                    <!-- List -->
+                    <div class="flex items-center">
+                        <ul class="space-y-4 text-posh-dark font-light text-sm md:text-base border-l border-posh-gold/30 pl-8 md:pl-12 py-4">
+                            <li class="hover:text-posh-gold transition-colors duration-300">Comprehensive planning & logistics</li>
+                            <li class="hover:text-posh-gold transition-colors duration-300">Venue research & coordination</li>
+                            <li class="hover:text-posh-gold transition-colors duration-300">Vendor sourcing & management</li>
+                            <li class="hover:text-posh-gold transition-colors duration-300">Contract negotiation</li>
+                            <li class="hover:text-posh-gold transition-colors duration-300">Wedding website management</li>
+                            <li class="hover:text-posh-gold transition-colors duration-300">Menu consultation & design</li>
+                            <li class="hover:text-posh-gold transition-colors duration-300">Guest list management</li>
+                            <li class="hover:text-posh-gold transition-colors duration-300">Timeline creation & execution</li>
+                            <li class="hover:text-posh-gold transition-colors duration-300">Hotel room block coordination</li>
+                            <li class="hover:text-posh-gold transition-colors duration-300">Transportation management</li>
+                            <li class="hover:text-posh-gold transition-colors duration-300">On-site wedding day coordination</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Wedding Day Coordination -->
+        <section class="py-24 bg-posh-cream">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div class="text-center mb-16">
+                    <h2 class="font-playfair text-3xl md:text-4xl text-posh-dark mb-4">Wedding Day Coordination</h2>
+                    <div class="w-16 h-px bg-posh-gold mx-auto mb-6"></div>
+                    <p class="text-posh-grey font-light max-w-2xl mx-auto text-sm md:text-base">
+                        Perfect for couples who have planned their wedding but want professional execution. We step in to ensure your day unfolds flawlessly, allowing you to be present in the moment.
+                    </p>
+                </div>
+
+                <div class="bg-white p-12 md:p-16 shadow-sm border border-white hover:border-posh-gold/20 transition-all duration-500">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
+                        <div class="flex items-center gap-4">
+                            <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
+                            <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Final vendor confirmations</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
+                            <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Timeline refinement</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
+                            <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Rehearsal coordination</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
+                            <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Wedding day management</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
+                            <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Guest logistics coordination</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
+                            <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Setup & breakdown oversight</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Social Events -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <span class="text-posh-gold uppercase tracking-[0.2em] text-xs font-semibold mb-3 block">Celebrations</span>
+                <h2 class="font-playfair text-3xl md:text-4xl text-posh-dark mb-4">Social Events</h2>
+                <p class="font-playfair italic text-xl text-posh-grey mb-12">
+                    Elevated celebrations designed with style and intention.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <div class="group p-8 border border-gray-100 bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+                        <div class="text-posh-gold mb-4 text-2xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-champagne-glasses"></i></div>
+                        <h4 class="font-playfair text-lg text-posh-dark">Milestone Birthdays</h4>
+                    </div>
+                    <div class="group p-8 border border-gray-100 bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+                        <div class="text-posh-gold mb-4 text-2xl group-hover:scale-110 transition-transform"><i class="fa-regular fa-heart"></i></div>
+                        <h4 class="font-playfair text-lg text-posh-dark">Anniversaries</h4>
+                    </div>
+                    <div class="group p-8 border border-gray-100 bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+                        <div class="text-posh-gold mb-4 text-2xl group-hover:scale-110 transition-transform"><i class="fa-regular fa-gem"></i></div>
+                        <h4 class="font-playfair text-lg text-posh-dark">Engagement Parties</h4>
+                    </div>
+                    <div class="group p-8 border border-gray-100 bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+                        <div class="text-posh-gold mb-4 text-2xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-gift"></i></div>
+                        <h4 class="font-playfair text-lg text-posh-dark">Holiday Parties</h4>
+                    </div>
+                    <div class="group p-8 border border-gray-100 bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+                        <div class="text-posh-gold mb-4 text-2xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-music"></i></div>
+                        <h4 class="font-playfair text-lg text-posh-dark">Gala Soirées</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Design & Décor -->
+        <section id="design" class="py-24 bg-posh-blush">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="text-posh-gold uppercase tracking-[0.2em] text-xs font-semibold mb-3 block">Aesthetics</span>
+                    <h2 class="font-playfair text-4xl text-posh-dark mb-4">Our Design Approach</h2>
+                    <h3 class="font-playfair italic text-xl text-posh-dark mb-6 opacity-80">Intentional. Elevated. Artfully Curated.</h3>
+                    <p class="text-posh-grey font-light max-w-2xl mx-auto text-sm leading-relaxed">
+                        We begin with your story and craft a cohesive design concept blending luxury, creativity, and emotional resonance.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Column 1 -->
+                    <div class="bg-white p-10 shadow-sm border-t-4 border-posh-gold/30">
+                        <h4 class="font-playfair text-xl text-posh-dark mb-6">Custom Design Concepts</h4>
+                        <ul class="space-y-3 text-posh-grey font-light text-sm">
+                            <li>Aesthetic direction & immersive styling</li>
+                            <li>Color palette development</li>
+                            <li>Mood boards</li>
+                            <li>Visual storytelling</li>
+                            <li>Tablescape design</li>
+                            <li>Floral styling</li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 2 -->
+                    <div class="bg-white p-10 shadow-sm border-t-4 border-posh-gold/30">
+                        <h4 class="font-playfair text-xl text-posh-dark mb-6">Ceremony & Reception Styling</h4>
+                        <ul class="space-y-3 text-posh-grey font-light text-sm">
+                            <li>Aisle & altar installations</li>
+                            <li>Reception layout design</li>
+                            <li>Statement décor pieces</li>
+                            <li>Lounge & guest experience areas</li>
+                            <li>Lighting direction</li>
+                            <li>Spatial planning</li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3 -->
+                    <div class="bg-white p-10 shadow-sm border-t-4 border-posh-gold/30">
+                        <h4 class="font-playfair text-xl text-posh-dark mb-6">Floral Design & Styling</h4>
+                        <ul class="space-y-3 text-posh-grey font-light text-sm">
+                            <li>Bouquets & personal florals</li>
+                            <li>Centerpieces</li>
+                            <li>Large-scale installations</li>
+                            <li>Accent florals</li>
+                            <li>Full setup & teardown</li>
+                            <li>Seasonal curation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Luxury Drapery -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-16">
+                    <!-- Text -->
+                    <div class="w-full md:w-1/2">
+                        <h2 class="font-playfair text-3xl md:text-4xl text-posh-dark mb-4">Luxury Drapery Design & Installation</h2>
+                        <p class="font-playfair italic text-xl text-posh-gold mb-6">Where fabric becomes art.</p>
+                        <p class="text-posh-grey font-light leading-relaxed mb-8">
+                            We specialize in transforming spaces with refined elegance and romantic drapery. Softening architectural lines and creating intimate environments is our signature.
+                        </p>
+                        
+                        <ul class="space-y-4 text-posh-dark text-sm border-l-2 border-posh-gold pl-6">
+                            <li class="pl-2">Bespoke ceremony backdrops</li>
+                            <li class="pl-2">Reception wall draping</li>
+                            <li class="pl-2">Ceiling draping installations</li>
+                            <li class="pl-2">Custom chuppahs, mandaps & arches</li>
+                            <li class="pl-2">Stage & sweetheart table draping</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Image/Visual -->
+                    <div class="w-full md:w-1/2 h-[400px] bg-posh-cream relative overflow-hidden group">
+                        <img src="images/dreamstime_xxl_48626295.jpg" alt="Luxury Drapery" class="w-full h-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-posh-gold/10"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. CTA Section -->
+        <section class="py-20 bg-posh-blush text-center">
+            <div class="container mx-auto px-6">
+                <h2 class="font-playfair text-3xl md:text-4xl text-posh-dark mb-8">Let’s Design Something Extraordinary</h2>
+                <a href="#contact" class="inline-block bg-posh-gold text-white px-10 py-4 uppercase text-xs tracking-widest hover:bg-posh-dark transition-all duration-300 shadow-lg hover:shadow-xl">
+                    Schedule Your Consultation
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 9. Footer (Sticky Reveal) -->
+    <footer id="contact" 
+    class="relative w-full bg-[url('images/dreamstime_xxl_4495877.jpg')] bg-cover bg-center bg-no-repeat bg-fixed text-white">
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black/70"></div>
+
+    <!-- Content Wrapper -->
+    <div class="relative z-10 py-20 border-t border-white/10">
+
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-12">
+            
+            <!-- Brand & Address -->
+            <div class="text-center md:text-left max-w-sm">
+                <a href="/" class="flex items-center">
+                    <img src="images/Logo.png" alt="Cassie Posh Events, LLC Logo" class="h-12 md:h-16 w-auto object-contain">
+                </a>
+                <p class="text-white/70 text-xs uppercase tracking-widest mb-1">
+                    Philadelphia, PA
+                </p>
+                <p class="text-white/70 text-xs uppercase tracking-widest">
+                    Luxury Wedding & Event Planning
+                </p>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="text-center md:text-left">
+                <p class="font-playfair text-lg md:text-xl text-white mb-2">
+                    610-202-5492
+                </p>
+                <a href="mailto:info@cassieposhevents.com" 
+                   class="text-posh-gold hover:text-white transition-colors duration-300 text-sm font-light">
+                    info@cassieposhevents.com
+                </a>
+            </div>
+
+            <!-- Links -->
+            <div class="flex flex-col gap-3 text-center md:text-left">
+                <span class="text-white/40 text-xs uppercase tracking-widest mb-3">
+                    Quick Links
+                </span>
+                <a href="#about" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">
+                    About
+                </a>
+                <a href="#services" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">
+                    Services
+                </a>
+                <a href="#portfolio" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">
+                    Portfolio
+                </a>
+                <a href="#contact" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">
+                    Contact Us
+                </a>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="flex gap-4 justify-center md:justify-start">
+                <a href="#" 
+                   class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all duration-300">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" 
+                   class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all duration-300">
+                    <i class="fab fa-pinterest-p"></i>
+                </a>
+                <a href="#" 
+                   class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all duration-300">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="container mx-auto px-6 mt-20 pt-8 border-t border-white/10 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
+            <p class="text-white/40 text-xs font-light">
+                &copy;  Cassie Posh Events, LLC. All rights reserved.
+            </p>
+            <p class="text-white/40 text-xs font-light mt-2 md:mt-0">
+                Designed with Elegance
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+    <!-- JavaScript for Interactions -->
+    <script>
+        // Sticky Navigation Logic
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const logoText = document.querySelector('.logo-text');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                // Scrolled State (White Background)
+                navbar.classList.remove('nav-transparent');
+                navbar.classList.add('nav-scrolled');
+                
+                logoText.classList.remove('text-white');
+                logoText.classList.add('text-posh-dark');
+                
+                mobileMenuBtn.classList.remove('text-white'); 
+                
+                navLinks.forEach(link => {
+                    // Skip active link
+                    if(!link.classList.contains('text-posh-gold')) {
+                        link.classList.remove('text-white');
+                        link.classList.add('text-posh-dark');
+                    }
+                });
+            } else {
+                // Top State (Transparent)
+                navbar.classList.add('nav-transparent');
+                navbar.classList.remove('nav-scrolled');
+                
+                logoText.classList.add('text-white');
+                logoText.classList.remove('text-posh-dark');
+                
+                navLinks.forEach(link => {
+                    if(!link.classList.contains('text-posh-gold')) {
+                        link.classList.add('text-white');
+                        link.classList.remove('text-posh-dark');
+                    }
+                });
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            
+            // Toggle icon between bars and times (X)
+            const icon = menuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+    </script>
+</body>
+</html>
