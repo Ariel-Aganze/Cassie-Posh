@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meetings & Corporate — Cassie Posh Events</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config (luxury palette) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'posh-gold': '#D4AF37',
+                        'posh-gold-dark': '#B5952F',
+                        'posh-cream': '#F9F7F2',
+                        'posh-blush': '#FDF6F6',
+                        'posh-dark': '#1A1A1A',
+                        'posh-grey': '#666666',
+                    },
+                    fontFamily: {
+                        'playfair': ['"Playfair Display"', 'serif'],
+                        'poppins': ['"Poppins"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .nav-scrolled {
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .nav-scrolled .nav-link {
+            color: #1A1A1A;
+        }
+        .nav-transparent {
+            background-color: transparent;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        .hover-underline-animation {
+            display: inline-block;
+            position: relative;
+        }
+        .hover-underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: #D4AF37;
+            transform-origin: bottom right;
+            transition: transform 0.35s ease-out;
+        }
+        .hover-underline-animation:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        /* active gold color (no permanent underline) */
+        .nav-link-active {
+            color: #D4AF37 !important;
+        }
+    </style>
+</head>
+<body class="font-poppins text-posh-dark antialiased overflow-x-hidden selection:bg-posh-gold selection:text-white">
+
+    <!-- 1. NAVIGATION (active state: Meetings & Corporate in gold) -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 nav-transparent">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="/" class="flex items-center">
+                <img src="images/Transparent Background-02.png" alt="Cassie Posh Events, LLC Logo" class="h-12 md:h-16 w-auto object-contain">
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex space-x-8 items-center">
+                <a href="home.html" class="nav-link text-white text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">Home</a>
+                <a href="#about" class="nav-link text-white text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">About</a>
+                <a href="#services" class="nav-link text-white text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">Services</a>
+                <a href="design&decor.html" class="nav-link text-white text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">Design & Décor</a>
+                <!-- Meetings & Corporate: gold active, no permanent underline, hover works -->
+                <a href="meeting&corporate.html" class="nav-link text-posh-gold text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">Meetings & Corporate</a>
+                <a href="#portfolio" class="nav-link text-white text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">Portfolio</a>
+                <a href="#contact" class="px-6 py-2 border border-posh-gold text-posh-gold hover:bg-posh-gold hover:text-white transition-all duration-300 uppercase text-xs tracking-widest">Contact Us</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-posh-gold text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-lg py-6 flex flex-col items-center space-y-6 lg:hidden">
+            <a href="#" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Home</a>
+            <a href="#about" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">About</a>
+            <a href="#services" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Services</a>
+            <a href="#design" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Design & Décor</a>
+            <!-- mobile active gold -->
+            <a href="#meetings" class="text-posh-gold text-sm uppercase tracking-widest hover:text-posh-gold">Meetings & Corporate</a>
+            <a href="#portfolio" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Portfolio</a>
+            <a href="#contact" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- 2. MEETINGS & CORPORATE HERO (professional, sharp) -->
+    <header class="relative h-[70vh] min-h-[600px] w-full bg-[url('images/dreamstime_xxl_4495877.jpg')] bg-cover bg-center bg-no-repeat bg-fixed">
+        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-4">
+            <p class="text-white/70 uppercase tracking-[0.3em] text-xs md:text-sm mb-4">
+                Precision · Polish · Seamless execution
+            </p>
+            <h1 class="font-playfair text-5xl md:text-7xl text-white font-medium mb-6 leading-tight">
+                Meetings & <span class="italic text-posh-gold">Corporate</span>
+            </h1>
+            <div class="w-20 h-0.5 bg-posh-gold/60 mb-8"></div>
+            <p class="text-white/90 max-w-2xl text-lg font-light">
+                Strategically executed, seamless corporate experiences.
+            </p>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down opacity-70"></i>
+        </div>
+    </header>
+
+    <!-- 3. INTRO / CAPABILITIES (elevated overview) -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <span class="text-posh-gold uppercase tracking-[0.2em] text-xs font-semibold">Corporate & Executive</span>
+                <h2 class="font-playfair text-4xl md:text-5xl text-posh-dark mt-3 mb-6">Flawless meetings, powerful impressions</h2>
+                <div class="w-16 h-0.5 bg-posh-gold mx-auto"></div>
+            </div>
+            <div class="prose prose-lg max-w-3xl mx-auto text-center text-posh-grey font-light leading-relaxed">
+                <p class="text-lg">From boardroom strategy sessions to high-profile product launches, we orchestrate every detail with quiet precision. Your brand deserves an environment that inspires confidence and productivity — we deliver that, seamlessly.</p>
+            </div>
+
+            <!-- core competencies in elegant grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
+                <div class="text-center">
+                    <div class="text-posh-gold text-3xl mb-4"><i class="fa-regular fa-calendar"></i></div>
+                    <h3 class="font-playfair text-lg mb-2">Agenda development</h3>
+                    <p class="text-posh-grey text-xs uppercase tracking-wider">structured flow</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-posh-gold text-3xl mb-4"><i class="fa-regular fa-clock"></i></div>
+                    <h3 class="font-playfair text-lg mb-2">Timeline creation</h3>
+                    <p class="text-posh-grey text-xs uppercase tracking-wider">minute by minute</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-posh-gold text-3xl mb-4"><i class="fa-regular fa-handshake"></i></div>
+                    <h3 class="font-playfair text-lg mb-2">Vendor & venue</h3>
+                    <p class="text-posh-grey text-xs uppercase tracking-wider">curated coordination</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-posh-gold text-3xl mb-4"><i class="fa-regular fa-object-group"></i></div>
+                    <h3 class="font-playfair text-lg mb-2">Room layout & seating</h3>
+                    <p class="text-posh-grey text-xs uppercase tracking-wider">ergonomics + style</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. LEFT / RIGHT DEEP DIVE: what we manage (two blocks) -->
+    <section class="py-16 bg-posh-cream">
+        <div class="container mx-auto px-6">
+            <!-- block 1: logistics & AV -->
+            <div class="flex flex-col md:flex-row items-center gap-12 mb-24">
+                <div class="md:w-1/2 order-2 md:order-1">
+                    <h3 class="font-playfair text-3xl md:text-4xl text-posh-dark mb-4">Logistics & technology</h3>
+                    <div class="w-16 h-0.5 bg-posh-gold mb-6"></div>
+                    <ul class="space-y-3 text-posh-grey">
+                        <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>Audio-visual coordination — presentations, mics, streaming</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>Hotel room blocks & VIP accommodations</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>On-site event management & troubleshooting</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>Registration & guest check-in flow</span></li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2 order-1 md:order-2 relative">
+                    <div class="absolute -top-4 -left-4 w-full h-full border border-posh-gold/20 hidden md:block"></div>
+                    <img src="images/dreamstime_xxl_106760588.jpg" alt="Corporate meeting setup" class="w-full h-[350px] object-cover relative z-10 shadow-xl">
+                </div>
+            </div>
+
+            <!-- block 2: meeting types -->
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                <div class="md:w-1/2">
+                    <h3 class="font-playfair text-3xl md:text-4xl text-posh-dark mb-4">Types of meetings we produce</h3>
+                    <div class="w-16 h-0.5 bg-posh-gold mb-6"></div>
+                    <ul class="grid grid-cols-2 gap-x-6 gap-y-2 text-posh-grey">
+                        <li><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Corporate meetings</li>
+                        <li><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Board meetings</li>
+                        <li><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Seminars & workshops</li>
+                        <li><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Product launches</li>
+                        <li><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Networking events</li>
+                        <li><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Office holiday parties</li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <div class="absolute -top-4 -right-4 w-full h-full border border-posh-gold/20 hidden md:block"></div>
+                    <img src="images/dreamstime_xxl_42197740.jpg" alt="Corporate event" class="w-full h-[350px] object-cover relative z-10 shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. FULL-SERVICE CHECKLIST (clean, luxurious) -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <span class="text-posh-gold uppercase tracking-[0.2em] text-xs font-semibold">our scope</span>
+                <h2 class="font-playfair text-4xl text-posh-dark mt-3">Every detail, expertly managed</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-x-12 gap-y-6 text-posh-grey">
+                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Agenda development & speaker coordination</span></div>
+                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Timeline creation & run-of-show</span></div>
+                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Vendor sourcing & contract negotiation</span></div>
+                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Venue selection & site visits</span></div>
+                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Room layout & seating design</span></div>
+                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Audio-visual coordination</span></div>
+                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Hotel room blocks & VIP accommodations</span></div>
+                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>On-site event management & strike</span></div>
+                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Catering & menu development</span></div>
+                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Branded signage & environmental graphics</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. PORTFOLIO SNEAK PEEK (linking to portfolio category) -->
+    <!-- <section class="py-0">
+        <div class="grid grid-cols-1 md:grid-cols-3">
+            <div class="group relative h-[400px] md:h-[500px] overflow-hidden cursor-pointer">
+                <img src="images/dreamstime_xxl_14636906.jpg" alt="Corporate meeting" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 flex items-center justify-center">
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
+                        <span class="text-white border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-colors">View meetings</span>
+                    </div>
+                </div>
+            </div>
+            <div class="group relative h-[400px] md:h-[500px] overflow-hidden cursor-pointer">
+                <img src="images/dreamstime_xxl_25900010.jpg" alt="Boardroom setup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 flex items-center justify-center">
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
+                        <span class="text-white border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-colors">View boardroom</span>
+                    </div>
+                </div>
+            </div>
+            <div class="group relative h-[400px] md:h-[500px] overflow-hidden cursor-pointer">
+                <img src="images/dreamstime_xxl_48626295.jpg" alt="Corporate gala" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 flex items-center justify-center">
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
+                        <span class="text-white border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-colors">View events</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- 7. TESTIMONIAL (corporate edition) -->
+    <!-- <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-3xl text-center">
+            <div class="text-posh-gold text-6xl mb-4 opacity-20 font-playfair">“</div>
+            <h3 class="font-playfair italic text-2xl md:text-3xl text-posh-dark leading-relaxed">
+                Cassie Posh Events handled our multi-day executive summit flawlessly. Every detail was anticipated — we could focus entirely on our guests.
+            </h3>
+            <div class="flex justify-center gap-1 text-posh-gold text-xs my-6">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="uppercase tracking-widest text-xs font-semibold text-posh-dark">— CHIEF OPERATING OFFICER, FORTUNE 500</p>
+        </div>
+    </section> -->
+
+    <!-- 8. FOOTER (exact copy from original) -->
+    <footer id="contact" 
+    class="relative w-full bg-[url('images/dreamstime_xxl_4495877.jpg')] bg-cover bg-center bg-no-repeat bg-fixed text-white">
+        <div class="absolute inset-0 bg-black/70"></div>
+        <div class="relative z-10 py-20 border-t border-white/10">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-12">
+                <!-- Brand & Address -->
+                <div class="text-center md:text-left max-w-sm">
+                    <a href="/" class="flex items-center">
+                        <img src="images/Logo.png" alt="Cassie Posh Events, LLC Logo" class="h-12 md:h-16 w-auto object-contain">
+                    </a>
+                    <p class="text-white/70 text-xs uppercase tracking-widest mb-1">Philadelphia, PA</p>
+                    <p class="text-white/70 text-xs uppercase tracking-widest">Luxury Wedding & Event Planning</p>
+                </div>
+                <!-- Contact Info -->
+                <div class="text-center md:text-left">
+                    <p class="font-playfair text-lg md:text-xl text-white mb-2">610-202-5492</p>
+                    <a href="mailto:info@cassieposhevents.com" class="text-posh-gold hover:text-white transition-colors duration-300 text-sm font-light">info@cassieposhevents.com</a>
+                </div>
+                <!-- Links -->
+                <div class="flex flex-col gap-3 text-center md:text-left">
+                    <span class="text-white/40 text-xs uppercase tracking-widest mb-3">Quick Links</span>
+                    <a href="#about" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">About</a>
+                    <a href="#services" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">Services</a>
+                    <a href="#portfolio" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">Portfolio</a>
+                    <a href="#contact" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">Contact Us</a>
+                </div>
+                <!-- Social Icons -->
+                <div class="flex gap-4 justify-center md:justify-start">
+                    <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all duration-300"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all duration-300"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all duration-300"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <!-- Bottom Bar -->
+            <div class="container mx-auto px-6 mt-20 pt-8 border-t border-white/10 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
+                <p class="text-white/40 text-xs font-light">&copy; Cassie Posh Events, LLC. All rights reserved.</p>
+                <p class="text-white/40 text-xs font-light mt-2 md:mt-0">Designed with Elegance</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Navigation (same as before, but preserving gold active for Meetings) -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const logoText = document.querySelector('.logo-text');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('nav-transparent');
+                navbar.classList.add('nav-scrolled');
+                if (logoText) {
+                    logoText.classList.remove('text-white');
+                    logoText.classList.add('text-posh-dark');
+                }
+                if (mobileMenuBtn) mobileMenuBtn?.classList.remove('text-white');
+                navLinks.forEach(link => {
+                    // keep Meetings & Corporate gold, others dark
+                    if (link.textContent.includes('Meetings & Corporate')) {
+                        link.classList.remove('text-white');
+                        link.classList.add('text-posh-gold');
+                    } else {
+                        link.classList.remove('text-white');
+                        link.classList.add('text-posh-dark');
+                    }
+                });
+            } else {
+                navbar.classList.add('nav-transparent');
+                navbar.classList.remove('nav-scrolled');
+                if (logoText) {
+                    logoText.classList.add('text-white');
+                    logoText.classList.remove('text-posh-dark');
+                }
+                navLinks.forEach(link => {
+                    if (link.textContent.includes('Meetings & Corporate')) {
+                        link.classList.add('text-posh-gold');
+                        link.classList.remove('text-white');
+                    } else {
+                        link.classList.add('text-white');
+                        link.classList.remove('text-posh-dark');
+                    }
+                });
+            }
+        });
+
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = menuBtn.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+```
