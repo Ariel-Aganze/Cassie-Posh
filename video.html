@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Film | Cassie Posh Events, LLC</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --posh-gold: #D4AF37;
+            --posh-gold-dark: #B5952F;
+            --posh-gold-light: #F4E5C1;
+            --posh-cream: #F9F7F2;
+            --posh-blush: #FDF6F6;
+            --posh-dark: #1A1A1A;
+            --posh-grey: #666666;
+            --posh-charcoal: #2C2C2C;
+            --posh-white: #FFFFFF;
+            --posh-offwhite: #FAFAFA;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--posh-cream);
+            color: var(--posh-dark);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Clean Background */
+        .background-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--posh-cream) 0%, var(--posh-white) 100%);
+            z-index: -2;
+        }
+
+        .gold-accent {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--posh-gold), var(--posh-gold-dark), var(--posh-gold), transparent);
+            z-index: 100;
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 100;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 0;
+            color: var(--posh-grey);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .back-button i {
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+            color: var(--posh-gold);
+        }
+
+        .back-button:hover {
+            color: var(--posh-gold);
+            border-bottom-color: var(--posh-gold);
+        }
+
+        .back-button:hover i {
+            transform: translateX(-5px);
+        }
+
+        /* Main Container - Full Width */
+        .video-container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 6rem 2rem 3rem;
+            position: relative;
+        }
+
+        /* Hero Section */
+        .video-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .video-label {
+            color: var(--posh-gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .couple-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 500;
+            color: var(--posh-dark);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .couple-name span {
+            color: var(--posh-gold);
+            font-weight: 400;
+            font-style: italic;
+            font-size: 0.9em;
+            display: inline-block;
+            margin: 0 0.5rem;
+        }
+
+        .couple-location {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            color: var(--posh-grey);
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            font-weight: 300;
+        }
+
+        .couple-location i {
+            color: var(--posh-gold);
+            font-size: 1rem;
+        }
+
+        .location-divider {
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--posh-gold), transparent);
+            margin: 2rem auto;
+        }
+
+        /* Video Section - Full Width Video */
+        .video-section {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+            background: var(--posh-dark);
+            position: relative;
+            padding: 4rem 0;
+        }
+
+        .video-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .video-frame {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Video Meta Section */
+        .video-meta {
+            max-width: 1000px;
+            margin: 4rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .meta-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .meta-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, var(--posh-gold), transparent);
+        }
+
+        .meta-icon {
+            color: var(--posh-gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .meta-label {
+            color: var(--posh-grey);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .meta-value {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--posh-dark);
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation Section */
+        .navigation-section {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            background: var(--posh-white);
+            text-decoration: none;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-btn:hover:not(.disabled) {
+            border-color: var(--posh-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.05);
+        }
+
+        .nav-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-direction {
+            color: var(--posh-grey);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-couple {
+            color: var(--posh-dark);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .nav-arrow {
+            color: var(--posh-gold);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-btn.prev:hover .nav-arrow {
+            transform: translateX(-5px);
+        }
+
+        .nav-btn.next:hover .nav-arrow {
+            transform: translateX(5px);
+        }
+
+        .nav-btn.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+            background: #f5f5f5;
+        }
+
+        .nav-btn.disabled .nav-arrow {
+            color: var(--posh-grey);
+        }
+
+        /* Gallery Button */
+        .gallery-section {
+            text-align: center;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .gallery-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 1px solid var(--posh-gold);
+            color: var(--posh-gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+            font-weight: 500;
+        }
+
+        .gallery-btn:hover {
+            background: var(--posh-gold);
+            color: white;
+        }
+
+        .gallery-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-btn:hover i {
+            transform: rotate(90deg);
+        }
+
+        /* Loading State */
+        .loading-section {
+            min-height: 60vh;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .loading-section.active {
+            display: flex;
+        }
+
+        .loading-content {
+            text-align: center;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--posh-gold-light);
+            border-top: 2px solid var(--posh-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 2rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: var(--posh-grey);
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .loading-text span {
+            color: var(--posh-gold);
+        }
+
+        /* Divider */
+        .divider {
+            max-width: 200px;
+            margin: 2rem auto;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .video-container {
+                padding: 5rem 1rem 2rem;
+            }
+
+            .back-button {
+                top: 1rem;
+                left: 1rem;
+            }
+
+            .couple-name {
+                font-size: 2.5rem;
+            }
+
+            .video-meta {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .meta-item:not(:last-child)::after {
+                display: none;
+            }
+
+            .navigation-section {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-btn {
+                width: 100%;
+                padding: 1.2rem 1.5rem;
+            }
+
+            .video-section {
+                padding: 2rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .couple-name {
+                font-size: 2rem;
+            }
+
+            .couple-name span {
+                margin: 0 0.25rem;
+            }
+
+            .gallery-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background -->
+    <div class="background-gradient"></div>
+    <div class="gold-accent"></div>
+
+    <!-- Back Button -->
+    <a href="portfolio.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back to Portfolio</span>
+    </a>
+
+    <!-- Loading State -->
+    <div id="loadingSection" class="loading-section active">
+        <div class="loading-content">
+            <div class="loader"></div>
+            <p class="loading-text">Preparing <span>your love story</span>...</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent" style="display: none;">
+        <div class="video-container">
+            <!-- Hero Section -->
+            <div class="video-hero">
+                <span class="video-label">Love Story</span>
+                <h1 class="couple-name" id="coupleName">Rahel <span>&</span> Marcel</h1>
+                <div class="couple-location" id="coupleLocation">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Philadelphia Museum of Art, Pennsylvania</span>
+                </div>
+                <div class="location-divider"></div>
+            </div>
+        </div>
+
+        <!-- Full Width Video Section -->
+        <div class="video-section">
+            <div class="video-wrapper">
+                <div class="video-frame">
+                    <iframe 
+                        id="youtubeIframe"
+                        src="" 
+                        title="Wedding Film"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Video Meta -->
+            <div class="video-meta">
+                <div class="meta-item">
+                    <div class="meta-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="meta-label">Celebration Date</div>
+                    <div class="meta-value" id="eventDate">June 15, 2024</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="meta-label">Guest Count</div>
+                    <div class="meta-value" id="guestCount">180 Guests</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="meta-label">Film Duration</div>
+                    <div class="meta-value" id="filmDuration">3:45 min</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Section -->
+        <div class="navigation-section">
+            <a href="#" class="nav-btn prev" id="prevVideo">
+                <div class="nav-content">
+                    <span class="nav-direction">Previous Story</span>
+                    <span class="nav-couple" id="prevCouple">Elizabeth + William</span>
+                </div>
+                <div class="nav-arrow">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+            </a>
+
+            <a href="#" class="nav-btn next" id="nextVideo">
+                <div class="nav-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="nav-content" style="text-align: right;">
+                    <span class="nav-direction">Next Story</span>
+                    <span class="nav-couple" id="nextCouple">Victoria + Alexander</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="gallery-section">
+            <div class="divider"></div>
+            <a href="portfolio.html" class="gallery-btn">
+                <i class="fas fa-th"></i>
+                <span>Explore All Love Stories</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Portfolio data
+        const portfolioVideos = [
+            { id: 1, couple: "Rahel + Marcel", location: "Philadelphia Museum of Art, Pennsylvania", videoId: "VIDEO_ID_1", date: "June 15, 2024", guests: "180", duration: "3:45" },
+            { id: 2, couple: "Elizabeth + William", location: "The Union League, Philadelphia", videoId: "VIDEO_ID_2", date: "July 22, 2024", guests: "220", duration: "4:15" },
+            { id: 3, couple: "Victoria + Alexander", location: "Merion Golf Club, Pennsylvania", videoId: "VIDEO_ID_3", date: "September 10, 2024", guests: "150", duration: "3:30" },
+            { id: 4, couple: "Charlotte + James", location: "Bellevue Hotel, Philadelphia", videoId: "VIDEO_ID_4", date: "May 5, 2024", guests: "200", duration: "4:00" },
+            { id: 5, couple: "Catherine + Henry", location: "The Rittenhouse, Philadelphia", videoId: "VIDEO_ID_5", date: "August 18, 2024", guests: "190", duration: "3:50" },
+            { id: 6, couple: "Anne + Richard", location: "Union Trust, Philadelphia", videoId: "VIDEO_ID_6", date: "October 3, 2024", guests: "210", duration: "4:20" },
+            { id: 7, couple: "Sara + Hassan", location: "The Fillmore, Philadelphia", videoId: "VIDEO_ID_7", date: "April 12, 2024", guests: "250", duration: "4:30" },
+            { id: 8, couple: "Maya + David", location: "The Met, Philadelphia", videoId: "VIDEO_ID_8", date: "June 28, 2024", guests: "280", duration: "5:00" },
+            { id: 9, couple: "Zara + Michael", location: "The Logan, Philadelphia", videoId: "VIDEO_ID_9", date: "September 5, 2024", guests: "170", duration: "3:40" },
+            { id: 10, couple: "Nina + Christopher", location: "The Notary, Philadelphia", videoId: "VIDEO_ID_10", date: "May 20, 2024", guests: "160", duration: "3:35" },
+            { id: 11, couple: "Olivia + Daniel", location: "The Gables, Philadelphia", videoId: "VIDEO_ID_11", date: "July 8, 2024", guests: "190", duration: "4:10" },
+            { id: 12, couple: "Sophia + Matthew", location: "The Study, Philadelphia", videoId: "VIDEO_ID_12", date: "August 25, 2024", guests: "200", duration: "4:05" },
+            { id: 13, couple: "Kunal + Sayuri", location: "The Grand Belle, New York", videoId: "VIDEO_ID_13", date: "June 3, 2024", guests: "300", duration: "5:30" },
+            { id: 14, couple: "Priya + Raj", location: "The Palace at Somerset, New Jersey", videoId: "VIDEO_ID_14", date: "September 15, 2024", guests: "350", duration: "6:00" },
+            { id: 15, couple: "Aisha + Omar", location: "The Ritz-Carlton, Philadelphia", videoId: "VIDEO_ID_15", date: "October 20, 2024", guests: "220", duration: "4:45" },
+            { id: 16, couple: "Mei + Chen", location: "The Crystal Tea Room, Philadelphia", videoId: "VIDEO_ID_16", date: "April 28, 2024", guests: "180", duration: "4:00" },
+            { id: 17, couple: "Leah + Benjamin", location: "The William Penn, Philadelphia", videoId: "VIDEO_ID_17", date: "August 12, 2024", guests: "200", duration: "4:15" },
+            { id: 18, couple: "Fatima + Yusuf", location: "The Pearl, New York", videoId: "VIDEO_ID_18", date: "July 30, 2024", guests: "240", duration: "4:50" },
+            { id: 19, couple: "Emma + John", location: "The Garden House, Pennsylvania", videoId: "VIDEO_ID_19", date: "May 8, 2024", guests: "80", duration: "2:45" },
+            { id: 20, couple: "Grace + Thomas", location: "The Boathouse, Pennsylvania", videoId: "VIDEO_ID_20", date: "June 12, 2024", guests: "60", duration: "2:30" },
+            { id: 21, couple: "Hannah + Luke", location: "The Barn, Pennsylvania", videoId: "VIDEO_ID_21", date: "September 22, 2024", guests: "70", duration: "2:50" },
+            { id: 22, couple: "Isabella + Mark", location: "The Farmhouse, Pennsylvania", videoId: "VIDEO_ID_22", date: "July 5, 2024", guests: "50", duration: "2:15" },
+            { id: 23, couple: "Julia + Peter", location: "The Vineyard, Pennsylvania", videoId: "VIDEO_ID_23", date: "October 8, 2024", guests: "90", duration: "3:00" },
+            { id: 24, couple: "Kate + Andrew", location: "The Beach House, New Jersey", videoId: "VIDEO_ID_24", date: "August 30, 2024", guests: "100", duration: "3:15" }
+        ];
+
+        // Get video ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoId = urlParams.get('video') || 'VIDEO_ID_1';
+        
+        // Find current video index
+        let currentIndex = portfolioVideos.findIndex(v => v.videoId === videoId);
+        if (currentIndex === -1) currentIndex = 0;
+
+        // Elements
+        const loadingSection = document.getElementById('loadingSection');
+        const mainContent = document.getElementById('mainContent');
+        const coupleName = document.getElementById('coupleName');
+        const coupleLocation = document.getElementById('coupleLocation');
+        const youtubeIframe = document.getElementById('youtubeIframe');
+        const eventDate = document.getElementById('eventDate');
+        const guestCount = document.getElementById('guestCount');
+        const filmDuration = document.getElementById('filmDuration');
+        const prevBtn = document.getElementById('prevVideo');
+        const nextBtn = document.getElementById('nextVideo');
+        const prevCouple = document.getElementById('prevCouple');
+        const nextCouple = document.getElementById('nextCouple');
+
+        // YouTube video URLs (replace with actual YouTube video IDs)
+        const youtubeVideoIds = {
+            'VIDEO_ID_1': 'dQw4w9WgXcQ',
+            'VIDEO_ID_2': 'dQw4w9WgXcQ',
+            'VIDEO_ID_3': 'dQw4w9WgXcQ',
+            'VIDEO_ID_4': 'dQw4w9WgXcQ',
+            'VIDEO_ID_5': 'dQw4w9WgXcQ',
+            'VIDEO_ID_6': 'dQw4w9WgXcQ',
+            'VIDEO_ID_7': 'dQw4w9WgXcQ',
+            'VIDEO_ID_8': 'dQw4w9WgXcQ',
+            'VIDEO_ID_9': 'dQw4w9WgXcQ',
+            'VIDEO_ID_10': 'dQw4w9WgXcQ',
+            'VIDEO_ID_11': 'dQw4w9WgXcQ',
+            'VIDEO_ID_12': 'dQw4w9WgXcQ',
+            'VIDEO_ID_13': 'dQw4w9WgXcQ',
+            'VIDEO_ID_14': 'dQw4w9WgXcQ',
+            'VIDEO_ID_15': 'dQw4w9WgXcQ',
+            'VIDEO_ID_16': 'dQw4w9WgXcQ',
+            'VIDEO_ID_17': 'dQw4w9WgXcQ',
+            'VIDEO_ID_18': 'dQw4w9WgXcQ',
+            'VIDEO_ID_19': 'dQw4w9WgXcQ',
+            'VIDEO_ID_20': 'dQw4w9WgXcQ',
+            'VIDEO_ID_21': 'dQw4w9WgXcQ',
+            'VIDEO_ID_22': 'dQw4w9WgXcQ',
+            'VIDEO_ID_23': 'dQw4w9WgXcQ',
+            'VIDEO_ID_24': 'dQw4w9WgXcQ'
+        };
+
+        function loadVideo(index) {
+            const video = portfolioVideos[index];
+            const youtubeId = youtubeVideoIds[video.videoId] || 'dQw4w9WgXcQ';
+            
+            // Update content
+            const names = video.couple.split(' + ');
+            coupleName.innerHTML = `${names[0]} <span>&</span> ${names[1]}`;
+            coupleLocation.innerHTML = `<i class="fas fa-map-marker-alt"></i><span>${video.location}</span>`;
+            youtubeIframe.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1&showinfo=0`;
+            eventDate.textContent = video.date;
+            guestCount.textContent = video.guests + ' Guests';
+            filmDuration.textContent = video.duration + ' min';
+            
+            // Update navigation
+            updateNavigation(index);
+            
+            // Update URL
+            const newUrl = `${window.location.pathname}?video=${video.videoId}`;
+            window.history.pushState({}, '', newUrl);
+            
+            // Hide loading, show content
+            setTimeout(() => {
+                loadingSection.classList.remove('active');
+                mainContent.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 800);
+        }
+
+        function updateNavigation(index) {
+            // Previous button
+            if (index > 0) {
+                prevBtn.href = `video.html?video=${portfolioVideos[index - 1].videoId}`;
+                prevBtn.classList.remove('disabled');
+                const prevNames = portfolioVideos[index - 1].couple.split(' + ');
+                prevCouple.textContent = `${prevNames[0]} + ${prevNames[1]}`;
+            } else {
+                prevBtn.href = '#';
+                prevBtn.classList.add('disabled');
+                prevCouple.textContent = 'No previous';
+            }
+            
+            // Next button
+            if (index < portfolioVideos.length - 1) {
+                nextBtn.href = `video.html?video=${portfolioVideos[index + 1].videoId}`;
+                nextBtn.classList.remove('disabled');
+                const nextNames = portfolioVideos[index + 1].couple.split(' + ');
+                nextCouple.textContent = `${nextNames[0]} + ${nextNames[1]}`;
+            } else {
+                nextBtn.href = '#';
+                nextBtn.classList.add('disabled');
+                nextCouple.textContent = 'No next';
+            }
+        }
+
+        // Handle popstate
+        window.addEventListener('popstate', () => {
+            const newVideoId = new URLSearchParams(window.location.search).get('video');
+            const newIndex = portfolioVideos.findIndex(v => v.videoId === newVideoId);
+            if (newIndex !== -1) {
+                currentIndex = newIndex;
+                loadVideo(currentIndex);
+            }
+        });
+
+        // Load initial video
+        loadVideo(currentIndex);
+
+        // Click handlers
+        prevBtn.addEventListener('click', (e) => {
+            if (currentIndex > 0) {
+                e.preventDefault();
+                currentIndex--;
+                mainContent.style.display = 'none';
+                loadingSection.classList.add('active');
+                loadVideo(currentIndex);
+            }
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            if (currentIndex < portfolioVideos.length - 1) {
+                e.preventDefault();
+                currentIndex++;
+                mainContent.style.display = 'none';
+                loadingSection.classList.add('active');
+                loadVideo(currentIndex);
+            }
+        });
+    </script>
+</body>
+</html>
