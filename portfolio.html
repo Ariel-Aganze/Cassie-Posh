@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
@@ -32,16 +32,20 @@
                         'playfair': ['Playfair Display', 'serif'],
                         'poppins': ['Poppins', 'sans-serif'],
                     },
+                    animation: {
+                        'bounce-slow': 'bounce 2s infinite',
+                    }
                 }
             }
         }
     </script>
 
     <style>
-        .hover-underline-animation {
+        /* Only minimal custom CSS for animations that Tailwind doesn't cover */
+        .hover-underline-gold {
             position: relative;
         }
-        .hover-underline-animation::after {
+        .hover-underline-gold::after {
             content: '';
             position: absolute;
             width: 100%;
@@ -53,7 +57,7 @@
             transform-origin: bottom right;
             transition: transform 0.3s ease-out;
         }
-        .hover-underline-animation:hover::after {
+        .hover-underline-gold:hover::after {
             transform: scaleX(1);
             transform-origin: bottom left;
         }
@@ -62,243 +66,61 @@
             overflow: hidden;
         }
         
-        /* Modern card designs */
-        .portfolio-card {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            border-radius: 30px 30px 30px 30px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
-        }
-        
-        .portfolio-card:nth-child(2n) {
-            border-radius: 60px 30px 60px 30px;
-        }
-        
-        .portfolio-card:nth-child(3n) {
-            border-radius: 30px 60px 30px 60px;
-        }
-        
-        .portfolio-card:nth-child(4n) {
-            border-radius: 50px 20px 50px 20px;
-        }
-        
-        .portfolio-card:nth-child(5n) {
-            border-radius: 20px 50px 20px 50px;
-        }
-        
-        .portfolio-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px -10px rgba(212,175,55,0.3);
-        }
-        
-        .portfolio-card img {
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .portfolio-card:hover img {
-            transform: scale(1.1);
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, rgba(0,0,0,0.9) 0%, rgba(212,175,55,0.3) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 1.5rem;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        .portfolio-card:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        
-        /* Filter button styles */
-        .filter-btn {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            z-index: 1;
-        }
-        
-        .filter-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(212,175,55,0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-            z-index: -1;
-        }
-        
-        .filter-btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-        
-        .filter-btn.active {
-            background: linear-gradient(135deg, #D4AF37, #B5952F);
-            color: white;
-            border-color: #D4AF37;
-        }
-        
-        /* Mobile menu - dropdown style */
-        .mobile-menu {
-            position: fixed;
-            top: 80px;
-            left: 0;
-            width: 100%;
-            background: white;
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-top: 1px solid rgba(212,175,55,0.1);
-        }
-        
-        .mobile-menu.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .mobile-menu-items {
-            display: flex;
-            flex-direction: column;
-            padding: 1.5rem 2rem;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-        
-        .mobile-menu-items a {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: #1A1A1A;
-            text-decoration: none;
-            transition: color 0.2s;
-            padding: 0.75rem 0;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-        
-        .mobile-menu-items a:last-child {
-            border-bottom: none;
-        }
-        
-        .mobile-menu-items a:hover,
-        .mobile-menu-items a.active {
-            color: #D4AF37;
-        }
-        
-        /* Contact link in mobile menu - simple text (no button) */
-        .mobile-menu-items .contact-link-mobile {
-            color: #D4AF37 !important;
-            font-weight: 500;
-        }
-        
-        /* Desktop contact button - exactly like screenshot */
-        .desktop-contact-btn {
-            border: 1px solid #D4AF37;
-            color: #D4AF37 !important;
-            padding: 0.5rem 1.5rem;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
-        
-        .desktop-contact-btn:hover {
-            background: #D4AF37;
-            color: white !important;
-        }
-        
-        /* Active state - gold color only */
-        .nav-link.active {
-            color: #D4AF37 !important;
-            border-bottom: none !important;
-        }
-        
         /* Hamburger to X animation */
         .hamburger-active span:nth-child(1) {
             transform: rotate(45deg) translate(5px, 5px);
         }
-        
         .hamburger-active span:nth-child(2) {
             opacity: 0;
         }
-        
         .hamburger-active span:nth-child(3) {
             transform: rotate(-45deg) translate(7px, -6px);
         }
         
-        /* Stats cards */
-        .stat-card {
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            transition: all 0.5s ease;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(212,175,55,0.2);
-        }
-        
-        .stat-card:hover {
-            border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-            background: rgba(212,175,55,0.1);
-            border-color: #D4AF37;
-            transform: scale(1.05);
-        }
-        
-        .stat-card:nth-child(2) {
-            border-radius: 70% 30% 50% 50% / 40% 60% 40% 60%;
-        }
-        
-        .stat-card:nth-child(3) {
-            border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%;
-        }
-        
-        .stat-card:nth-child(4) {
-            border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
-        }
-        
-        /* Load more button */
-        .load-more-btn {
+        /* Gold line button style for load more */
+        .gold-line-btn {
             position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
-            z-index: 1;
+            display: inline-block;
+            color: #D4AF37;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding-bottom: 4px;
+            border-bottom: 1px solid transparent;
+            transition: color 0.3s ease;
         }
         
-        .load-more-btn::before {
+        .gold-line-btn::after {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-            z-index: -1;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #D4AF37;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
         }
         
-        .load-more-btn:hover::before {
-            width: 300px;
-            height: 300px;
+        .gold-line-btn:hover {
+            color: #B5952F;
         }
         
-        .load-more-btn:hover {
-            background: #D4AF37;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(212,175,55,0.3);
+        .gold-line-btn:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        /* Logo original color - no filter */
+        .logo-original {
+            filter: none;
+        }
+        
+        /* When navbar is white, logo keeps original color */
+        .navbar.white-bg .logo-original {
+            filter: none; /* Keeps original color */
         }
     </style>
 </head>
@@ -306,24 +128,25 @@
     <!-- Navigation -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6 lg:py-8 bg-transparent">
         <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
-            <!-- Logo -->
+            <!-- Logo - ORIGINAL COLOR (no filter, never changes) -->
             <a href="home.html">
-                <img src="images/Transparent Background-02.png" alt="Cassie Posh Events" class="h-10 md:h-12 lg:h-14 w-auto brightness-0 invert transition-all" id="navLogo">
+                <img src="images/Transparent Background-02.png" alt="Cassie Posh Events" class="h-10 md:h-12 lg:h-14 w-auto logo-original" id="navLogo">
             </a>
             
-            <!-- Desktop Menu - with contact button styled like screenshot -->
-            <div class="desktop-nav hidden lg:flex items-center gap-6 xl:gap-8">
-                <a href="home.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Home</a>
-                <a href="about.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">About</a>
-                <a href="services.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Services</a>
-                <a href="design&decor.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Design & Décor</a>
-                <a href="portfolio.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors active">Portfolio</a>
-                <!-- Contact button with border exactly like screenshot -->
-                <a href="contact.html" class="desktop-contact-btn text-white text-xs xl:text-sm uppercase tracking-widest">Contact Us</a>
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center gap-8 xl:gap-10">
+                <a href="home.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-gold">Home</a>
+                <a href="about.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-gold">About</a>
+                <a href="services.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-gold">Services</a>
+                <a href="design&decor.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-gold">Design & Décor</a>
+                <!-- Portfolio - ALWAYS GOLD (fixed class) -->
+                <a href="portfolio.html" class="nav-link text-posh-gold text-xs xl:text-sm uppercase tracking-widest">Portfolio</a>
+                <!-- Contact Us button - always gold border and text -->
+                <a href="contact.html" class="contact-btn border border-posh-gold text-posh-gold px-5 py-2 text-xs xl:text-sm uppercase tracking-widest hover:bg-posh-gold hover:text-white transition-all duration-300">Contact Us</a>
             </div>
 
-            <!-- Mobile Menu Button - Hamburger (transforms to X when open) -->
-            <button id="mobileMenuBtn" class="lg:hidden relative z-[1001] w-12 h-12 flex flex-col items-center justify-center gap-1.5">
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="lg:hidden relative z-[1001] w-8 h-8 flex flex-col items-center justify-center gap-1.5">
                 <span class="block w-6 h-0.5 bg-posh-gold transition-all duration-300"></span>
                 <span class="block w-6 h-0.5 bg-posh-gold transition-all duration-300"></span>
                 <span class="block w-6 h-0.5 bg-posh-gold transition-all duration-300"></span>
@@ -331,89 +154,72 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu - Dropdown Style (simple text links, no button) -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-items">
-            <a href="home.html">HOME</a>
-            <a href="about.html">ABOUT</a>
-            <a href="services.html">SERVICES</a>
-            <a href="design&decor.html">DESIGN & DÉCOR</a>
-            <a href="portfolio.html" class="active">PORTFOLIO</a>
-            <!-- Simple text link in mobile menu (no border) -->
-            <a href="contact.html" class="contact-link-mobile">CONTACT US</a>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed top-20 left-0 w-full bg-white z-40 opacity-0 invisible transition-all duration-300 shadow-lg border-t border-posh-gold/10">
+        <div class="flex flex-col px-6 py-4 max-w-7xl mx-auto">
+            <a href="home.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">Home</a>
+            <a href="about.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">About</a>
+            <a href="services.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">Services</a>
+            <a href="design&decor.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">Design & Décor</a>
+            <!-- Portfolio - ALWAYS GOLD in mobile menu -->
+            <a href="portfolio.html" class="text-posh-gold text-sm uppercase tracking-widest py-3 border-b border-black/5">Portfolio</a>
+            <a href="contact.html" class="text-posh-gold text-sm uppercase tracking-widest py-3">Contact Us</a>
         </div>
     </div>
 
-    <!-- Hero Section - FULL HEIGHT -->
-    <section class="relative h-screen w-full bg-fixed bg-cover bg-center flex items-center justify-center text-center" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+    <!-- Hero Section - with dreamstime_xxl_37462672.jpg background -->
+    <section class="relative h-screen w-full bg-fixed bg-cover bg-center flex items-center justify-center text-center" style="background-image: url('images/hero.jpg');">
         <!-- Gradient Overlay -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40"></div>
         
         <!-- Content -->
         <div class="relative z-10 px-4 max-w-4xl mx-auto">
-            <h1 class="font-playfair text-4xl md:text-6xl lg:text-7xl text-white font-medium mb-4 leading-tight">begins with your<br>story</h1>
-            <div class="w-16 h-0.5 bg-posh-gold mx-auto mb-6"></div>
+            <h1 class="font-playfair text-5xl md:text-7xl lg:text-8xl text-white font-medium mb-4 leading-tight">
+                Begins with your<br><span class="italic text-posh-gold">story</span>
+            </h1>
+            <div class="w-16 h-0.5 bg-posh-gold mx-auto mb-8"></div>
             <a href="#portfolio" class="inline-block text-white text-xs md:text-sm uppercase tracking-[0.2em] hover:text-posh-gold transition-colors border-b border-transparent hover:border-posh-gold pb-1">
                 EXPLORE OUR WEDDING & EVENT SERVICES
             </a>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce-slow">
+            <i class="fas fa-chevron-down text-2xl opacity-70"></i>
         </div>
     </section>
 
     <!-- Filter Section -->
     <section class="py-12 md:py-16 bg-posh-cream">
         <div class="container mx-auto px-4 md:px-6">
-            <div class="flex flex-wrap justify-center gap-2 md:gap-3">
-                <button class="filter-btn active px-5 md:px-6 py-2 md:py-3 text-xs md:text-sm uppercase tracking-wider bg-white border border-gray-200 text-posh-grey hover:border-posh-gold hover:text-posh-gold transition-all rounded-full" data-filter="all">All Weddings</button>
-                <button class="filter-btn px-5 md:px-6 py-2 md:py-3 text-xs md:text-sm uppercase tracking-wider bg-white border border-gray-200 text-posh-grey hover:border-posh-gold hover:text-posh-gold transition-all rounded-full" data-filter="classic">Classic Elegance</button>
-                <button class="filter-btn px-5 md:px-6 py-2 md:py-3 text-xs md:text-sm uppercase tracking-wider bg-white border border-gray-200 text-posh-grey hover:border-posh-gold hover:text-posh-gold transition-all rounded-full" data-filter="modern">Modern Luxury</button>
-                <button class="filter-btn px-5 md:px-6 py-2 md:py-3 text-xs md:text-sm uppercase tracking-wider bg-white border border-gray-200 text-posh-grey hover:border-posh-gold hover:text-posh-gold transition-all rounded-full" data-filter="cultural">Cultural</button>
-                <button class="filter-btn px-5 md:px-6 py-2 md:py-3 text-xs md:text-sm uppercase tracking-wider bg-white border border-gray-200 text-posh-grey hover:border-posh-gold hover:text-posh-gold transition-all rounded-full" data-filter="intimate">Intimate</button>
+            <div class="flex flex-wrap justify-center gap-2 md:gap-4">
+                <button class="filter-btn px-4 py-2 text-xs md:text-sm uppercase tracking-wider text-posh-grey hover:text-posh-gold transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-px after:bg-posh-gold after:transition-all after:duration-300 hover:after:w-6 data-[active=true]:text-posh-gold data-[active=true]:after:w-6" data-filter="all" data-active="true">All</button>
+                <button class="filter-btn px-4 py-2 text-xs md:text-sm uppercase tracking-wider text-posh-grey hover:text-posh-gold transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-px after:bg-posh-gold after:transition-all after:duration-300 hover:after:w-6" data-filter="floral">Floral</button>
+                <button class="filter-btn px-4 py-2 text-xs md:text-sm uppercase tracking-wider text-posh-grey hover:text-posh-gold transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-px after:bg-posh-gold after:transition-all after:duration-300 hover:after:w-6" data-filter="drapery">Drapery</button>
+                <button class="filter-btn px-4 py-2 text-xs md:text-sm uppercase tracking-wider text-posh-grey hover:text-posh-gold transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-px after:bg-posh-gold after:transition-all after:duration-300 hover:after:w-6" data-filter="lighting">Lighting</button>
+                <button class="filter-btn px-4 py-2 text-xs md:text-sm uppercase tracking-wider text-posh-grey hover:text-posh-gold transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-px after:bg-posh-gold after:transition-all after:duration-300 hover:after:w-6" data-filter="tablescape">Tablescape</button>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Grid Section -->
+    <!-- Portfolio Grid Section - 8 images only -->
     <section id="portfolio" class="pb-16 md:pb-20 lg:pb-24 bg-posh-cream">
         <div class="container mx-auto px-4 md:px-6">
-            <!-- Portfolio Grid -->
-            <div id="portfolioGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5 lg:gap-6"></div>
+            <!-- Portfolio Grid - smaller images -->
+            <div id="portfolioGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"></div>
             
-            <!-- Load More Button -->
-            <div class="text-center mt-10 md:mt-12 lg:mt-16">
-                <button id="loadMoreBtn" class="load-more-btn px-8 md:px-10 lg:px-12 py-3 md:py-4 border border-posh-gold bg-transparent text-posh-gold uppercase text-xs md:text-sm tracking-widest hover:bg-posh-gold hover:text-white transition-all font-medium rounded-full">
-                    Load More Stories
+            <!-- Load More Button - hidden since we only have 8 images -->
+            <div class="text-center mt-10 md:mt-12 lg:mt-16 hidden" id="loadMoreContainer">
+                <button id="loadMoreBtn" class="gold-line-btn">
+                    Load More
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="py-16 md:py-20 bg-posh-dark">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
-                <div class="stat-card text-center p-6 md:p-8 hover:bg-posh-gold/10 transition-all duration-500">
-                    <div class="text-posh-gold text-3xl md:text-4xl lg:text-5xl font-playfair mb-2 md:mb-3">500+</div>
-                    <div class="text-white/60 text-xs md:text-sm uppercase tracking-wider">Weddings Planned</div>
-                </div>
-                <div class="stat-card text-center p-6 md:p-8 hover:bg-posh-gold/10 transition-all duration-500">
-                    <div class="text-posh-gold text-3xl md:text-4xl lg:text-5xl font-playfair mb-2 md:mb-3">15+</div>
-                    <div class="text-white/60 text-xs md:text-sm uppercase tracking-wider">Years Experience</div>
-                </div>
-                <div class="stat-card text-center p-6 md:p-8 hover:bg-posh-gold/10 transition-all duration-500">
-                    <div class="text-posh-gold text-3xl md:text-4xl lg:text-5xl font-playfair mb-2 md:mb-3">200+</div>
-                    <div class="text-white/60 text-xs md:text-sm uppercase tracking-wider">Venues</div>
-                </div>
-                <div class="stat-card text-center p-6 md:p-8 hover:bg-posh-gold/10 transition-all duration-500">
-                    <div class="text-posh-gold text-3xl md:text-4xl lg:text-5xl font-playfair mb-2 md:mb-3">50+</div>
-                    <div class="text-white/60 text-xs md:text-sm uppercase tracking-wider">Destination Weddings</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer class="relative w-full bg-fixed bg-cover bg-center text-white" style="background-image: url('images/dreamstime_xxl_4495877.jpg')">
-        <div class="absolute inset-0 bg-black/80"></div>
+    <footer class="relative w-full bg-fixed bg-cover bg-center text-white" style="background-image: url('images/dreamstime_xxl_4495877.jpg');">
+        <div class="absolute inset-0 bg-black/85"></div>
         
         <div class="relative z-10 py-16 md:py-20">
             <div class="container mx-auto px-4 md:px-6">
@@ -447,9 +253,9 @@
                     <div class="text-center sm:text-left">
                         <h4 class="font-playfair text-lg md:text-xl mb-4 md:mb-6">Follow Us</h4>
                         <div class="flex gap-3 md:gap-4 justify-center sm:justify-start">
-                            <a href="#" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all text-sm md:text-base"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all text-sm md:text-base"><i class="fab fa-pinterest-p"></i></a>
-                            <a href="#" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all text-sm md:text-base"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="#" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
                         </div>
                     </div>
                 </div>
@@ -464,84 +270,75 @@
 
     <!-- Lightbox -->
     <div id="lightbox" class="fixed inset-0 bg-black/95 z-[1000] hidden justify-center items-center backdrop-blur-md">
-        <div class="lightbox-close absolute top-5 right-5 md:top-8 md:right-8 text-white text-2xl cursor-pointer w-10 h-10 md:w-12 md:h-12 border-2 border-posh-gold rounded-full flex items-center justify-center hover:bg-posh-gold transition-all z-10"><i class="fas fa-times"></i></div>
-        <div class="lightbox-nav prev absolute left-5 md:left-8 text-white text-2xl cursor-pointer w-10 h-10 md:w-12 md:h-12 border-2 border-posh-gold rounded-full flex items-center justify-center hover:bg-posh-gold transition-all"><i class="fas fa-chevron-left"></i></div>
-        <div class="lightbox-nav next absolute right-5 md:right-8 text-white text-2xl cursor-pointer w-10 h-10 md:w-12 md:h-12 border-2 border-posh-gold rounded-full flex items-center justify-center hover:bg-posh-gold transition-all"><i class="fas fa-chevron-right"></i></div>
-        <div class="lightbox-content max-w-[90%] max-h-[90vh] relative border-4 border-posh-gold" style="border-radius: 30px 30px 30px 30px;">
-            <img id="lightboxImg" src="" alt="" class="max-w-full max-h-[80vh] block" style="border-radius: 26px;">
-            <div class="lightbox-info absolute -bottom-16 left-0 right-0 text-center text-white">
-                <h3 id="lightboxTitle" class="text-posh-gold font-playfair text-lg md:text-xl"></h3>
-                <p id="lightboxLocation" class="text-xs md:text-sm"><i class="fas fa-map-marker-alt text-posh-gold mr-2"></i> <span></span></p>
+        <div class="absolute top-5 right-5 md:top-8 md:right-8 text-white text-2xl cursor-pointer w-10 h-10 md:w-12 md:h-12 border border-posh-gold rounded-full flex items-center justify-center hover:bg-posh-gold hover:text-white transition-all" id="lightboxClose"><i class="fas fa-times"></i></div>
+        <div class="absolute left-5 md:left-8 text-white text-2xl cursor-pointer w-10 h-10 md:w-12 md:h-12 border border-posh-gold rounded-full flex items-center justify-center hover:bg-posh-gold hover:text-white transition-all" id="lightboxPrev"><i class="fas fa-chevron-left"></i></div>
+        <div class="absolute right-5 md:right-8 text-white text-2xl cursor-pointer w-10 h-10 md:w-12 md:h-12 border border-posh-gold rounded-full flex items-center justify-center hover:bg-posh-gold hover:text-white transition-all" id="lightboxNext"><i class="fas fa-chevron-right"></i></div>
+        <div class="max-w-[90%] max-h-[90vh] relative">
+            <img id="lightboxImg" src="" alt="" class="max-w-full max-h-[80vh] block">
+            <div class="absolute -bottom-12 left-0 right-0 text-center text-white">
+                <h3 id="lightboxTitle" class="font-playfair text-xl text-posh-gold"></h3>
+                <p id="lightboxLocation" class="text-xs"><i class="fas fa-map-marker-alt text-posh-gold mr-2"></i> <span></span></p>
             </div>
         </div>
     </div>
 
     <script>
-        // Portfolio Data
+        // Portfolio Data - 8 images focused on decorations and flowers
         const portfolioItems = [
-            { id: 1, couple: "Rahel + Marcel", location: "Philadelphia Museum of Art (PA)", category: "classic", image: "images/Portfolio/2 (1).jpg", video: "VIDEO_ID_1" },
-            { id: 2, couple: "Elizabeth + William", location: "The Union League (PA)", category: "classic", image: "images/Portfolio/2 (2).jpg", video: "VIDEO_ID_2" },
-            { id: 3, couple: "Victoria + Alexander", location: "Merion Golf Club (PA)", category: "classic", image: "images/Portfolio/2 (3).jpg", video: "VIDEO_ID_3" },
-            { id: 4, couple: "Charlotte + James", location: "Bellevue Hotel (PA)", category: "classic", image: "images/Portfolio/2 (4).jpg", video: "VIDEO_ID_4" },
-            { id: 5, couple: "Catherine + Henry", location: "The Rittenhouse (PA)", category: "classic", image: "images/Portfolio/2 (5).jpg", video: "VIDEO_ID_5" },
-            { id: 6, couple: "Anne + Richard", location: "Union Trust (PA)", category: "classic", image: "images/Portfolio/2 (6).jpg", video: "VIDEO_ID_6" },
-            { id: 7, couple: "Sara + Hassan", location: "The Fillmore (PA)", category: "modern", image: "images/Portfolio/2 (7).jpg", video: "VIDEO_ID_7" },
-            { id: 8, couple: "Maya + David", location: "The Met (PA)", category: "modern", image: "images/Portfolio/2 (8).jpg", video: "VIDEO_ID_8" },
-            { id: 9, couple: "Zara + Michael", location: "The Logan (PA)", category: "modern", image: "images/Portfolio/2 (9).jpg", video: "VIDEO_ID_9" },
-            { id: 10, couple: "Nina + Christopher", location: "The Notary (PA)", category: "modern", image: "images/Portfolio/2 (10).jpg", video: "VIDEO_ID_10" },
-            { id: 11, couple: "Olivia + Daniel", location: "The Gables (PA)", category: "modern", image: "images/Portfolio/2 (11).jpg", video: "VIDEO_ID_11" },
-            { id: 12, couple: "Sophia + Matthew", location: "The Study (PA)", category: "modern", image: "images/Portfolio/2 (12).jpg", video: "VIDEO_ID_12" },
-            { id: 13, couple: "Kunal + Sayuri", location: "The Grand Belle (NY)", category: "cultural", image: "images/Portfolio/2 (13).jpg", video: "VIDEO_ID_13" },
-            { id: 14, couple: "Priya + Raj", location: "The Palace at Somerset (NJ)", category: "cultural", image: "images/Portfolio/2 (14).jpg", video: "VIDEO_ID_14" },
-            { id: 15, couple: "Aisha + Omar", location: "The Ritz-Carlton (PA)", category: "cultural", image: "images/Portfolio/2 (15).jpg", video: "VIDEO_ID_15" },
-            { id: 16, couple: "Mei + Chen", location: "The Crystal Tea Room (PA)", category: "cultural", image: "images/Portfolio/2 (16).jpg", video: "VIDEO_ID_16" },
-            { id: 17, couple: "Leah + Benjamin", location: "The William Penn (PA)", category: "cultural", image: "images/Portfolio/2 (17).jpg", video: "VIDEO_ID_17" },
-            { id: 18, couple: "Fatima + Yusuf", location: "The Pearl (NY)", category: "cultural", image: "images/Portfolio/2 (18).jpg", video: "VIDEO_ID_18" },
-            { id: 19, couple: "Emma + John", location: "The Garden House (PA)", category: "intimate", image: "images/Portfolio/2 (19).jpg", video: "VIDEO_ID_19" },
-            { id: 20, couple: "Grace + Thomas", location: "The Boathouse (PA)", category: "intimate", image: "images/Portfolio/2 (20).jpg", video: "VIDEO_ID_20" },
-            { id: 21, couple: "Hannah + Luke", location: "The Barn (PA)", category: "intimate", image: "images/Portfolio/2 (21).jpg", video: "VIDEO_ID_21" },
-            { id: 22, couple: "Isabella + Mark", location: "The Farmhouse (PA)", category: "intimate", image: "images/Portfolio/2 (22).jpg", video: "VIDEO_ID_22" },
-            { id: 23, couple: "Julia + Peter", location: "The Vineyard (PA)", category: "intimate", image: "images/Portfolio/2 (23).jpg", video: "VIDEO_ID_23" },
-            { id: 24, couple: "Kate + Andrew", location: "The Beach House (NJ)", category: "intimate", image: "images/Portfolio/2 (24).jpg", video: "VIDEO_ID_24" }
+            { id: 1, title: "Elegant Floral Arch", location: "Philadelphia", category: "floral", image: "images/Portfolio/2 (1).jpg" },
+            { id: 2, title: "Luxury Drapery", location: "Rittenhouse Square", category: "drapery", image: "images/Portfolio/2 (2).jpg" },
+            { id: 3, title: "Candlelit Tablescape", location: "The Union League", category: "drapery", image: "images/Portfolio/2 (3).jpg" },
+            { id: 4, title: "Chandelier Installation", location: "Bellevue Hotel", category: "tablescape", image: "images/Portfolio/2 (4).jpg" },
+            { id: 5, title: "Rose Centerpieces", location: "Merion Golf Club", category: "drapery", image: "images/Portfolio/2 (5).jpg" },
+            { id: 6, title: "Ceiling Drapery", location: "The Fillmore", category: "drapery", image: "images/Portfolio/2 (6).jpg" },
+            { id: 7, title: "Intimate Tablescape", location: "The Logan", category: "tablescape", image: "images/Portfolio/2 (7).jpg" },
+            { id: 8, title: "Garden Floral Design", location: "The Garden House", category: "floral", image: "images/Portfolio/2 (8).jpg" },
+            { id: 9, title: "Believe Floral Design", location: "The Believe House", category: "floral", image: "images/Portfolio/2 (9).jpg" },
+            { id: 10, title: "Lux Floral Design", location: "The luxurious House", category: "floral", image: "images/Portfolio/2 (10).jpg" },
+            { id: 11, title: "Light Modern", location: "House of the light", category: "lighting", image: "images/Portfolio/2 (11).jpg" },
+            { id: 12, title: "The light tour", location: "The Garden House", category: "lighting", image: "images/Portfolio/2 (12).jpg" }
         ];
 
-        let currentItems = 12;
         let currentFilter = 'all';
         let currentIndex = 0;
 
         // DOM Elements
         const navbar = document.getElementById('navbar');
-        const navLogo = document.getElementById('navLogo');
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         const body = document.body;
         const portfolioGrid = document.getElementById('portfolioGrid');
-        const loadMoreBtn = document.getElementById('loadMoreBtn');
         const filterBtns = document.querySelectorAll('.filter-btn');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const lightboxTitle = document.getElementById('lightboxTitle');
         const lightboxLocation = document.getElementById('lightboxLocation');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
 
         // Hamburger menu spans
         const hamburgerSpans = mobileMenuBtn?.querySelectorAll('span');
 
-        // Navigation Scroll Effect
+        // Navigation Scroll Effect - Logo keeps original color, Portfolio stays gold
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
+                // Scrolled state - white background
                 navbar.classList.add('bg-white', 'py-3', 'lg:py-4', 'shadow-md');
                 navbar.classList.remove('bg-transparent', 'py-6', 'lg:py-8');
-                navLogo.classList.remove('brightness-0', 'invert');
                 
-                document.querySelectorAll('.nav-link, .desktop-contact-btn').forEach(link => {
-                    if (link.classList.contains('desktop-contact-btn')) {
-                        link.classList.remove('text-white');
-                        link.classList.add('text-posh-dark', 'border-posh-gold');
-                    } else {
+                // Logo - NO CHANGE (keeps original color)
+                
+                // Change all nav links to dark EXCEPT Portfolio (which stays gold)
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    // Skip Portfolio - it has text-posh-gold class and should never change
+                    if (!link.classList.contains('text-posh-gold')) {
                         link.classList.remove('text-white');
                         link.classList.add('text-posh-dark');
                     }
                 });
+                
+                // Contact button - stays gold (already has text-posh-gold class)
                 
                 // Update hamburger color when scrolled
                 if (hamburgerSpans) {
@@ -549,19 +346,22 @@
                     hamburgerSpans.forEach(span => span.classList.add('bg-posh-dark'));
                 }
             } else {
+                // Top state - transparent background
                 navbar.classList.remove('bg-white', 'py-3', 'lg:py-4', 'shadow-md');
                 navbar.classList.add('bg-transparent', 'py-6', 'lg:py-8');
-                navLogo.classList.add('brightness-0', 'invert');
                 
-                document.querySelectorAll('.nav-link, .desktop-contact-btn').forEach(link => {
-                    if (link.classList.contains('desktop-contact-btn')) {
-                        link.classList.add('text-white', 'border-posh-gold');
-                        link.classList.remove('text-posh-dark');
-                    } else {
+                // Logo - NO CHANGE (keeps original color)
+                
+                // Reset all nav links to white (except Portfolio which stays gold)
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    // Skip Portfolio - it has text-posh-gold class and should stay gold
+                    if (!link.classList.contains('text-posh-gold')) {
                         link.classList.add('text-white');
                         link.classList.remove('text-posh-dark');
                     }
                 });
+                
+                // Contact button - stays gold (already has text-posh-gold class)
                 
                 // Reset hamburger color
                 if (hamburgerSpans) {
@@ -573,13 +373,15 @@
 
         // Mobile Menu Functions
         function openMobileMenu() {
-            mobileMenu.classList.add('active');
+            mobileMenu.classList.add('opacity-100', 'visible');
+            mobileMenu.classList.remove('opacity-0', 'invisible');
             mobileMenuBtn.classList.add('hamburger-active');
             body.classList.add('menu-open');
         }
 
         function closeMobileMenu() {
-            mobileMenu.classList.remove('active');
+            mobileMenu.classList.remove('opacity-100', 'visible');
+            mobileMenu.classList.add('opacity-0', 'invisible');
             mobileMenuBtn.classList.remove('hamburger-active');
             body.classList.remove('menu-open');
         }
@@ -587,7 +389,7 @@
         // Mobile Menu Event Listeners
         if (mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', () => {
-                if (mobileMenu.classList.contains('active')) {
+                if (mobileMenu.classList.contains('opacity-100')) {
                     closeMobileMenu();
                 } else {
                     openMobileMenu();
@@ -596,52 +398,47 @@
         }
 
         // Close mobile menu when clicking a link
-        document.querySelectorAll('.mobile-menu-items a').forEach(link => {
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
             link.addEventListener('click', closeMobileMenu);
         });
 
         // Close with escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('opacity-100')) {
                 closeMobileMenu();
             }
         });
 
         // Handle window resize
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 900 && mobileMenu.classList.contains('active')) {
+            if (window.innerWidth > 900 && mobileMenu.classList.contains('opacity-100')) {
                 closeMobileMenu();
             }
         });
 
-        // Render Portfolio
+        // Render Portfolio - 8 images only
         function renderPortfolio() {
             const filtered = currentFilter === 'all' 
                 ? portfolioItems 
                 : portfolioItems.filter(item => item.category === currentFilter);
             
-            const itemsToShow = filtered.slice(0, currentItems);
-            
             let html = '';
-            itemsToShow.forEach(item => {
+            filtered.forEach(item => {
                 html += `
-                    <div class="portfolio-card" data-category="${item.category}" data-id="${item.id}">
-                        <img src="${item.image}" alt="${item.couple} Wedding" class="w-full h-full object-cover" loading="lazy">
-                        <div class="portfolio-overlay">
-                            <h3 class="text-posh-gold font-playfair text-base md:text-lg lg:text-xl mb-1 md:mb-2">${item.couple}</h3>
-                            <p class="text-white text-xs md:text-sm mb-2 md:mb-3 flex items-center gap-2"><i class="fas fa-map-marker-alt text-posh-gold text-xs"></i> ${item.location}</p>
-                            <a href="video.html?video=${item.video}" class="view-btn inline-flex items-center gap-2 border border-posh-gold text-posh-gold px-3 md:px-4 py-1 md:py-2 text-xs uppercase tracking-wider w-fit hover:bg-posh-gold hover:text-white transition-all rounded-full" onclick="event.stopPropagation()">
-                                View Gallery <i class="fas fa-arrow-right text-xs"></i>
-                            </a>
+                    <div class="relative overflow-hidden aspect-square cursor-pointer bg-gray-100 group portfolio-card" data-category="${item.category}" data-id="${item.id}">
+                        <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 md:p-4">
+                            <h3 class="font-playfair text-white text-sm md:text-base mb-0.5">${item.title}</h3>
+                            <p class="text-white/70 text-xs mb-2">${item.location}</p>
+                            <button class="inline-flex items-center gap-1 text-posh-gold text-xs uppercase tracking-wider hover:text-posh-gold-dark transition-colors border-b border-transparent hover:border-posh-gold pb-0.5 w-fit view-details">
+                                View <i class="fas fa-arrow-right text-xs"></i>
+                            </button>
                         </div>
                     </div>
                 `;
             });
             
             portfolioGrid.innerHTML = html;
-            
-            // Hide load more if needed
-            loadMoreBtn.style.display = filtered.length <= currentItems ? 'none' : 'inline-block';
             
             // Add click events for lightbox
             document.querySelectorAll('.portfolio-card').forEach((item, index) => {
@@ -653,23 +450,19 @@
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 filterBtns.forEach(b => {
-                    b.classList.remove('active', 'bg-posh-gold', 'text-white', 'border-posh-gold');
-                    b.classList.add('bg-white', 'border-gray-200', 'text-posh-grey');
+                    b.classList.remove('text-posh-gold');
+                    b.removeAttribute('data-active');
                 });
-                btn.classList.add('active', 'bg-posh-gold', 'text-white', 'border-posh-gold');
-                btn.classList.remove('bg-white', 'border-gray-200', 'text-posh-grey');
+                btn.classList.add('text-posh-gold');
+                btn.setAttribute('data-active', 'true');
                 
                 currentFilter = btn.dataset.filter;
-                currentItems = 12;
                 renderPortfolio();
             });
         });
 
-        // Load More
-        loadMoreBtn.addEventListener('click', () => {
-            currentItems += 8;
-            renderPortfolio();
-        });
+        // Set initial active filter
+        document.querySelector('[data-filter="all"]')?.classList.add('text-posh-gold');
 
         // Lightbox
         function openLightbox(index) {
@@ -681,7 +474,7 @@
             const item = filtered[index];
             
             lightboxImg.src = item.image;
-            lightboxTitle.textContent = item.couple;
+            lightboxTitle.textContent = item.title;
             lightboxLocation.innerHTML = `<i class="fas fa-map-marker-alt text-posh-gold mr-2"></i> ${item.location}`;
             lightbox.classList.add('flex');
             lightbox.classList.remove('hidden');
@@ -689,40 +482,46 @@
         }
 
         // Close lightbox
-        document.querySelector('.lightbox-close').addEventListener('click', () => {
-            lightbox.classList.remove('flex');
-            lightbox.classList.add('hidden');
-            document.body.style.overflow = '';
-        });
+        if (lightboxClose) {
+            lightboxClose.addEventListener('click', () => {
+                lightbox.classList.remove('flex');
+                lightbox.classList.add('hidden');
+                document.body.style.overflow = '';
+            });
+        }
 
         // Lightbox navigation
-        document.querySelector('.lightbox-nav.prev').addEventListener('click', (e) => {
-            e.stopPropagation();
-            const filtered = currentFilter === 'all' 
-                ? portfolioItems 
-                : portfolioItems.filter(item => item.category === currentFilter);
-            
-            currentIndex = (currentIndex - 1 + filtered.length) % filtered.length;
-            const item = filtered[currentIndex];
-            
-            lightboxImg.src = item.image;
-            lightboxTitle.textContent = item.couple;
-            lightboxLocation.innerHTML = `<i class="fas fa-map-marker-alt text-posh-gold mr-2"></i> ${item.location}`;
-        });
+        if (lightboxPrev) {
+            lightboxPrev.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const filtered = currentFilter === 'all' 
+                    ? portfolioItems 
+                    : portfolioItems.filter(item => item.category === currentFilter);
+                
+                currentIndex = (currentIndex - 1 + filtered.length) % filtered.length;
+                const item = filtered[currentIndex];
+                
+                lightboxImg.src = item.image;
+                lightboxTitle.textContent = item.title;
+                lightboxLocation.innerHTML = `<i class="fas fa-map-marker-alt text-posh-gold mr-2"></i> ${item.location}`;
+            });
+        }
 
-        document.querySelector('.lightbox-nav.next').addEventListener('click', (e) => {
-            e.stopPropagation();
-            const filtered = currentFilter === 'all' 
-                ? portfolioItems 
-                : portfolioItems.filter(item => item.category === currentFilter);
-            
-            currentIndex = (currentIndex + 1) % filtered.length;
-            const item = filtered[currentIndex];
-            
-            lightboxImg.src = item.image;
-            lightboxTitle.textContent = item.couple;
-            lightboxLocation.innerHTML = `<i class="fas fa-map-marker-alt text-posh-gold mr-2"></i> ${item.location}`;
-        });
+        if (lightboxNext) {
+            lightboxNext.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const filtered = currentFilter === 'all' 
+                    ? portfolioItems 
+                    : portfolioItems.filter(item => item.category === currentFilter);
+                
+                currentIndex = (currentIndex + 1) % filtered.length;
+                const item = filtered[currentIndex];
+                
+                lightboxImg.src = item.image;
+                lightboxTitle.textContent = item.title;
+                lightboxLocation.innerHTML = `<i class="fas fa-map-marker-alt text-posh-gold mr-2"></i> ${item.location}`;
+            });
+        }
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
@@ -732,8 +531,12 @@
                     lightbox.classList.add('hidden');
                     document.body.style.overflow = '';
                 }
-                if (e.key === 'ArrowLeft') document.querySelector('.lightbox-nav.prev').click();
-                if (e.key === 'ArrowRight') document.querySelector('.lightbox-nav.next').click();
+                if (e.key === 'ArrowLeft' && lightboxPrev) {
+                    lightboxPrev.click();
+                }
+                if (e.key === 'ArrowRight' && lightboxNext) {
+                    lightboxNext.click();
+                }
             }
         });
 

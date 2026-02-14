@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Font Awesome 5 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
@@ -35,6 +35,7 @@
                     animation: {
                         'fadeIn': 'fadeIn 1s ease-in-out',
                         'float': 'float 6s ease-in-out infinite',
+                        'bounce-slow': 'bounce 2s infinite',
                     },
                     keyframes: {
                         fadeIn: {
@@ -52,7 +53,7 @@
     </script>
 
     <style>
-        /* Only minimal custom CSS for animations */
+        /* Only minimal custom CSS for animations that Tailwind doesn't cover */
         .hover-underline-animation {
             position: relative;
         }
@@ -79,19 +80,18 @@
         
         /* Hamburger to X animation */
         .hamburger-active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
+            transform: rotate(45deg) translate(5px, 5px);
         }
         .hamburger-active span:nth-child(2) {
             opacity: 0;
         }
         .hamburger-active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
+            transform: rotate(-45deg) translate(7px, -6px);
         }
         
-        /* Full height hero */
-        .hero-full {
-            height: 100vh;
-            min-height: 600px;
+        /* Logo original color - no filter */
+        .logo-original {
+            filter: none;
         }
     </style>
 </head>
@@ -99,20 +99,20 @@
     <!-- Navigation -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6 lg:py-8 bg-transparent">
         <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
-            <!-- Logo -->
+            <!-- Logo - ORIGINAL COLOR (no filter) -->
             <a href="home.html">
-                <img src="images/Transparent Background-02.png" alt="Cassie Posh Events" class="h-12 md:h-14 lg:h-16 w-auto brightness-0 invert transition-all" id="navLogo">
+                <img src="images/Transparent Background-02.png" alt="Cassie Posh Events" class="h-12 md:h-14 lg:h-16 w-auto logo-original" id="navLogo">
             </a>
             
             <!-- Desktop Menu -->
             <div class="hidden lg:flex items-center gap-6 xl:gap-8">
-                <a href="home.html" class="text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Home</a>
-                <a href="about.html" class="text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">About</a>
-                <a href="services.html" class="text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Services</a>
-                <a href="design&decor.html" class="text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Design & Décor</a>
-                <a href="portfolio.html" class="text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Portfolio</a>
-                <!-- Desktop contact button with border -->
-                <a href="contact.html" class="border-2 border-posh-gold text-posh-gold px-6 py-2 text-xs xl:text-sm uppercase tracking-widest hover:bg-posh-gold hover:text-white transition-all duration-300">Contact Us</a>
+                <a href="home.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Home</a>
+                <a href="about.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">About</a>
+                <a href="services.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Services</a>
+                <a href="design&decor.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Design & Décor</a>
+                <a href="portfolio.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Portfolio</a>
+                <!-- Desktop contact button with border - stays gold -->
+                <a href="contact.html" class="contact-btn border-2 border-posh-gold text-posh-gold px-6 py-2 text-xs xl:text-sm uppercase tracking-widest hover:bg-posh-gold hover:text-white transition-all duration-300">Contact Us</a>
             </div>
 
             <!-- Mobile Menu Button - Hamburger -->
@@ -136,23 +136,25 @@
         </div>
     </div>
 
-    <!-- Hero Section - Full Height -->
-    <section class="relative hero-full w-full bg-fixed bg-cover bg-center flex items-center justify-center text-center" style="background-image: url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+    <!-- Hero Section - Full Height with Playfair Display -->
+    <section class="relative h-screen w-full bg-fixed bg-cover bg-center flex items-center justify-center text-center" style="background-image: url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
         <!-- Gradient Overlay -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60"></div>
         
-        <!-- Content -->
+        <!-- Content - Playfair Display for hero text -->
         <div class="relative z-10 px-4 max-w-4xl mx-auto animate-fadeIn">
             <span class="text-posh-gold uppercase tracking-[0.3em] text-xs md:text-sm font-semibold mb-4 block animate-float">Begin Your Journey</span>
-            <h1 class="font-playfair text-4xl md:text-6xl lg:text-7xl text-white font-medium mb-6 leading-tight">Ready to Begin<br>Your Posh Tale?</h1>
+            <h1 class="font-playfair text-5xl md:text-7xl lg:text-8xl text-white font-medium mb-6 leading-tight">
+                Ready to Begin<br>Your <span class="italic text-posh-gold">Posh Tale?</span>
+            </h1>
             <div class="w-20 h-0.5 bg-posh-gold mx-auto mb-8"></div>
-            <p class="text-white/90 max-w-2xl mx-auto text-base md:text-lg lg:text-xl font-light leading-relaxed">
-                Let's create something unforgettable together. Whether intimate or grand, we are here to bring your vision to life with elegance, creativity, and care.
+            <p class="font-playfair text-white/90 max-w-3xl mx-auto text-lg md:text-xl lg:text-2xl font-light leading-relaxed">
+                Let's create something unforgettable together. Whether intimate or grand, we are here to bring your vision to life with <span class="italic text-posh-gold">elegance, creativity, and care.</span>
             </p>
         </div>
         
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce-slow">
             <i class="fas fa-chevron-down text-2xl opacity-70"></i>
         </div>
     </section>
@@ -205,7 +207,7 @@
                     </div>
                 </div>
                 
-                <!-- Right Quote Card - Clean Design -->
+                <!-- Right Quote Card - Playfair Display for designer quote -->
                 <div class="relative bg-white p-10 shadow-xl rounded-lg border border-posh-gold/10">
                     <div class="absolute top-4 left-6 text-6xl text-posh-gold/20 font-playfair">"</div>
                     <div class="relative z-10">
@@ -349,10 +351,10 @@
                     </div>
                 </div>
 
-                <!-- Submit Button -->
+                <!-- Submit Button - Rectangle with sharp corners -->
                 <div class="pt-6">
                     <button type="submit" id="submitBtn" 
-                            class="w-full md:w-auto px-10 py-4 bg-posh-gold text-white text-sm uppercase tracking-[0.2em] font-medium hover:bg-posh-gold-dark transition-all duration-300 rounded-md mx-auto block">
+                            class="w-full md:w-auto px-12 py-4 bg-posh-gold text-white text-sm uppercase tracking-[0.2em] font-medium hover:bg-posh-gold-dark transition-all duration-300 mx-auto block border-0">
                         Send Inquiry
                     </button>
                     <p class="text-center text-posh-grey text-xs mt-4">* Required fields. We respect your privacy and will never share your information.</p>
@@ -397,8 +399,8 @@
                     <div class="text-center sm:text-left">
                         <h4 class="font-playfair text-lg md:text-xl mb-4 md:mb-6">Follow Us</h4>
                         <div class="flex gap-3 md:gap-4 justify-center sm:justify-start">
-                            <a href="#" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
                         </div>
                     </div>
                 </div>
@@ -422,22 +424,28 @@
         // Hamburger spans
         const hamburgerSpans = mobileMenuBtn?.querySelectorAll('span');
 
-        // Navigation Scroll Effect
+        // Navigation Scroll Effect - Logo keeps original color
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
+                // Scrolled state - white background, dark text
                 navbar.classList.add('bg-white', 'py-3', 'lg:py-4', 'shadow-lg');
                 navbar.classList.remove('bg-transparent', 'py-6', 'lg:py-8');
+                
+                // Logo - NO FILTER (keeps original color)
                 navLogo.classList.remove('brightness-0', 'invert');
                 
-                document.querySelectorAll('.nav-link, .desktop-contact-btn').forEach(link => {
-                    if (link.classList.contains('desktop-contact-btn')) {
-                        link.classList.remove('text-white', 'border-posh-gold');
-                        link.classList.add('text-posh-dark', 'border-posh-gold');
-                    } else {
-                        link.classList.remove('text-white');
-                        link.classList.add('text-posh-dark');
-                    }
+                // Change all nav links to dark
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-posh-dark');
                 });
+                
+                // Contact button - stays gold with gold border
+                const contactBtn = document.querySelector('.contact-btn');
+                if (contactBtn) {
+                    contactBtn.classList.remove('text-white', 'border-white');
+                    contactBtn.classList.add('text-posh-gold', 'border-posh-gold');
+                }
                 
                 // Update hamburger color when scrolled
                 if (hamburgerSpans) {
@@ -445,19 +453,25 @@
                     hamburgerSpans.forEach(span => span.classList.add('bg-posh-dark'));
                 }
             } else {
+                // Top state - transparent background, white text
                 navbar.classList.remove('bg-white', 'py-3', 'lg:py-4', 'shadow-lg');
                 navbar.classList.add('bg-transparent', 'py-6', 'lg:py-8');
-                navLogo.classList.add('brightness-0', 'invert');
                 
-                document.querySelectorAll('.nav-link, .desktop-contact-btn').forEach(link => {
-                    if (link.classList.contains('desktop-contact-btn')) {
-                        link.classList.add('text-white', 'border-posh-gold');
-                        link.classList.remove('text-posh-dark');
-                    } else {
-                        link.classList.add('text-white');
-                        link.classList.remove('text-posh-dark');
-                    }
+                // Logo - NO FILTER (keeps original color at top too)
+                navLogo.classList.remove('brightness-0', 'invert');
+                
+                // Reset all nav links to white
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.add('text-white');
+                    link.classList.remove('text-posh-dark');
                 });
+                
+                // Contact button - gold on transparent
+                const contactBtn = document.querySelector('.contact-btn');
+                if (contactBtn) {
+                    contactBtn.classList.add('text-posh-gold', 'border-posh-gold');
+                    contactBtn.classList.remove('text-posh-dark', 'border-posh-dark');
+                }
                 
                 // Reset hamburger color
                 if (hamburgerSpans) {
