@@ -117,11 +117,6 @@
         .logo-original {
             filter: none;
         }
-        
-        /* When navbar is white, logo keeps original color */
-        .navbar.white-bg .logo-original {
-            filter: none; /* Keeps original color */
-        }
     </style>
 </head>
 <body class="font-poppins bg-posh-cream overflow-x-hidden">
@@ -134,7 +129,7 @@
             </a>
             
             <!-- Desktop Menu -->
-            <div class="hidden lg:flex items-center gap-8 xl:gap-10">
+            <div class="desktop-nav hidden lg:flex items-center gap-8 xl:gap-10">
                 <a href="home.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-gold">Home</a>
                 <a href="about.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-gold">About</a>
                 <a href="services.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-gold">Services</a>
@@ -152,20 +147,17 @@
                 <span class="block w-6 h-0.5 bg-posh-gold transition-all duration-300"></span>
             </button>
         </div>
-    </nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed top-20 left-0 w-full bg-white z-40 opacity-0 invisible transition-all duration-300 shadow-lg border-t border-posh-gold/10">
-        <div class="flex flex-col px-6 py-4 max-w-7xl mx-auto">
-            <a href="home.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">Home</a>
-            <a href="about.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">About</a>
-            <a href="services.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">Services</a>
-            <a href="design&decor.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">Design & Décor</a>
-            <!-- Portfolio - ALWAYS GOLD in mobile menu -->
-            <a href="portfolio.html" class="text-posh-gold text-sm uppercase tracking-widest py-3 border-b border-black/5">Portfolio</a>
-            <a href="contact.html" class="text-posh-gold text-sm uppercase tracking-widest py-3">Contact Us</a>
+        <!-- Mobile Menu Overlay - Exactly like the example -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-lg py-6 flex flex-col items-center space-y-6 lg:hidden">
+            <a href="home.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Home</a>
+            <a href="about.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">About</a>
+            <a href="services.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Services</a>
+            <a href="design&decor.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Design & Décor</a>
+            <a href="portfolio.html" class="text-posh-dark text-sm uppercase tracking-widest text-posh-gold font-medium">Portfolio</a>
+            <a href="contact.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Contact Us</a>
         </div>
-    </div>
+    </nav>
 
     <!-- Hero Section - with dreamstime_xxl_37462672.jpg background -->
     <section class="relative h-screen w-full bg-fixed bg-cover bg-center flex items-center justify-center text-center" style="background-image: url('images/hero.jpg');">
@@ -202,13 +194,13 @@
         </div>
     </section>
 
-    <!-- Portfolio Grid Section - 8 images only -->
+    <!-- Portfolio Grid Section - 12 images -->
     <section id="portfolio" class="pb-16 md:pb-20 lg:pb-24 bg-posh-cream">
         <div class="container mx-auto px-4 md:px-6">
             <!-- Portfolio Grid - smaller images -->
             <div id="portfolioGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"></div>
             
-            <!-- Load More Button - hidden since we only have 8 images -->
+            <!-- Load More Button - hidden since we only have 12 images -->
             <div class="text-center mt-10 md:mt-12 lg:mt-16 hidden" id="loadMoreContainer">
                 <button id="loadMoreBtn" class="gold-line-btn">
                     Load More
@@ -253,9 +245,8 @@
                     <div class="text-center sm:text-left">
                         <h4 class="font-playfair text-lg md:text-xl mb-4 md:mb-6">Follow Us</h4>
                         <div class="flex gap-3 md:gap-4 justify-center sm:justify-start">
-                            <a href="#" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-pinterest-p"></i></a>
-                            <a href="#" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/cassie_poshevents/" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/CassiePoshEvent/" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
                         </div>
                     </div>
                 </div>
@@ -283,7 +274,7 @@
     </div>
 
     <script>
-        // Portfolio Data - 8 images focused on decorations and flowers
+        // Portfolio Data - 12 images focused on decorations and flowers
         const portfolioItems = [
             { id: 1, title: "Elegant Floral Arch", location: "Philadelphia", category: "floral", image: "images/Portfolio/2 (1).jpg" },
             { id: 2, title: "Luxury Drapery", location: "Rittenhouse Square", category: "drapery", image: "images/Portfolio/2 (2).jpg" },
@@ -293,10 +284,10 @@
             { id: 6, title: "Ceiling Drapery", location: "The Fillmore", category: "drapery", image: "images/Portfolio/2 (6).jpg" },
             { id: 7, title: "Intimate Tablescape", location: "The Logan", category: "tablescape", image: "images/Portfolio/2 (7).jpg" },
             { id: 8, title: "Garden Floral Design", location: "The Garden House", category: "floral", image: "images/Portfolio/2 (8).jpg" },
-            { id: 9, title: "Believe Floral Design", location: "The Believe House", category: "floral", image: "images/Portfolio/2 (9).jpg" },
-            { id: 10, title: "Lux Floral Design", location: "The luxurious House", category: "floral", image: "images/Portfolio/2 (10).jpg" },
-            { id: 11, title: "Light Modern", location: "House of the light", category: "lighting", image: "images/Portfolio/2 (11).jpg" },
-            { id: 12, title: "The light tour", location: "The Garden House", category: "lighting", image: "images/Portfolio/2 (12).jpg" }
+            { id: 9, title: "Believe Floral Design", location: "The Believe House", category: "lighting", image: "images/Portfolio/2 (9).png" },
+            { id: 10, title: "Lux Floral Design", location: "The luxurious House", category: "floral", image: "images/Portfolio/2 (10).png" },
+            { id: 11, title: "Light Modern", location: "House of the light", category: "drapery", image: "images/Portfolio/2 (11).png" },
+            { id: 12, title: "The light tour", location: "The Garden House", category: "tablescape", image: "images/Portfolio/2 (12).png" }
         ];
 
         let currentFilter = 'all';
@@ -305,7 +296,7 @@
         // DOM Elements
         const navbar = document.getElementById('navbar');
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenu = document.getElementById('mobile-menu');
         const body = document.body;
         const portfolioGrid = document.getElementById('portfolioGrid');
         const filterBtns = document.querySelectorAll('.filter-btn');
@@ -320,7 +311,7 @@
         // Hamburger menu spans
         const hamburgerSpans = mobileMenuBtn?.querySelectorAll('span');
 
-        // Navigation Scroll Effect - Logo keeps original color, Portfolio stays gold
+        // Navigation Scroll Effect - Home, About, Services, Design & Décor turn black on scroll
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
                 // Scrolled state - white background
@@ -329,16 +320,23 @@
                 
                 // Logo - NO CHANGE (keeps original color)
                 
-                // Change all nav links to dark EXCEPT Portfolio (which stays gold)
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    // Skip Portfolio - it has text-posh-gold class and should never change
-                    if (!link.classList.contains('text-posh-gold')) {
+                // Change desktop nav links: Home, About, Services, Design & Décor to dark
+                document.querySelectorAll('.desktop-nav .nav-link').forEach(link => {
+                    const linkText = link.textContent.trim();
+                    // Home, About, Services, Design & Décor turn black
+                    if (linkText === 'Home' || linkText === 'About' || linkText === 'Services' || linkText === 'Design & Décor') {
                         link.classList.remove('text-white');
                         link.classList.add('text-posh-dark');
                     }
+                    // Portfolio stays gold (already has text-posh-gold class)
                 });
                 
-                // Contact button - stays gold (already has text-posh-gold class)
+                // Contact button - stays gold
+                const contactBtn = document.querySelector('.contact-btn');
+                if (contactBtn) {
+                    contactBtn.classList.remove('text-white');
+                    contactBtn.classList.add('text-posh-gold', 'border-posh-gold');
+                }
                 
                 // Update hamburger color when scrolled
                 if (hamburgerSpans) {
@@ -352,16 +350,22 @@
                 
                 // Logo - NO CHANGE (keeps original color)
                 
-                // Reset all nav links to white (except Portfolio which stays gold)
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    // Skip Portfolio - it has text-posh-gold class and should stay gold
-                    if (!link.classList.contains('text-posh-gold')) {
+                // Reset desktop nav links: Home, About, Services, Design & Décor back to white
+                document.querySelectorAll('.desktop-nav .nav-link').forEach(link => {
+                    const linkText = link.textContent.trim();
+                    // Home, About, Services, Design & Décor back to white
+                    if (linkText === 'Home' || linkText === 'About' || linkText === 'Services' || linkText === 'Design & Décor') {
                         link.classList.add('text-white');
                         link.classList.remove('text-posh-dark');
                     }
+                    // Portfolio stays gold (already has text-posh-gold class)
                 });
                 
-                // Contact button - stays gold (already has text-posh-gold class)
+                // Contact button - stays gold
+                const contactBtn = document.querySelector('.contact-btn');
+                if (contactBtn) {
+                    contactBtn.classList.add('text-posh-gold', 'border-posh-gold');
+                }
                 
                 // Reset hamburger color
                 if (hamburgerSpans) {
@@ -373,15 +377,13 @@
 
         // Mobile Menu Functions
         function openMobileMenu() {
-            mobileMenu.classList.add('opacity-100', 'visible');
-            mobileMenu.classList.remove('opacity-0', 'invisible');
+            mobileMenu.classList.remove('hidden');
             mobileMenuBtn.classList.add('hamburger-active');
             body.classList.add('menu-open');
         }
 
         function closeMobileMenu() {
-            mobileMenu.classList.remove('opacity-100', 'visible');
-            mobileMenu.classList.add('opacity-0', 'invisible');
+            mobileMenu.classList.add('hidden');
             mobileMenuBtn.classList.remove('hamburger-active');
             body.classList.remove('menu-open');
         }
@@ -389,7 +391,7 @@
         // Mobile Menu Event Listeners
         if (mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', () => {
-                if (mobileMenu.classList.contains('opacity-100')) {
+                if (!mobileMenu.classList.contains('hidden')) {
                     closeMobileMenu();
                 } else {
                     openMobileMenu();
@@ -398,25 +400,25 @@
         }
 
         // Close mobile menu when clicking a link
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', closeMobileMenu);
         });
 
         // Close with escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('opacity-100')) {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
                 closeMobileMenu();
             }
         });
 
         // Handle window resize
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 900 && mobileMenu.classList.contains('opacity-100')) {
+            if (window.innerWidth > 900 && !mobileMenu.classList.contains('hidden')) {
                 closeMobileMenu();
             }
         });
 
-        // Render Portfolio - 8 images only
+        // Render Portfolio
         function renderPortfolio() {
             const filtered = currentFilter === 'all' 
                 ? portfolioItems 

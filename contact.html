@@ -122,19 +122,17 @@
                 <span class="block w-6 h-0.5 bg-posh-gold transition-all duration-300"></span>
             </button>
         </div>
-    </nav>
 
-    <!-- Mobile Menu - Dropdown Style -->
-    <div id="mobileMenu" class="fixed top-20 left-0 w-full bg-white z-40 opacity-0 invisible transition-all duration-300 shadow-lg border-t border-posh-gold/10">
-        <div class="flex flex-col px-6 py-4 max-w-7xl mx-auto">
-            <a href="home.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">Home</a>
-            <a href="about.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">About</a>
-            <a href="services.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">Services</a>
-            <a href="design&decor.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">Design & Décor</a>
-            <a href="portfolio.html" class="text-posh-dark text-sm uppercase tracking-widest py-3 border-b border-black/5 hover:text-posh-gold transition-colors">Portfolio</a>
-            <a href="contact.html" class="text-posh-gold text-sm uppercase tracking-widest py-3">Contact Us</a>
+        <!-- Mobile Menu Overlay - Exactly like the example with About in gold -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-lg py-6 flex flex-col items-center space-y-6 lg:hidden">
+            <a href="home.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Home</a>
+            <a href="about.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">About</a>
+            <a href="services.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Services</a>
+            <a href="design&decor.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Design & Décor</a>
+            <a href="portfolio.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Portfolio</a>
+            <a href="contact.html" class="text-posh-dark text-sm uppercase tracking-widest text-posh-gold font-medium">Contact Us</a>
         </div>
-    </div>
+    </nav>
 
     <!-- Hero Section - Full Height with Playfair Display -->
     <section class="relative h-screen w-full bg-fixed bg-cover bg-center flex items-center justify-center text-center" style="background-image: url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
@@ -198,10 +196,10 @@
                     
                     <!-- Social Links -->
                     <div class="flex gap-4 mt-8 justify-center md:justify-start">
-                        <a href="#" class="w-12 h-12 rounded-full border border-posh-gold/30 flex items-center justify-center text-posh-gold hover:bg-posh-gold hover:text-white transition-all duration-300">
+                        <a href="https://www.instagram.com/cassie_poshevents/" class="w-12 h-12 rounded-full border border-posh-gold/30 flex items-center justify-center text-posh-gold hover:bg-posh-gold hover:text-white transition-all duration-300">
                             <i class="fab fa-instagram text-lg"></i>
                         </a>
-                        <a href="#" class="w-12 h-12 rounded-full border border-posh-gold/30 flex items-center justify-center text-posh-gold hover:bg-posh-gold hover:text-white transition-all duration-300">
+                        <a href="https://www.facebook.com/CassiePoshEvent/ " class="w-12 h-12 rounded-full border border-posh-gold/30 flex items-center justify-center text-posh-gold hover:bg-posh-gold hover:text-white transition-all duration-300">
                             <i class="fab fa-facebook-f text-lg"></i>
                         </a>
                     </div>
@@ -223,9 +221,9 @@
         </div>
     </section>
 
-    <!-- Form Section - Professional & Clean -->
+    <!-- Form Section - Simplified with only requested fields -->
     <section class="py-20 bg-white">
-        <div class="container mx-auto px-4 md:px-6 max-w-4xl">
+        <div class="container mx-auto px-4 md:px-6 max-w-3xl">
             <!-- Section Header -->
             <div class="text-center mb-12">
                 <span class="text-posh-gold uppercase tracking-[0.2em] text-xs font-semibold mb-3 block">Send Your Inquiry</span>
@@ -234,9 +232,9 @@
                 <p class="text-posh-grey text-base max-w-2xl mx-auto">Please complete the form below and our team will reach out within 24-48 hours.</p>
             </div>
 
-            <!-- Professional Form -->
+            <!-- Simplified Form -->
             <form action="https://formspree.io/f/xqedpjkw" method="POST" id="contactForm" class="space-y-6">
-                <!-- Name Row -->
+                <!-- First Name & Last Name Row -->
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-posh-dark text-sm font-medium mb-2">First Name <span class="text-posh-gold">*</span></label>
@@ -250,105 +248,47 @@
                     </div>
                 </div>
 
-                <!-- Role -->
-                <div>
-                    <label class="block text-posh-dark text-sm font-medium mb-2">Your Role <span class="text-posh-gold">*</span></label>
-                    <input type="text" name="role" required placeholder="e.g., Bride, Groom, Mother of the Bride" 
-                           class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md">
-                </div>
-
-                <!-- Partner's Name -->
-                <div>
-                    <label class="block text-posh-dark text-sm font-medium mb-2">Who Are You Marrying?</label>
-                    <input type="text" name="partner_name" placeholder="First name + Last name" 
-                           class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md">
-                </div>
-
-                <!-- Contact Info Row -->
+                <!-- Phone & Email Row -->
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-posh-dark text-sm font-medium mb-2">Email <span class="text-posh-gold">*</span></label>
-                        <input type="email" name="email" required placeholder="your.email@example.com" 
-                               class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md">
-                    </div>
-                    <div>
-                        <label class="block text-posh-dark text-sm font-medium mb-2">Phone <span class="text-posh-gold">*</span></label>
+                        <label class="block text-posh-dark text-sm font-medium mb-2">Phone Number <span class="text-posh-gold">*</span></label>
                         <input type="tel" name="phone" required placeholder="+1 (123) 456-7890" 
                                class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md">
                     </div>
+                    <div>
+                        <label class="block text-posh-dark text-sm font-medium mb-2">Email Address <span class="text-posh-gold">*</span></label>
+                        <input type="email" name="email" required placeholder="your.email@example.com" 
+                               class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md">
+                    </div>
                 </div>
 
-                <!-- Service Selection -->
-                <div>
-                    <label class="block text-posh-dark text-sm font-medium mb-2">Service Interest <span class="text-posh-gold">*</span></label>
-                    <select name="service" required 
-                            class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md appearance-none">
-                        <option value="" disabled selected>-- Select Service --</option>
-                        <option>Wedding Planning</option>
-                        <option>Event Planning</option>
-                        <option>Floral & Decor Service</option>
-                        <option>Full Wedding Package</option>
-                        <option>Other</option>
-                    </select>
-                    <p class="text-xs text-posh-gold mt-2 italic">For Floral or Decor ONLY inquiries, please visit www.eleganteventsflorist.com</p>
-                </div>
-
-                <!-- Event Details Row -->
+                <!-- Event Type & Date Row -->
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-posh-dark text-sm font-medium mb-2">Event Date</label>
+                        <label class="block text-posh-dark text-sm font-medium mb-2">Event Type <span class="text-posh-gold">*</span></label>
+                        <select name="event_type" required 
+                                class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md appearance-none">
+                            <option value="" disabled selected>Select event type</option>
+                            <option>Wedding</option>
+                            <option>Corporate Event</option>
+                            <option>Birthday Party</option>
+                            <option>Baby Shower</option>
+                            <option>Anniversary</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-posh-dark text-sm font-medium mb-2">Date</label>
                         <input type="date" name="event_date" 
                                class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md">
                     </div>
-                    <div>
-                        <label class="block text-posh-dark text-sm font-medium mb-2">Guest Count <span class="text-posh-gold">*</span></label>
-                        <input type="number" name="guest_count" required min="1" placeholder="Number of guests" 
-                               class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md">
-                    </div>
                 </div>
 
-                <!-- Venue -->
+                <!-- Number of Guests -->
                 <div>
-                    <label class="block text-posh-dark text-sm font-medium mb-2">Venue or Location</label>
-                    <input type="text" name="venue" placeholder="Where will your celebration take place?" 
+                    <label class="block text-posh-dark text-sm font-medium mb-2">Number of Guests <span class="text-posh-gold">*</span></label>
+                    <input type="number" name="guest_count" required min="1" placeholder="How many guests?" 
                            class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md">
-                </div>
-
-                <!-- Referral -->
-                <div>
-                    <label class="block text-posh-dark text-sm font-medium mb-2">How Did You Hear About Us? <span class="text-posh-gold">*</span></label>
-                    <select name="referral" required 
-                            class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md appearance-none">
-                        <option value="" disabled selected>-- Select --</option>
-                        <option>Instagram</option>
-                        <option>Facebook</option>
-                        <option>Google</option>
-                        <option>Friend / Family</option>
-                        <option>Wedding Planner</option>
-                        <option>Other</option>
-                    </select>
-                </div>
-
-                <!-- Message -->
-                <div>
-                    <label class="block text-posh-dark text-sm font-medium mb-2">Tell Us About Your Celebration! <span class="text-posh-gold">*</span></label>
-                    <textarea name="message" required placeholder="Please provide details..." rows="5"
-                              class="w-full px-4 py-3 bg-posh-cream border border-posh-gold/20 focus:border-posh-gold focus:ring-1 focus:ring-posh-gold outline-none transition-all rounded-md resize-none"></textarea>
-                </div>
-
-                <!-- SMS Consent -->
-                <div>
-                    <label class="block text-posh-dark text-sm font-medium mb-3">Communication Preference <span class="text-posh-gold">*</span></label>
-                    <div class="space-y-3">
-                        <label class="flex items-center gap-3 cursor-pointer">
-                            <input type="radio" name="sms_consent" value="Yes" required class="w-4 h-4 accent-posh-gold">
-                            <span class="text-posh-grey hover:text-posh-gold transition-colors">I agree to receive text messages</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer">
-                            <input type="radio" name="sms_consent" value="No" class="w-4 h-4 accent-posh-gold">
-                            <span class="text-posh-grey hover:text-posh-gold transition-colors">I prefer email only</span>
-                        </label>
-                    </div>
                 </div>
 
                 <!-- Submit Button - Rectangle with sharp corners -->
@@ -399,8 +339,8 @@
                     <div class="text-center sm:text-left">
                         <h4 class="font-playfair text-lg md:text-xl mb-4 md:mb-6">Follow Us</h4>
                         <div class="flex gap-3 md:gap-4 justify-center sm:justify-start">
-                            <a href="#" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/cassie_poshevents/" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/CassiePoshEvent/ " class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-posh-gold hover:border-posh-gold hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
                         </div>
                     </div>
                 </div>
@@ -418,7 +358,7 @@
         const navbar = document.getElementById('navbar');
         const navLogo = document.getElementById('navLogo');
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenu = document.getElementById('mobile-menu');
         const body = document.body;
 
         // Hamburger spans
@@ -434,7 +374,7 @@
                 // Logo - NO FILTER (keeps original color)
                 navLogo.classList.remove('brightness-0', 'invert');
                 
-                // Change all nav links to dark
+                // Change desktop nav links to dark
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.classList.remove('text-white');
                     link.classList.add('text-posh-dark');
@@ -460,7 +400,7 @@
                 // Logo - NO FILTER (keeps original color at top too)
                 navLogo.classList.remove('brightness-0', 'invert');
                 
-                // Reset all nav links to white
+                // Reset desktop nav links to white
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.classList.add('text-white');
                     link.classList.remove('text-posh-dark');
@@ -483,15 +423,13 @@
 
         // Mobile Menu Functions
         function openMobileMenu() {
-            mobileMenu.classList.add('opacity-100', 'visible');
-            mobileMenu.classList.remove('opacity-0', 'invisible');
+            mobileMenu.classList.remove('hidden');
             mobileMenuBtn.classList.add('hamburger-active');
             body.classList.add('menu-open');
         }
 
         function closeMobileMenu() {
-            mobileMenu.classList.remove('opacity-100', 'visible');
-            mobileMenu.classList.add('opacity-0', 'invisible');
+            mobileMenu.classList.add('hidden');
             mobileMenuBtn.classList.remove('hamburger-active');
             body.classList.remove('menu-open');
         }
@@ -499,7 +437,7 @@
         // Mobile Menu Event Listeners
         if (mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', () => {
-                if (mobileMenu.classList.contains('opacity-100')) {
+                if (!mobileMenu.classList.contains('hidden')) {
                     closeMobileMenu();
                 } else {
                     openMobileMenu();
@@ -508,32 +446,32 @@
         }
 
         // Close mobile menu when clicking a link
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', closeMobileMenu);
         });
 
         // Close with escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('opacity-100')) {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
                 closeMobileMenu();
             }
         });
 
         // Handle window resize
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 900 && mobileMenu.classList.contains('opacity-100')) {
+            if (window.innerWidth > 900 && !mobileMenu.classList.contains('hidden')) {
                 closeMobileMenu();
             }
         });
 
-        // Form validation
+        // Form validation - updated for new fields
         document.getElementById("contactForm").addEventListener("submit", function(e) {
             let requiredFields = this.querySelectorAll("[required]");
             let valid = true;
             let firstInvalid = null;
 
             requiredFields.forEach(field => {
-                if (field.type !== 'radio' && !field.value.trim()) {
+                if (!field.value.trim()) {
                     valid = false;
                     field.classList.add('border-posh-gold', 'bg-posh-gold/5');
                     
@@ -544,20 +482,6 @@
                     field.classList.remove('border-posh-gold', 'bg-posh-gold/5');
                 }
             });
-
-            // Check radio buttons
-            const radioGroup = document.querySelectorAll('input[name="sms_consent"]');
-            let radioChecked = false;
-            radioGroup.forEach(radio => {
-                if (radio.checked) radioChecked = true;
-            });
-
-            if (!radioChecked) {
-                valid = false;
-                radioGroup.forEach(radio => {
-                    radio.closest('.space-y-3')?.classList.add('text-posh-gold');
-                });
-            }
 
             if (!valid) {
                 e.preventDefault();
