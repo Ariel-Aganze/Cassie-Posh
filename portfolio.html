@@ -155,6 +155,7 @@
             <a href="services.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Services</a>
             <a href="design&decor.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Design & Décor</a>
             <!-- <a href="meeting&corporate.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Meetings & Corporate</a> -->
+            
             <a href="portfolio.html" class="text-posh-dark text-sm uppercase tracking-widest text-posh-gold font-medium">Portfolio</a>
             <a href="contact.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Contact Us</a>
         </div>
@@ -351,7 +352,7 @@
         // Hamburger menu spans
         const hamburgerSpans = mobileMenuBtn?.querySelectorAll('span');
 
-        // Navigation Scroll Effect - Home, About, Services, Design & Décor turn black on scroll
+        // Navigation Scroll Effect - Home, About, Services, Design & Décor, Corporate Event turn black on scroll
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
                 // Scrolled state - white background
@@ -360,11 +361,11 @@
                 
                 // Logo - NO CHANGE (keeps original color)
                 
-                // Change desktop nav links: Home, About, Services, Design & Décor to dark
+                // Change desktop nav links: Home, About, Services, Design & Décor, Corporate Event to dark
                 document.querySelectorAll('.desktop-nav .nav-link').forEach(link => {
                     const linkText = link.textContent.trim();
-                    // Home, About, Services, Design & Décor turn black
-                    if (linkText === 'Home' || linkText === 'About' || linkText === 'Services' || linkText === 'Design & Décor') {
+                    // Home, About, Services, Design & Décor, Corporate Event turn black
+                    if (linkText === 'Home' || linkText === 'About' || linkText === 'Services' || linkText === 'Design & Décor' || linkText === 'Corporate Event') {
                         link.classList.remove('text-white');
                         link.classList.add('text-posh-dark');
                     }
@@ -390,11 +391,11 @@
                 
                 // Logo - NO CHANGE (keeps original color)
                 
-                // Reset desktop nav links: Home, About, Services, Design & Décor back to white
+                // Reset desktop nav links: Home, About, Services, Design & Décor, Corporate Event back to white
                 document.querySelectorAll('.desktop-nav .nav-link').forEach(link => {
                     const linkText = link.textContent.trim();
-                    // Home, About, Services, Design & Décor back to white
-                    if (linkText === 'Home' || linkText === 'About' || linkText === 'Services' || linkText === 'Design & Décor') {
+                    // Home, About, Services, Design & Décor, Corporate Event back to white
+                    if (linkText === 'Home' || linkText === 'About' || linkText === 'Services' || linkText === 'Design & Décor' || linkText === 'Corporate Event') {
                         link.classList.add('text-white');
                         link.classList.remove('text-posh-dark');
                     }
@@ -489,13 +490,19 @@
         }
 
         // Filter
+        // Filter
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
+                // Remove active state and set all buttons to black first
                 filterBtns.forEach(b => {
                     b.classList.remove('text-posh-gold');
+                    b.classList.add('text-posh-dark'); // Make all buttons black
                     b.removeAttribute('data-active');
                 });
+                
+                // Add active state to clicked button (make it gold)
                 btn.classList.add('text-posh-gold');
+                btn.classList.remove('text-posh-dark'); // Remove black if present
                 btn.setAttribute('data-active', 'true');
                 
                 currentFilter = btn.dataset.filter;
@@ -503,8 +510,18 @@
             });
         });
 
-        // Set initial active filter
-        document.querySelector('[data-filter="all"]')?.classList.add('text-posh-gold');
+        // Set initial state: "All" gold, others black
+        filterBtns.forEach(btn => {
+            if (btn.dataset.filter === 'all') {
+                btn.classList.add('text-posh-gold');
+                btn.classList.remove('text-posh-dark');
+                btn.setAttribute('data-active', 'true');
+            } else {
+                btn.classList.add('text-posh-dark');
+                btn.classList.remove('text-posh-gold');
+            }
+        });
+
 
         // Lightbox
         function openLightbox(index) {
