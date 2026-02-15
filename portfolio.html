@@ -134,7 +134,7 @@
                 <a href="about.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-gold">About</a>
                 <a href="services.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-gold">Services</a>
                 <a href="design&decor.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-gold">Design & Décor</a>
-                <!-- <a href="meeting&corporate.html" class="nav-link text-white text-sm uppercase tracking-widest hover:text-posh-gold transition-colors duration-300 hover-underline-animation">Corporate Event</a> -->
+                <!-- <a href="meeting&corporate.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Corporate Event</a> -->
                 <a href="portfolio.html" class="nav-link text-posh-gold text-xs xl:text-sm uppercase tracking-widest">Portfolio</a>
                 <!-- Contact Us button - always gold border and text -->
                 <a href="contact.html" class="contact-btn border border-posh-gold text-posh-gold px-5 py-2 text-xs xl:text-sm uppercase tracking-widest hover:bg-posh-gold hover:text-white transition-all duration-300">Contact Us</a>
@@ -154,8 +154,7 @@
             <a href="about.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">About</a>
             <a href="services.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Services</a>
             <a href="design&decor.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Design & Décor</a>
-            <!-- <a href="meeting&corporate.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Meetings & Corporate</a> -->
-            
+            <!-- <a href="meeting&corporate.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Corporate Event</a> -->
             <a href="portfolio.html" class="text-posh-dark text-sm uppercase tracking-widest text-posh-gold font-medium">Portfolio</a>
             <a href="contact.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Contact Us</a>
         </div>
@@ -196,14 +195,14 @@
         </div>
     </section>
 
-    <!-- Portfolio Grid Section - 12 images -->
+    <!-- Portfolio Grid Section - 24 images with Load More -->
     <section id="portfolio" class="pb-16 md:pb-20 lg:pb-24 bg-posh-cream">
         <div class="container mx-auto px-4 md:px-6">
-            <!-- Portfolio Grid - smaller images -->
-            <div id="portfolioGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"></div>
+            <!-- Portfolio Grid - with more spacing for 24 images -->
+            <div id="portfolioGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8"></div>
             
-            <!-- Load More Button - hidden since we only have 12 images -->
-            <div class="text-center mt-10 md:mt-12 lg:mt-16 hidden" id="loadMoreContainer">
+            <!-- Load More Button - visible and functional -->
+            <div class="text-center mt-12 md:mt-16" id="loadMoreContainer">
                 <button id="loadMoreBtn" class="gold-line-btn">
                     Load More
                 </button>
@@ -315,7 +314,7 @@
     </div>
 
     <script>
-        // Portfolio Data - 12 images focused on decorations and flowers
+        // Portfolio Data - 24 images focused on decorations and flowers
         const portfolioItems = [
             { id: 1, title: "Elegant Floral Arch", location: "Philadelphia", category: "floral", image: "images/Portfolio/2 (1).jpg" },
             { id: 2, title: "Luxury Drapery", location: "Rittenhouse Square", category: "drapery", image: "images/Portfolio/2 (2).jpg" },
@@ -325,14 +324,27 @@
             { id: 6, title: "Ceiling Drapery", location: "The Fillmore", category: "drapery", image: "images/Portfolio/2 (6).jpg" },
             { id: 7, title: "Intimate Tablescape", location: "The Logan", category: "tablescape", image: "images/Portfolio/2 (7).jpg" },
             { id: 8, title: "Garden Floral Design", location: "The Garden House", category: "floral", image: "images/Portfolio/2 (8).jpg" },
-            { id: 9, title: "Believe Floral Design", location: "The Believe House", category: "lighting", image: "images/Portfolio/2 (9).png" },
+            { id: 9, title: "Believe Floral Design", location: "The Believe House", category: "lighting", image: "images/Portfolio/2 (9).jpg" },
             { id: 10, title: "Lux Floral Design", location: "The luxurious House", category: "floral", image: "images/Portfolio/2 (10).png" },
             { id: 11, title: "Light Modern", location: "House of the light", category: "drapery", image: "images/Portfolio/2 (11).png" },
-            { id: 12, title: "The light tour", location: "The Garden House", category: "tablescape", image: "images/Portfolio/2 (12).png" }
+            { id: 12, title: "The light tour", location: "The Garden House", category: "tablescape", image: "images/Portfolio/2 (12).png" },
+            { id: 13, title: "Romantic Floral Arch", location: "Philadelphia", category: "tablescape", image: "images/Portfolio/2 (13).png" },
+            { id: 14, title: "Elegant Drapery", location: "Rittenhouse Square", category: "floral", image: "images/Portfolio/2 (14).jpg" },
+            { id: 15, title: "Golden Tablescape", location: "The Union League", category: "floral", image: "images/Portfolio/2 (15).jpg" },
+            { id: 16, title: "Crystal Lighting", location: "Bellevue Hotel", category: "lighthing", image: "images/Portfolio/2 (16).jpg" },
+            { id: 17, title: "Pink Centerpieces", location: "Merion Golf Club", category: "lighting", image: "images/Portfolio/2 (17).jpg" },
+            { id: 18, title: "Sheer Drapery", location: "The Fillmore", category: "tablescape", image: "images/Portfolio/2 (18).jpg" },
+            { id: 19, title: "Rustic Tablescape", location: "The Logan", category: "tablescape", image: "images/Portfolio/2 (19).jpg" },
+            { id: 20, title: "Floral Ceiling", location: "The Garden House", category: "lighting", image: "images/Portfolio/2 (20).png" },
+            { id: 21, title: "Modern Lighting", location: "The Believe House", category: "floral", image: "images/Portfolio/2 (21).png" },
+            { id: 22, title: "White Floral", location: "The luxurious House", category: "tablescape", image: "images/Portfolio/2 (22).jpg" },
+            { id: 23, title: "Ambient Lighting", location: "House of the light", category: "tablescape", image: "images/Portfolio/2 (23).jpg" },
+            { id: 24, title: "Grand Tablescape", location: "The Garden House", category: "floral", image: "images/Portfolio/2 (24).png" }
         ];
 
         let currentFilter = 'all';
         let currentIndex = 0;
+        let visibleItems = 12; // Show 12 items initially
 
         // DOM Elements
         const navbar = document.getElementById('navbar');
@@ -341,6 +353,8 @@
         const body = document.body;
         const portfolioGrid = document.getElementById('portfolioGrid');
         const filterBtns = document.querySelectorAll('.filter-btn');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const loadMoreContainer = document.getElementById('loadMoreContainer');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const lightboxTitle = document.getElementById('lightboxTitle');
@@ -465,8 +479,10 @@
                 ? portfolioItems 
                 : portfolioItems.filter(item => item.category === currentFilter);
             
+            const itemsToShow = filtered.slice(0, visibleItems);
+            
             let html = '';
-            filtered.forEach(item => {
+            itemsToShow.forEach(item => {
                 html += `
                     <div class="relative overflow-hidden aspect-square cursor-pointer bg-gray-100 group portfolio-card" data-category="${item.category}" data-id="${item.id}">
                         <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
@@ -483,13 +499,19 @@
             
             portfolioGrid.innerHTML = html;
             
+            // Hide load more button if all items are shown
+            if (filtered.length <= visibleItems) {
+                loadMoreContainer.classList.add('hidden');
+            } else {
+                loadMoreContainer.classList.remove('hidden');
+            }
+            
             // Add click events for lightbox
             document.querySelectorAll('.portfolio-card').forEach((item, index) => {
                 item.addEventListener('click', () => openLightbox(index));
             });
         }
 
-        // Filter
         // Filter
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -506,6 +528,7 @@
                 btn.setAttribute('data-active', 'true');
                 
                 currentFilter = btn.dataset.filter;
+                visibleItems = 12; // Reset to 12 items when filter changes
                 renderPortfolio();
             });
         });
@@ -522,6 +545,20 @@
             }
         });
 
+        // Load More functionality
+        loadMoreBtn.addEventListener('click', () => {
+            const filtered = currentFilter === 'all' 
+                ? portfolioItems 
+                : portfolioItems.filter(item => item.category === currentFilter);
+            
+            if (visibleItems + 12 <= filtered.length) {
+                visibleItems += 12;
+            } else {
+                visibleItems = filtered.length;
+            }
+            
+            renderPortfolio();
+        });
 
         // Lightbox
         function openLightbox(index) {
