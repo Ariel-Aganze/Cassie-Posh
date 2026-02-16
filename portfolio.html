@@ -308,7 +308,7 @@
             <img id="lightboxImg" src="" alt="" class="max-w-full max-h-[80vh] block">
             <div class="absolute -bottom-12 left-0 right-0 text-center text-white">
                 <h3 id="lightboxTitle" class="font-playfair text-xl text-posh-gold"></h3>
-                <p id="lightboxLocation" class="text-xs"><i class="fas fa-map-marker-alt text-posh-gold mr-2"></i> <span></span></p>
+                <!-- <p id="lightboxLocation" class="text-xs"><i class="fas fa-map-marker-alt text-posh-gold mr-2"></i> <span></span></p> -->
             </div>
         </div>
     </div>
@@ -316,29 +316,29 @@
     <script>
         // Portfolio Data - 24 images focused on decorations and flowers
         const portfolioItems = [
-            { id: 1, title: "Elegant Floral Arch", location: "Philadelphia", category: "floral", image: "images/Portfolio/2 (1).jpg" },
-            { id: 2, title: "Luxury Drapery", location: "Rittenhouse Square", category: "drapery", image: "images/Portfolio/2 (2).jpg" },
-            { id: 3, title: "Candlelit Tablescape", location: "The Union League", category: "drapery", image: "images/Portfolio/2 (3).jpg" },
-            { id: 4, title: "Chandelier Installation", location: "Bellevue Hotel", category: "tablescape", image: "images/Portfolio/2 (4).jpg" },
-            { id: 5, title: "Rose Centerpieces", location: "Merion Golf Club", category: "drapery", image: "images/Portfolio/2 (5).jpg" },
-            { id: 6, title: "Ceiling Drapery", location: "The Fillmore", category: "drapery", image: "images/Portfolio/2 (6).jpg" },
+            { id: 1, category: "floral", image: "images/Portfolio/2 (1).jpg" },
+            { id: 2, category: "drapery", image: "images/Portfolio/2 (2).jpg" },
+            { id: 3, category: "drapery", image: "images/Portfolio/2 (3).jpg" },
+            { id: 4, category: "tablescape", image: "images/Portfolio/2 (4).jpg" },
+            { id: 5, category: "drapery", image: "images/Portfolio/2 (5).jpg" },
+            { id: 6, category: "drapery", image: "images/Portfolio/2 (6).jpg" },
             // { id: 7, title: "Intimate Tablescape", location: "The Logan", category: "tablescape", image: "images/Portfolio/2 (7).jpg" },
-            { id: 8, title: "Garden Floral Design", location: "The Garden House", category: "floral", image: "images/Portfolio/2 (8).jpg" },
+            { id: 8, category: "floral", image: "images/Portfolio/2 (8).jpg" },
             // { id: 9, title: "Believe Floral Design", location: "The Believe House", category: "lighting", image: "images/Portfolio/2 (9).jpg" },
-            { id: 10, title: "Lux Floral Design", location: "The luxurious House", category: "floral", image: "images/Portfolio/2 (10).png" },
-            { id: 11, title: "Light Modern", location: "House of the light", category: "drapery", image: "images/Portfolio/2 (11).png" },
+            { id: 10, category: "floral", image: "images/Portfolio/2 (10).png" },
+            { id: 11, category: "drapery", image: "images/Portfolio/2 (11).png" },
             // { id: 12, title: "The light tour", location: "The Garden House", category: "tablescape", image: "images/Portfolio/2 (12).png" },
             // { id: 13, title: "Romantic Floral Arch", location: "Philadelphia", category: "tablescape", image: "images/Portfolio/2 (13).png" },
-            { id: 14, title: "Elegant Drapery", location: "Rittenhouse Square", category: "floral", image: "images/Portfolio/2 (14).jpg" },
+            { id: 14, category: "floral", image: "images/Portfolio/2 (14).jpg" },
             // { id: 15, title: "Golden Tablescape", location: "The Union League", category: "floral", image: "images/Portfolio/2 (15).jpg" },
-            { id: 16, title: "Crystal Lighting", location: "Bellevue Hotel", category: "lighthing", image: "images/Portfolio/2 (16).jpg" },
-            { id: 17, title: "Pink Centerpieces", location: "Merion Golf Club", category: "lighting", image: "images/Portfolio/2 (17).jpg" },
-            { id: 18, title: "Sheer Drapery", location: "The Fillmore", category: "tablescape", image: "images/Portfolio/2 (18).jpg" },
-            { id: 19, title: "Rustic Tablescape", location: "The Logan", category: "tablescape", image: "images/Portfolio/2 (19).jpg" },
+            { id: 16, category: "lighting", image: "images/Portfolio/2 (16).jpg" },
+            { id: 17, category: "lighting", image: "images/Portfolio/2 (17).jpg" },
+            { id: 18, category: "tablescape", image: "images/Portfolio/2 (18).jpg" },
+            { id: 19, category: "tablescape", image: "images/Portfolio/2 (19).jpg" },
             // { id: 20, title: "Floral Ceiling", location: "The Garden House", category: "lighting", image: "images/Portfolio/2 (20).png" },
-            { id: 21, title: "Modern Lighting", location: "The Believe House", category: "floral", image: "images/Portfolio/2 (21).png" },
-            { id: 22, title: "White Floral", location: "The luxurious House", category: "tablescape", image: "images/Portfolio/2 (22).jpg" },
-            { id: 23, title: "Ambient Lighting", location: "House of the light", category: "tablescape", image: "images/Portfolio/2 (23).jpg" },
+            { id: 21, category: "lighting", image: "images/Portfolio/2 (21).png" },
+            { id: 22, category: "floral", image: "images/Portfolio/2 (22).jpg" },
+            { id: 23, category: "lighting", image: "images/Portfolio/2 (23).jpg" },
             // { id: 24, title: "Grand Tablescape", location: "The Garden House", category: "floral", image: "images/Portfolio/2 (24).png" }
         ];
 
@@ -358,7 +358,7 @@
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const lightboxTitle = document.getElementById('lightboxTitle');
-        const lightboxLocation = document.getElementById('lightboxLocation');
+        // const lightboxLocation = document.getElementById('lightboxLocation');
         const lightboxClose = document.getElementById('lightboxClose');
         const lightboxPrev = document.getElementById('lightboxPrev');
         const lightboxNext = document.getElementById('lightboxNext');
@@ -483,16 +483,22 @@
             
             let html = '';
             itemsToShow.forEach(item => {
+                // html += `
+                //     <div class="relative overflow-hidden aspect-square cursor-pointer bg-gray-100 group portfolio-card" data-category="${item.category}" data-id="${item.id}">
+                //         <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                //         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 md:p-4">
+                //             <h3 class="font-playfair text-white text-sm md:text-base mb-0.5">${item.title}</h3>
+                //             <p class="text-white/70 text-xs mb-2">${item.location}</p>
+                //             <button class="inline-flex items-center gap-1 text-posh-gold text-xs uppercase tracking-wider hover:text-posh-gold-dark transition-colors border-b border-transparent hover:border-posh-gold pb-0.5 w-fit view-details">
+                //                 View <i class="fas fa-arrow-right text-xs"></i>
+                //             </button>
+                //         </div>
+                //     </div>
+                // `;
                 html += `
                     <div class="relative overflow-hidden aspect-square cursor-pointer bg-gray-100 group portfolio-card" data-category="${item.category}" data-id="${item.id}">
                         <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 md:p-4">
-                            <h3 class="font-playfair text-white text-sm md:text-base mb-0.5">${item.title}</h3>
-                            <p class="text-white/70 text-xs mb-2">${item.location}</p>
-                            <button class="inline-flex items-center gap-1 text-posh-gold text-xs uppercase tracking-wider hover:text-posh-gold-dark transition-colors border-b border-transparent hover:border-posh-gold pb-0.5 w-fit view-details">
-                                View <i class="fas fa-arrow-right text-xs"></i>
-                            </button>
-                        </div>
+                        
                     </div>
                 `;
             });
@@ -570,8 +576,8 @@
             const item = filtered[index];
             
             lightboxImg.src = item.image;
-            lightboxTitle.textContent = item.title;
-            lightboxLocation.innerHTML = `<i class="fas fa-map-marker-alt text-posh-gold mr-2"></i> ${item.location}`;
+            // lightboxTitle.textContent = item.title;
+            // lightboxLocation.innerHTML = `<i class="fas fa-map-marker-alt text-posh-gold mr-2"></i> ${item.location}`;
             lightbox.classList.add('flex');
             lightbox.classList.remove('hidden');
             document.body.style.overflow = 'hidden';

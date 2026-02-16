@@ -228,29 +228,8 @@
             background: linear-gradient(90deg, transparent, var(--posh-gold), transparent);
         }
 
-        .item-location {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            color: var(--posh-grey);
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-            font-weight: 300;
-            margin-bottom: 2rem;
-        }
-
-        .item-location i {
-            color: var(--posh-gold);
-            font-size: 1.1rem;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
+        /* Location section removed - completely taken out */
+        
         .location-divider {
             width: 60px;
             height: 2px;
@@ -839,10 +818,7 @@
             <div class="gallery-hero" data-aos="fade-up" data-aos-duration="1000">
                 <span class="gallery-label">Featured Work</span>
                 <h1 class="item-title" id="itemTitle">Elegant <span>Floral</span> Arch</h1>
-                <div class="item-location" id="itemLocation">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Philadelphia Museum of Art</span>
-                </div>
+                <!-- Location div completely removed -->
                 <div class="location-divider"></div>
             </div>
         </div>
@@ -952,7 +928,6 @@
             { 
                 id: 1, 
                 title: "Elegant Floral Arch", 
-                location: "Philadelphia Museum of Art", 
                 category: "Floral", 
                 image: "images/Portfolio/2 (1).jpg",
                 date: "Spring 2024",
@@ -961,7 +936,6 @@
             { 
                 id: 2, 
                 title: "Luxury Drapery", 
-                location: "Rittenhouse Square", 
                 category: "Drapery", 
                 image: "images/Portfolio/2 (2).jpg",
                 date: "Summer 2024",
@@ -970,7 +944,6 @@
             { 
                 id: 3, 
                 title: "Candlelit Tablescape", 
-                location: "The Union League", 
                 category: "Tablescape", 
                 image: "images/Portfolio/2 (3).jpg",
                 date: "Fall 2024",
@@ -979,7 +952,6 @@
             { 
                 id: 4, 
                 title: "Chandelier Installation", 
-                location: "Bellevue Hotel", 
                 category: "Lighting", 
                 image: "images/Portfolio/2 (4).jpg",
                 date: "Winter 2024",
@@ -988,7 +960,6 @@
             { 
                 id: 5, 
                 title: "Rose Centerpieces", 
-                location: "Merion Golf Club", 
                 category: "Floral", 
                 image: "images/Portfolio/2 (5).jpg",
                 date: "Spring 2024",
@@ -997,7 +968,6 @@
             { 
                 id: 6, 
                 title: "Ceiling Drapery", 
-                location: "The Fillmore", 
                 category: "Drapery", 
                 image: "images/Portfolio/2 (6).jpg",
                 date: "Summer 2024",
@@ -1006,7 +976,6 @@
             { 
                 id: 7, 
                 title: "Intimate Tablescape", 
-                location: "The Logan", 
                 category: "Tablescape", 
                 image: "images/Portfolio/2 (7).jpg",
                 date: "Fall 2024",
@@ -1015,7 +984,6 @@
             { 
                 id: 8, 
                 title: "Garden Floral Design", 
-                location: "The Garden House", 
                 category: "Floral", 
                 image: "images/Portfolio/2 (8).jpg",
                 date: "Spring 2024",
@@ -1035,7 +1003,6 @@
         const loadingSection = document.getElementById('loadingSection');
         const mainContent = document.getElementById('mainContent');
         const itemTitle = document.getElementById('itemTitle');
-        const itemLocation = document.getElementById('itemLocation');
         const galleryImage = document.getElementById('galleryImage');
         const eventDate = document.getElementById('eventDate');
         const itemCategory = document.getElementById('itemCategory');
@@ -1058,7 +1025,6 @@
             
             // Update content with animation
             itemTitle.style.opacity = '0';
-            itemLocation.style.opacity = '0';
             galleryImage.style.opacity = '0';
             
             setTimeout(() => {
@@ -1067,14 +1033,12 @@
                 const lastWord = titleParts.pop();
                 itemTitle.innerHTML = `${titleParts.join(' ')} <span>${lastWord}</span>`;
                 
-                itemLocation.innerHTML = `<i class="fas fa-map-marker-alt"></i><span>${item.location}</span>`;
                 galleryImage.src = item.image;
                 eventDate.textContent = item.date;
                 itemCategory.textContent = item.category;
                 itemDimensions.textContent = item.dimensions;
                 
                 itemTitle.style.opacity = '1';
-                itemLocation.style.opacity = '1';
                 galleryImage.style.opacity = '1';
             }, 300);
             
