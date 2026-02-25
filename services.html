@@ -91,6 +91,12 @@
             transform: scaleX(1);
             transform-origin: bottom left;
         }
+
+        /* Tab active state */
+        .tab-active {
+            color: #D4AF37;
+            border-bottom-color: #D4AF37;
+        }
     </style>
 </head>
 <body class="font-poppins text-posh-dark antialiased overflow-x-hidden selection:bg-posh-gold selection:text-white">
@@ -100,7 +106,7 @@
         <div class="container mx-auto px-6 flex justify-between items-center">
             <!-- Logo -->
             <a href="home.html" class="flex items-center">
-                <img src="images/Transparent Background-02.png" alt="Cassie Posh Events, LLC Logo" class="h-12 md:h-16 w-auto object-contain">
+                <img src="images/Transparent Background-02.png" alt="Cassie Posh Events, LLC Logo" class="h-12 md:h-24 w-auto object-contain">
             </a>
 
             <!-- Desktop Menu -->
@@ -158,7 +164,7 @@
                 From full-scale wedding production to refined social events and immersive design experiences, we deliver thoughtful execution with artistic intention.
             </p>
             
-            <a href="#planning" 
+            <a href="#service-tabs" 
                class="bg-posh-gold text-white px-8 py-4 uppercase text-xs tracking-widest hover:bg-white hover:text-posh-dark transition-all duration-300 min-w-[180px] animate-[fadeInUp_1.6s_ease-out]">
                 Explore Our Offerings
             </a>
@@ -173,122 +179,301 @@
     <!-- Main Content -->
     <main class="relative z-10 bg-white shadow-xl ">
 
-        <!-- 3. Full Service Wedding Planning -->
-        <section id="planning" class="py-24 md:py-32 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
-                    
-                    <!-- Intro -->
-                    <div>
-                        <span class="text-posh-gold uppercase tracking-[0.2em] text-xs font-semibold mb-3 block">Comprehensive</span>
-                        <h2 class="font-playfair text-4xl md:text-5xl text-posh-dark mb-6 leading-tight">Full-Service <br>Wedding Planning</h2>
-                        <div class="w-16 h-px bg-posh-gold mb-8"></div>
-                        
-                        <p class="font-playfair italic text-xl text-posh-dark mb-6">
-                            For couples who desire a guided, stress-free journey from “Yes” to “I Do.”
-                        </p>
-                        <p class="text-posh-grey font-light leading-loose text-sm md:text-base">
-                            We manage every detail so you can savor the experience. From selecting the perfect venue to curating a world-class vendor team, our process is designed to bring your vision to life with precision and grace.
-                        </p>
-                    </div>
-
-                    <!-- List -->
-                    <div class="flex items-center">
-                        <ul class="space-y-4 text-posh-dark font-light text-sm md:text-base border-l border-posh-gold/30 pl-8 md:pl-12 py-4">
-                            <li class="hover:text-posh-gold transition-colors duration-300">Comprehensive planning & logistics</li>
-                            <li class="hover:text-posh-gold transition-colors duration-300">Venue research & coordination</li>
-                            <li class="hover:text-posh-gold transition-colors duration-300">Vendor sourcing & management</li>
-                            <li class="hover:text-posh-gold transition-colors duration-300">Contract negotiation</li>
-                            <li class="hover:text-posh-gold transition-colors duration-300">Wedding website management</li>
-                            <li class="hover:text-posh-gold transition-colors duration-300">Menu consultation & design</li>
-                            <li class="hover:text-posh-gold transition-colors duration-300">Guest list management</li>
-                            <li class="hover:text-posh-gold transition-colors duration-300">Timeline creation & execution</li>
-                            <li class="hover:text-posh-gold transition-colors duration-300">Hotel room block coordination</li>
-                            <li class="hover:text-posh-gold transition-colors duration-300">Transportation management</li>
-                            <li class="hover:text-posh-gold transition-colors duration-300">On-site wedding day coordination</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. Wedding Day Coordination -->
-        <section class="py-24 bg-posh-cream">
-            <div class="container mx-auto px-6 max-w-5xl">
-                <div class="text-center mb-16">
-                    <h2 class="font-playfair text-3xl md:text-4xl text-posh-dark mb-4">Wedding Day Coordination</h2>
-                    <div class="w-16 h-px bg-posh-gold mx-auto mb-6"></div>
-                    <p class="text-posh-grey font-light max-w-2xl mx-auto text-sm md:text-base">
-                        Perfect for couples who have planned their wedding but want professional execution. We step in to ensure your day unfolds flawlessly, allowing you to be present in the moment.
-                    </p>
-                </div>
-
-                <div class="bg-white p-12 md:p-16 shadow-sm border border-white hover:border-posh-gold/20 transition-all duration-500">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
-                        <div class="flex items-center gap-4">
-                            <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
-                            <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Final vendor confirmations</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
-                            <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Timeline refinement</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
-                            <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Rehearsal coordination</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
-                            <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Wedding day management</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
-                            <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Guest logistics coordination</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
-                            <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Setup & breakdown oversight</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. Social Events -->
-        <section class="py-24 bg-white">
+        <!-- ========== SERVICE TABS ========== -->
+        <section id="service-tabs" class="pt-24 md:pt-32 pb-8 bg-white">
             <div class="container mx-auto px-6 text-center">
-                <span class="text-posh-gold uppercase tracking-[0.2em] text-xs font-semibold mb-3 block">Celebrations</span>
-                <h2 class="font-playfair text-3xl md:text-4xl text-posh-dark mb-4">Social Events</h2>
-                <p class="font-playfair italic text-xl text-posh-grey mb-12">
-                    Elevated celebrations designed with style and intention.
-                </p>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                    <div class="group p-8 border border-gray-100 bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-                        <div class="text-posh-gold mb-4 text-2xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-champagne-glasses"></i></div>
-                        <h4 class="font-playfair text-lg text-posh-dark">Milestone Birthdays</h4>
-                    </div>
-                    <div class="group p-8 border border-gray-100 bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-                        <div class="text-posh-gold mb-4 text-2xl group-hover:scale-110 transition-transform"><i class="fa-regular fa-heart"></i></div>
-                        <h4 class="font-playfair text-lg text-posh-dark">Anniversaries</h4>
-                    </div>
-                    <div class="group p-8 border border-gray-100 bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-                        <div class="text-posh-gold mb-4 text-2xl group-hover:scale-110 transition-transform"><i class="fa-regular fa-gem"></i></div>
-                        <h4 class="font-playfair text-lg text-posh-dark">Engagement Parties</h4>
-                    </div>
-                    <div class="group p-8 border border-gray-100 bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-                        <div class="text-posh-gold mb-4 text-2xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-gift"></i></div>
-                        <h4 class="font-playfair text-lg text-posh-dark">Holiday Parties</h4>
-                    </div>
-                    <div class="group p-8 border border-gray-100 bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-                        <div class="text-posh-gold mb-4 text-2xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-music"></i></div>
-                        <h4 class="font-playfair text-lg text-posh-dark">Gala Soirées</h4>
-                    </div>
+                <div class="inline-flex flex-wrap justify-center border-b border-gray-200">
+                    <!-- Wedding Tab (active by default) -->
+                    <button data-tab="weddings" class="tab-button px-6 md:px-10 py-4 text-sm md:text-base uppercase tracking-widest font-medium transition-colors duration-300 border-b-2 border-posh-gold text-posh-gold" id="tab-weddings">
+                        Weddings
+                    </button>
+                    <!-- Social Events Tab -->
+                    <button data-tab="social" class="tab-button px-6 md:px-10 py-4 text-sm md:text-base uppercase tracking-widest font-medium transition-colors duration-300 border-b-2 border-transparent text-posh-dark hover:text-posh-gold" id="tab-social">
+                        Social Events
+                    </button>
+                    <!-- Corporate Events Tab -->
+                    <button data-tab="corporate" class="tab-button px-6 md:px-10 py-4 text-sm md:text-base uppercase tracking-widest font-medium transition-colors duration-300 border-b-2 border-transparent text-posh-dark hover:text-posh-gold" id="tab-corporate">
+                        Corporate Events
+                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- 6. Design & Décor -->
+        <!-- WEDDINGS TAB CONTENT (original wedding services, unchanged) -->
+        <div id="content-weddings" class="tab-content block">
+            <!-- 3. Full Service Wedding Planning -->
+            <section id="planning" class="py-24 md:py-32 bg-white">
+                <div class="container mx-auto px-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+                        
+                        <!-- Intro -->
+                        <div>
+                            <span class="text-posh-gold uppercase tracking-[0.2em] text-xs font-semibold mb-3 block">Comprehensive</span>
+                            <h2 class="font-playfair text-4xl md:text-5xl text-posh-dark mb-6 leading-tight">Full-Service <br>Wedding Planning</h2>
+                            <div class="w-16 h-px bg-posh-gold mb-8"></div>
+                            
+                            <p class="font-playfair italic text-xl text-posh-dark mb-6">
+                                For couples who desire a guided, stress-free journey from “Yes” to “I Do.”
+                            </p>
+                            <p class="text-posh-grey font-light leading-loose text-sm md:text-base">
+                                We manage every detail so you can savor the experience. From selecting the perfect venue to curating a world-class vendor team, our process is designed to bring your vision to life with precision and grace.
+                            </p>
+                        </div>
+
+                        <!-- List -->
+                        <div class="flex items-center">
+                            <ul class="space-y-4 text-posh-dark font-light text-sm md:text-base border-l border-posh-gold/30 pl-8 md:pl-12 py-4">
+                                <li class="hover:text-posh-gold transition-colors duration-300">Comprehensive planning & logistics</li>
+                                <li class="hover:text-posh-gold transition-colors duration-300">Venue research & coordination</li>
+                                <li class="hover:text-posh-gold transition-colors duration-300">Vendor sourcing & management</li>
+                                <li class="hover:text-posh-gold transition-colors duration-300">Contract negotiation</li>
+                                <li class="hover:text-posh-gold transition-colors duration-300">Wedding website management</li>
+                                <li class="hover:text-posh-gold transition-colors duration-300">Menu consultation & design</li>
+                                <li class="hover:text-posh-gold transition-colors duration-300">Guest list management</li>
+                                <li class="hover:text-posh-gold transition-colors duration-300">Timeline creation & execution</li>
+                                <li class="hover:text-posh-gold transition-colors duration-300">Hotel room block coordination</li>
+                                <li class="hover:text-posh-gold transition-colors duration-300">Transportation management</li>
+                                <li class="hover:text-posh-gold transition-colors duration-300">On-site wedding day coordination</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Wedding Day Coordination -->
+            <section class="py-24 bg-posh-cream">
+                <div class="container mx-auto px-6 max-w-5xl">
+                    <div class="text-center mb-16">
+                        <h2 class="font-playfair text-3xl md:text-4xl text-posh-dark mb-4">Wedding Day Coordination</h2>
+                        <div class="w-16 h-px bg-posh-gold mx-auto mb-6"></div>
+                        <p class="text-posh-grey font-light max-w-2xl mx-auto text-sm md:text-base">
+                            Perfect for couples who have planned their wedding but want professional execution. We step in to ensure your day unfolds flawlessly, allowing you to be present in the moment.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-12 md:p-16 shadow-sm border border-white hover:border-posh-gold/20 transition-all duration-500">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
+                            <div class="flex items-center gap-4">
+                                <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
+                                <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Final vendor confirmations</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
+                                <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Timeline refinement</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
+                                <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Rehearsal coordination</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
+                                <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Wedding day management</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
+                                <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Guest logistics coordination</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="text-posh-gold text-xs"><i class="fa-solid fa-check"></i></span>
+                                <span class="text-posh-dark font-light text-sm uppercase tracking-wide">Setup & breakdown oversight</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- SOCIAL EVENTS TAB CONTENT (new, with red flower image) -->
+        <div id="content-social" class="tab-content hidden">
+            <section class="py-24 bg-white">
+                <div class="container mx-auto px-6">
+                    <div class="flex flex-col md:flex-row items-center gap-16">
+                        <!-- Text -->
+                        <div class="w-full md:w-1/2">
+                            <span class="text-posh-gold uppercase tracking-[0.2em] text-xs font-semibold mb-3 block">Celebrate in style</span>
+                            <h2 class="font-playfair text-4xl md:text-5xl text-posh-dark mb-6 leading-tight">Social Events</h2>
+                            <div class="w-16 h-px bg-posh-gold mb-8"></div>
+                            
+                            <p class="font-playfair italic text-xl text-posh-dark mb-6">
+                                Elevated Celebrations Designed with Style, Intention, and Unforgettable Detail
+                            </p>
+                            <p class="text-posh-grey font-light leading-relaxed mb-8">
+                                Life is full of moments worth celebrating — and each one deserves to feel extraordinary. At Cassie Posh Events, we curate beautifully designed social gatherings that blend creativity, elegance, and seamless execution. Whether intimate or grand, every event is crafted to reflect your personality, your vision, and the significance of the occasion.
+                            </p>
+                            <p class="text-posh-grey font-light leading-relaxed">
+                                From milestone birthdays to lavish Gala soirées, our team brings refined artistry and professional expertise to every detail, ensuring your celebration feels polished, cohesive, and truly memorable.
+                            </p>
+                            
+                            <!-- decorative list (optional) -->
+                            <div class="grid grid-cols-2 gap-4 mt-10">
+                                <div class="flex items-center gap-2"><span class="text-posh-gold"><i class="fa-regular fa-circle-check"></i></span><span class="text-sm">Milestone Birthdays</span></div>
+                                <div class="flex items-center gap-2"><span class="text-posh-gold"><i class="fa-regular fa-circle-check"></i></span><span class="text-sm">Anniversaries</span></div>
+                                <div class="flex items-center gap-2"><span class="text-posh-gold"><i class="fa-regular fa-circle-check"></i></span><span class="text-sm">Engagement Parties</span></div>
+                                <div class="flex items-center gap-2"><span class="text-posh-gold"><i class="fa-regular fa-circle-check"></i></span><span class="text-sm">Holiday Parties</span></div>
+                                <div class="flex items-center gap-2"><span class="text-posh-gold"><i class="fa-regular fa-circle-check"></i></span><span class="text-sm">Gala Soirées</span></div>
+                                <div class="flex items-center gap-2"><span class="text-posh-gold"><i class="fa-regular fa-circle-check"></i></span><span class="text-sm">Private Dinners</span></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Red Flower Image -->
+                        <div class="w-full md:w-1/2 relative">
+                            <div class="absolute -top-4 -left-4 w-full h-full border border-posh-gold/20 hidden md:block"></div>
+                            <img src="images/1000140434.jpg" alt="Red flower elegant decor" class="w-full h-[550px] object-cover relative z-10 shadow-xl">
+                            <!-- subtle overlay to match "red flower" tone -->
+                            <div class="absolute inset-0 bg-posh-gold/5 mix-blend-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- add a small gallery or extra section to mirror richness -->
+            <section class="py-20 bg-posh-blush">
+                <div class="container mx-auto px-6 text-center">
+                    <h3 class="font-playfair text-3xl text-posh-dark mb-12">Moments we’ve crafted</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="aspect-square overflow-hidden"><img src="images/dreamstime_xxl_37952642.jpg" alt="social" class="w-full h-full object-cover"></div>
+                        <div class="aspect-square overflow-hidden"><img src="images/dreamstime_xxl_1752372.jpg" alt="social" class="w-full h-full object-cover"></div>
+                        <div class="aspect-square overflow-hidden"><img src="images/dreamstime_xxl_1393036.jpg" alt="social" class="w-full h-full object-cover"></div>
+                        <div class="aspect-square overflow-hidden"><img src="images/dreamstime_xxl_1752362.jpg" alt="social" class="w-full h-full object-cover"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- CORPORATE EVENTS TAB CONTENT (exactly as provided, moved here) -->
+        <div id="content-corporate" class="tab-content hidden">
+            <!-- section as originally given: corporate intro + deep dive + checklist + testimonial -->
+            <section class="py-24 bg-white">
+                <div class="container mx-auto px-6 max-w-5xl">
+                    <div class="text-center mb-12">
+                        <span class="text-posh-gold uppercase tracking-[0.2em] text-xs font-semibold">Professional, seamless, and strategically executed</span>
+                        <h2 class="font-playfair text-4xl md:text-5xl text-posh-dark mt-3 mb-6">Corporate Event Planning</h2>
+                        <div class="w-16 h-0.5 bg-posh-gold mx-auto"></div>
+                    </div>
+                    <div class="rich-text text-posh-grey font-light leading-relaxed max-w-3xl mx-auto text-center">
+                        <p class="text-lg">At Cassie Posh Events, we understand that a well‑planned corporate event is more than an agenda — it's an opportunity to inspire, connect, and move your organization forward. Our corporate event planning services are designed to deliver a seamless, polished experience that reflects your brand's professionalism and purpose.</p>
+                        <p class="text-lg">From intimate executive sessions to large‑scale corporate gatherings, we manage every detail with precision, discretion, and exceptional care.</p>
+                    </div>
+
+                    <!-- why partner grid -->
+                    <div class="grid md:grid-cols-3 gap-8 mt-16">
+                        <div class="text-center p-6">
+                            <div class="text-posh-gold text-3xl mb-4"><i class="fa-regular fa-star"></i></div>
+                            <h3 class="font-playfair text-xl mb-2">Professional & detail‑driven</h3>
+                            <p class="text-posh-grey text-sm">Experienced planners with a keen eye for precision.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <div class="text-posh-gold text-3xl mb-4"><i class="fa-regular fa-circle-check"></i></div>
+                            <h3 class="font-playfair text-xl mb-2">Seamless execution</h3>
+                            <p class="text-posh-grey text-sm">From concept to completion, flawlessly delivered.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <div class="text-posh-gold text-3xl mb-4"><i class="fa-regular fa-message"></i></div>
+                            <h3 class="font-playfair text-xl mb-2">Clear communication</h3>
+                            <p class="text-posh-grey text-sm">Reliable support every step of the way.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DEEP DIVE: EVENT MANAGEMENT & TYPES (with images) -->
+            <section class="py-20 bg-posh-cream">
+                <div class="container mx-auto px-6">
+                    <!-- block 1 -->
+                    <div class="flex flex-col md:flex-row items-center gap-12 mb-24">
+                        <div class="md:w-1/2 order-2 md:order-1">
+                            <h3 class="font-playfair text-3xl md:text-4xl text-posh-dark mb-4">Corporate event management</h3>
+                            <div class="w-16 h-0.5 bg-posh-gold mb-6"></div>
+                            <ul class="space-y-3 text-posh-grey">
+                                <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>Agenda development</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>Timeline creation</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>Vendor & venue coordination</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>Room layout & seating design</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>Audio‑visual coordination</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>Hotel room block coordination & management</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>On‑site coordination & event day management</span></li>
+                            </ul>
+                        </div>
+                        <div class="md:w-1/2 order-1 md:order-2 relative">
+                            <div class="absolute -top-4 -left-4 w-full h-full border border-posh-gold/20 hidden md:block"></div>
+                            <img src="images/dreamstime_xxl_234252380.jpg" alt="Corporate meeting setup" class="w-full h-[400px] object-cover relative z-10 shadow-xl">
+                        </div>
+                    </div>
+
+                    <!-- block 2: types + holiday decor -->
+                    <div class="flex flex-col md:flex-row-reverse items-start gap-12">
+                        <div class="md:w-1/2">
+                            <h3 class="font-playfair text-3xl md:text-4xl text-posh-dark mb-4">Types of corporate events we support</h3>
+                            <div class="w-16 h-0.5 bg-posh-gold mb-6"></div>
+                            <div class="grid grid-cols-2 gap-x-6 gap-y-2 text-posh-grey mb-8">
+                                <span><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Corporate meetings</span>
+                                <span><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Board meetings</span>
+                                <span><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Training sessions</span>
+                                <span><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Seminars & workshops</span>
+                                <span><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Product launches</span>
+                                <span><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Networking events</span>
+                                <span><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Office Holiday Parties</span>
+                            </div>
+                            <!-- Holiday Décor sub-section -->
+                            <div class="mt-10 pt-6 border-t border-posh-gold/20">
+                                <h4 class="font-playfair text-2xl text-posh-dark mb-3">Holiday décor & styling</h4>
+                                <p class="text-posh-grey mb-4 font-light">Transform your office or venue into a warm, festive environment.</p>
+                                <ul class="grid grid-cols-2 gap-2 text-posh-grey">
+                                    <li><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Seasonal décor installations</li>
+                                    <li><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Themed tablescapes</li>
+                                    <li><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Floral arrangements</li>
+                                    <li><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Lighting + ambiance design</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 relative">
+                            <div class="absolute -top-4 -right-4 w-full h-full border border-posh-gold/20 hidden md:block"></div>
+                            <img src="images/dreamstime_xxl_384834121.jpg" alt="Corporate event" class="w-full h-[500px] object-cover relative z-10 shadow-xl">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FULL-SERVICE CHECKLIST -->
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6 max-w-5xl">
+                    <div class="text-center mb-16">
+                        <span class="text-posh-gold uppercase tracking-[0.2em] text-xs font-semibold">our scope</span>
+                        <h2 class="font-playfair text-4xl text-posh-dark mt-3">Every detail, expertly managed</h2>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-x-12 gap-y-5 text-posh-grey">
+                        <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Agenda development & speaker coordination</span></div>
+                        <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Timeline creation & run-of-show</span></div>
+                        <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Vendor sourcing & contract negotiation</span></div>
+                        <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Venue selection & site visits</span></div>
+                        <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Room layout & seating design</span></div>
+                        <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Audio-visual coordination</span></div>
+                        <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Hotel room blocks & VIP accommodations</span></div>
+                        <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>On-site event management & strike</span></div>
+                        <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Catering & menu development</span></div>
+                        <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Branded signage & environmental graphics</span></div>
+                        <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Seasonal & holiday décor styling</span></div>
+                        <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Floral arrangements & ambiance design</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CORPORATE TESTIMONIAL -->
+            <section class="py-20 bg-posh-cream">
+                <div class="container mx-auto px-6 max-w-3xl text-center">
+                    <div class="text-posh-gold text-6xl mb-4 opacity-20 font-playfair">“</div>
+                    <h3 class="font-playfair italic text-2xl md:text-3xl text-posh-dark leading-relaxed">
+                        Cassie Posh Events handled our multi-day executive summit flawlessly. Every detail was anticipated — we could focus entirely on our guests.
+                    </h3>
+                    <div class="flex justify-center gap-1 text-posh-gold text-xs my-6">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="uppercase tracking-widest text-xs font-semibold text-posh-dark">— GRATEFUL CLIENT</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- 6. Design & Décor (unchanged, below tabs but visible across all) -->
         <section id="design" class="py-24 bg-posh-blush">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
@@ -343,7 +528,7 @@
             </div>
         </section>
 
-        <!-- 7. Luxury Drapery -->
+        <!-- 7. Luxury Drapery (unchanged) -->
         <section class="py-24 bg-white">
             <div class="container mx-auto px-6">
                 <div class="flex flex-col md:flex-row items-center gap-16">
@@ -382,187 +567,10 @@
                 </a>
             </div>
         </section>
-        <section class="py-24 bg-white">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <div class="text-center mb-12">
-                <span class="text-posh-gold uppercase tracking-[0.2em] text-xs font-semibold">Professional, seamless, and strategically executed</span>
-                <h2 class="font-playfair text-4xl md:text-5xl text-posh-dark mt-3 mb-6">Corporate Event Planning</h2>
-                
-                <div class="w-16 h-0.5 bg-posh-gold mx-auto"></div>
-            </div>
-            <div class="rich-text text-posh-grey font-light leading-relaxed max-w-3xl mx-auto text-center">
-                <p class="text-lg">At Cassie Posh Events, we understand that a well‑planned corporate event is more than an agenda — it's an opportunity to inspire, connect, and move your organization forward. Our corporate event planning services are designed to deliver a seamless, polished experience that reflects your brand's professionalism and purpose.</p>
-                <p class="text-lg">From intimate executive sessions to large‑scale corporate gatherings, we manage every detail with precision, discretion, and exceptional care.</p>
-            </div>
-
-            <!-- why partner grid -->
-            <div class="grid md:grid-cols-3 gap-8 mt-16">
-                <div class="text-center p-6">
-                    <div class="text-posh-gold text-3xl mb-4"><i class="fa-regular fa-star"></i></div>
-                    <h3 class="font-playfair text-xl mb-2">Professional & detail‑driven</h3>
-                    <p class="text-posh-grey text-sm">Experienced planners with a keen eye for precision.</p>
-                </div>
-                <div class="text-center p-6">
-                    <div class="text-posh-gold text-3xl mb-4"><i class="fa-regular fa-circle-check"></i></div>
-                    <h3 class="font-playfair text-xl mb-2">Seamless execution</h3>
-                    <p class="text-posh-grey text-sm">From concept to completion, flawlessly delivered.</p>
-                </div>
-                <div class="text-center p-6">
-                    <div class="text-posh-gold text-3xl mb-4"><i class="fa-regular fa-message"></i></div>
-                    <h3 class="font-playfair text-xl mb-2">Clear communication</h3>
-                    <p class="text-posh-grey text-sm">Reliable support every step of the way.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. DEEP DIVE: EVENT MANAGEMENT & TYPES (with new images) -->
-    <section class="py-20 bg-posh-cream">
-        <div class="container mx-auto px-6">
-            <!-- block 1: what we manage (using dreamstime_xxl_234252380) -->
-            <div class="flex flex-col md:flex-row items-center gap-12 mb-24">
-                <div class="md:w-1/2 order-2 md:order-1">
-                    <h3 class="font-playfair text-3xl md:text-4xl text-posh-dark mb-4">Corporate event management</h3>
-                    <div class="w-16 h-0.5 bg-posh-gold mb-6"></div>
-                    <ul class="space-y-3 text-posh-grey">
-                        <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>Agenda development</span></li>
-                        <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>Timeline creation</span></li>
-                        <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>Vendor & venue coordination</span></li>
-                        <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>Room layout & seating design</span></li>
-                        <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>Audio‑visual coordination</span></li>
-                        <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>Hotel room block coordination & management</span></li>
-                        <li class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold mt-1"></i><span>On‑site coordination & event day management</span></li>
-                    </ul>
-                </div>
-                <div class="md:w-1/2 order-1 md:order-2 relative">
-                    <div class="absolute -top-4 -left-4 w-full h-full border border-posh-gold/20 hidden md:block"></div>
-                    <img src="images/dreamstime_xxl_234252380.jpg" alt="Corporate meeting setup" class="w-full h-[400px] object-cover relative z-10 shadow-xl">
-                </div>
-            </div>
-
-            <!-- block 2: types of events & holiday décor (using dreamstime_xxl_384834121) -->
-            <div class="flex flex-col md:flex-row-reverse items-start gap-12">
-                <div class="md:w-1/2">
-                    <h3 class="font-playfair text-3xl md:text-4xl text-posh-dark mb-4">Types of corporate events we support</h3>
-                    <div class="w-16 h-0.5 bg-posh-gold mb-6"></div>
-                    <div class="grid grid-cols-2 gap-x-6 gap-y-2 text-posh-grey mb-8">
-                        <span><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Corporate meetings</span>
-                        <span><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Board meetings</span>
-                        <span><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Training sessions</span>
-                        <span><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Seminars & workshops</span>
-                        <span><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Product launches</span>
-                        <span><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Networking events</span>
-                        <span><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Office Holiday Parties</span>
-                    </div>
-
-                    <!-- Holiday Décor sub-section -->
-                    <div class="mt-10 pt-6 border-t border-posh-gold/20">
-                        <h4 class="font-playfair text-2xl text-posh-dark mb-3">Holiday décor & styling</h4>
-                        <p class="text-posh-grey mb-4 font-light">Transform your office or venue into a warm, festive environment.</p>
-                        <ul class="grid grid-cols-2 gap-2 text-posh-grey">
-                            <li><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Seasonal décor installations</li>
-                            <li><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Themed tablescapes</li>
-                            <li><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Floral arrangements</li>
-                            <li><i class="fa-regular fa-circle-check text-posh-gold mr-2"></i>Lighting + ambiance design</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="md:w-1/2 relative">
-                    <div class="absolute -top-4 -right-4 w-full h-full border border-posh-gold/20 hidden md:block"></div>
-                    <img src="images/dreamstime_xxl_384834121.jpg" alt="Corporate event" class="w-full h-[500px] object-cover relative z-10 shadow-xl">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. FULL-SERVICE CHECKLIST (clean, luxurious) -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <div class="text-center mb-16">
-                <span class="text-posh-gold uppercase tracking-[0.2em] text-xs font-semibold">our scope</span>
-                <h2 class="font-playfair text-4xl text-posh-dark mt-3">Every detail, expertly managed</h2>
-            </div>
-            <div class="grid md:grid-cols-2 gap-x-12 gap-y-5 text-posh-grey">
-                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Agenda development & speaker coordination</span></div>
-                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Timeline creation & run-of-show</span></div>
-                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Vendor sourcing & contract negotiation</span></div>
-                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Venue selection & site visits</span></div>
-                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Room layout & seating design</span></div>
-                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Audio-visual coordination</span></div>
-                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Hotel room blocks & VIP accommodations</span></div>
-                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>On-site event management & strike</span></div>
-                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Catering & menu development</span></div>
-                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Branded signage & environmental graphics</span></div>
-                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Seasonal & holiday décor styling</span></div>
-                <div class="flex items-start gap-3"><i class="fa-regular fa-circle-check text-posh-gold text-xl mt-0.5"></i><span>Floral arrangements & ambiance design</span></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. PORTFOLIO SNEAK PEEK - all new images, no duplication -->
-    <section class="py-0">
-        <!-- <div class="grid grid-cols-1 md:grid-cols-3">
-            <div class="group relative h-[400px] md:h-[500px] overflow-hidden cursor-pointer">
-                <img src="images/dreamstime_xxl_37952642.jpg" alt="Corporate boardroom" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 flex items-center justify-center">
-                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0"> -->
-                        <!-- <span class="text-white border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-colors">View boardroom</span> -->
-                    <!-- </div>
-                </div>
-            </div> -->
-            <!-- <div class="group relative h-[400px] md:h-[500px] overflow-hidden cursor-pointer">
-                <img src="images/dreamstime_xxl_1752372.jpg" alt="Corporate gala" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 flex items-center justify-center">
-                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0"> -->
-                        <!-- <span class="text-white border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-colors">View gala</span> -->
-                    <!-- </div>
-                </div>
-            </div> -->
-            <!-- <div class="group relative h-[400px] md:h-[500px] overflow-hidden cursor-pointer">
-                <img src="images/dreamstime_xxl_1393036.jpg" alt="Networking event" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 flex items-center justify-center">
-                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0"> -->
-                        <!-- <span class="text-white border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-colors">View networking</span> -->
-                    <!-- </div>
-                </div>
-            </div> -->
-            <!-- <div class="group relative h-[400px] md:h-[500px] overflow-hidden cursor-pointer">
-                <img src="images/dreamstime_xxl_1752362.jpg" alt="Holiday party décor" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 flex items-center justify-center">
-                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
-                        <span class="text-white border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-colors">View holiday</span>
-                    </div>
-                </div>
-            </div> -->
-            <!-- <div class="group relative h-[400px] md:h-[500px] overflow-hidden cursor-pointer">
-                <img src="images/dreamstime_xxl_23271329.jpg" alt="Product launch" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 flex items-center justify-center">
-                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
-                        <span class="text-white border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-colors">View launch</span>
-                    </div>
-                </div>
-            </div> -->
-            <!-- using last image dreamstime_xxl_67003644 already used in hero, so we use one extra from the set: we have 8 names, we used: hero(1), block1(2), block2(3), gallery(5 more = total 8) perfect -->
-        </div>
-    </section>
-
-    <!-- 7. TESTIMONIAL (corporate edition) -->
-    <section class="py-20 bg-posh-cream">
-        <div class="container mx-auto px-6 max-w-3xl text-center">
-            <div class="text-posh-gold text-6xl mb-4 opacity-20 font-playfair">“</div>
-            <h3 class="font-playfair italic text-2xl md:text-3xl text-posh-dark leading-relaxed">
-                Cassie Posh Events handled our multi-day executive summit flawlessly. Every detail was anticipated — we could focus entirely on our guests.
-            </h3>
-            <div class="flex justify-center gap-1 text-posh-gold text-xs my-6">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p class="uppercase tracking-widest text-xs font-semibold text-posh-dark">— GRATEFUL CLIENT</p>
-        </div>
-    </section>
 
     </main>
 
-    <!-- 9. Footer (Sticky Reveal) -->
+    <!-- 9. Footer -->
    <footer id="contact" 
     class="relative w-full bg-[url('images/dreamstime_xxl_4495877.jpg')] bg-cover bg-center bg-no-repeat bg-fixed text-white">
 
@@ -651,9 +659,9 @@
     </div>
 </footer>
 
-    <!-- JavaScript for Interactions -->
+    <!-- JavaScript for Interactions & Tabs -->
     <script>
-        // Sticky Navigation Logic
+        // Sticky Navigation
         const navbar = document.getElementById('navbar');
         const navLinks = document.querySelectorAll('.nav-link');
         const logoText = document.querySelector('.logo-text');
@@ -661,30 +669,18 @@
 
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                // Scrolled State (White Background)
                 navbar.classList.remove('nav-transparent');
                 navbar.classList.add('nav-scrolled');
-                
-                logoText.classList.remove('text-white');
-                logoText.classList.add('text-posh-dark');
-                
                 mobileMenuBtn.classList.remove('text-white'); 
-                
                 navLinks.forEach(link => {
-                    // Skip active link
                     if(!link.classList.contains('text-posh-gold')) {
                         link.classList.remove('text-white');
                         link.classList.add('text-posh-dark');
                     }
                 });
             } else {
-                // Top State (Transparent)
                 navbar.classList.add('nav-transparent');
                 navbar.classList.remove('nav-scrolled');
-                
-                logoText.classList.add('text-white');
-                logoText.classList.remove('text-posh-dark');
-                
                 navLinks.forEach(link => {
                     if(!link.classList.contains('text-posh-gold')) {
                         link.classList.add('text-white');
@@ -700,8 +696,6 @@
 
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            
-            // Toggle icon between bars and times (X)
             const icon = menuBtn.querySelector('i');
             if (mobileMenu.classList.contains('hidden')) {
                 icon.classList.remove('fa-times');
@@ -712,7 +706,6 @@
             }
         });
 
-        // Close mobile menu when clicking a link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
@@ -721,6 +714,41 @@
                 icon.classList.add('fa-bars');
             });
         });
+
+        // TAB FUNCTIONALITY
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = {
+            weddings: document.getElementById('content-weddings'),
+            social: document.getElementById('content-social'),
+            corporate: document.getElementById('content-corporate')
+        };
+
+        function activateTab(tabId) {
+            // hide all contents
+            Object.values(tabContents).forEach(content => content.classList.add('hidden'));
+            // show selected
+            tabContents[tabId].classList.remove('hidden');
+            
+            // update button styles
+            tabButtons.forEach(btn => {
+                btn.classList.remove('border-posh-gold', 'text-posh-gold');
+                btn.classList.add('border-transparent', 'text-posh-dark');
+            });
+            document.querySelector(`[data-tab="${tabId}"]`).classList.remove('border-transparent', 'text-posh-dark');
+            document.querySelector(`[data-tab="${tabId}"]`).classList.add('border-posh-gold', 'text-posh-gold');
+        }
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const tabId = e.currentTarget.getAttribute('data-tab');
+                activateTab(tabId);
+                // smooth scroll to tabs (optional)
+                document.getElementById('service-tabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // ensure weddings active on load
+        activateTab('weddings');
     </script>
 </body>
 </html>
