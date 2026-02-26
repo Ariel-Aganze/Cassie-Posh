@@ -96,21 +96,23 @@
     </style>
 </head>
 <body class="font-poppins bg-posh-cream overflow-x-hidden">
-    <!-- Navigation -->
+    <!-- Navigation - Updated to match Design & Décor page -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6 lg:py-8 bg-transparent">
         <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
-            <!-- Logo - UPDATED to match Design & Décor page: h-12 md:h-24 -->
+            <!-- Logo - matching Design & Décor page -->
             <a href="home.html">
                 <img src="images/Transparent Background-02.png" alt="Cassie Posh Events" class="h-12 md:h-24 w-auto logo-original" id="navLogo">
             </a>
             
-            <!-- Desktop Menu -->
-            <div class="hidden lg:flex items-center gap-6 xl:gap-8">
+            <!-- Desktop Menu - Updated to match Design & Décor -->
+            <div class="desktop-nav hidden lg:flex items-center gap-8 xl:gap-10">
                 <a href="home.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Home</a>
                 <a href="about.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">About</a>
-                <a href="services.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Services</a>
+                <!-- Services removed -->
+                <a href="weddings.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Weddings</a>
+                <a href="social-corporate.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Social & Corporate Events</a>
                 <a href="design&decor.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Design & Décor</a>
-                <!-- <a href="meeting&corporate.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Corporate Event</a> -->
+                <!-- Corporate Event removed -->
                 <a href="portfolio.html" class="nav-link text-white text-xs xl:text-sm uppercase tracking-widest hover:text-posh-gold transition-colors hover-underline-animation">Portfolio</a>
                 <!-- Desktop contact button with border - stays gold -->
                 <a href="contact.html" class="contact-btn border-2 border-posh-gold text-posh-gold px-6 py-2 text-xs xl:text-sm uppercase tracking-widest hover:bg-posh-gold hover:text-white transition-all duration-300">Contact Us</a>
@@ -124,13 +126,15 @@
             </button>
         </div>
 
-        <!-- Mobile Menu Overlay - Exactly like the example with About in gold -->
+        <!-- Mobile Menu Overlay - Updated to match Design & Décor -->
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-lg py-6 flex flex-col items-center space-y-6 lg:hidden">
             <a href="home.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Home</a>
             <a href="about.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">About</a>
-            <a href="services.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Services</a>
+            <!-- Services removed -->
+            <a href="weddings.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Weddings</a>
+            <a href="social-corporate.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Social & Corporate Events</a>
             <a href="design&decor.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Design & Décor</a>
-            <!-- <a href="meeting&corporate.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Corporate Event</a> -->
+            <!-- Corporate Event removed -->
             <a href="portfolio.html" class="text-posh-dark text-sm uppercase tracking-widest hover:text-posh-gold">Portfolio</a>
             <a href="contact.html" class="text-posh-dark text-sm uppercase tracking-widest text-posh-gold font-medium">Contact Us</a>
         </div>
@@ -306,7 +310,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - Updated to match Design & Décor -->
     <footer id="contact" 
     class="relative w-full bg-[url('images/dreamstime_xxl_4495877.jpg')] bg-cover bg-center bg-no-repeat bg-fixed text-white">
 
@@ -342,7 +346,7 @@
                 </a>
             </div>
 
-            <!-- Links -->
+            <!-- Links - Updated to match Design & Décor -->
             <div class="flex flex-col gap-3 text-center md:text-left">
                 <span class="text-white/40 text-xs uppercase tracking-widest mb-3">
                     Quick Links
@@ -353,12 +357,17 @@
                 <a href="about.html" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">
                     About
                 </a>
-                <a href="services.html" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">
-                    Services
+                <!-- Services removed -->
+                <a href="weddings.html" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">
+                    Weddings
                 </a>
-                <!-- <a href="meeting&corporate.html" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">
-                    Corporate Event
-                </a> -->
+                <a href="social-corporate.html" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">
+                    Social & Corporate Events
+                </a>
+                <a href="design&decor.html" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">
+                    Design & Décor
+                </a>
+                <!-- Corporate Event removed -->
                 <a href="portfolio.html" class="text-white/80 hover:text-posh-gold transition-colors duration-300 text-sm font-light">
                     Portfolio
                 </a>
@@ -417,7 +426,7 @@
             dateInput.setAttribute('min', todayFormatted);
         }
 
-        // Navigation Scroll Effect - Logo keeps original color
+        // Navigation Scroll Effect - Updated to handle new navigation items
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
                 // Scrolled state - white background, dark text
@@ -427,8 +436,8 @@
                 // Logo - NO FILTER (keeps original color)
                 navLogo.classList.remove('brightness-0', 'invert');
                 
-                // Change desktop nav links to dark
-                document.querySelectorAll('.nav-link').forEach(link => {
+                // Change desktop nav links to dark (Contact Us button stays gold)
+                document.querySelectorAll('.desktop-nav .nav-link').forEach(link => {
                     link.classList.remove('text-white');
                     link.classList.add('text-posh-dark');
                 });
@@ -453,8 +462,8 @@
                 // Logo - NO FILTER (keeps original color at top too)
                 navLogo.classList.remove('brightness-0', 'invert');
                 
-                // Reset desktop nav links to white
-                document.querySelectorAll('.nav-link').forEach(link => {
+                // Reset desktop nav links to white (Contact Us button stays gold)
+                document.querySelectorAll('.desktop-nav .nav-link').forEach(link => {
                     link.classList.add('text-white');
                     link.classList.remove('text-posh-dark');
                 });
